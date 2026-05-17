@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安養院 ── 親しみやすい（イラスト入り）</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #EEE BE7;
+    --bg: #EEEBE7;
+    --bg2: #FAF9F5;
+    --orange: #FFA353;
+    --blue: #7DBDCB;
+    --text: #1F1E1D;
+    --sub: #707070;
+    --width: 780px;
+  }
+
+  body {
+    font-family: 'Shippori Mincho', '游明朝体', serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 2.1;
+    position: relative;
+  }
+
+  /* ペーパーテクスチャ */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  /* ヘッダー */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(238,235,231,0.96);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 38px; height: 32px;
+  }
+  .logo-text {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .logo-text span {
+    display: block;
+    font-size: 10px;
+    color: var(--sub);
+    letter-spacing: 0.12em;
+  }
+  nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  nav a {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  nav a:hover { color: var(--orange); }
+
+  /* ヒーロー */
+  .hero {
+    margin-top: 68px;
+    position: relative;
+    height: 580px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #f0e0d8 0%, #d4b8a8 30%, #c4a090 60%, #b08878 100%);
+    opacity: 0.7;
+  }
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .hero-text h1 {
+    font-size: 28px;
+    letter-spacing: 0.4em;
+    color: var(--text);
+    line-height: 1.8;
+    font-weight: 400;
+  }
+  .hero-text p {
+    margin-top: 16px;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: var(--sub);
+  }
+
+  /* ウェーブ区切り */
+  .wave {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    margin-top: -2px;
+  }
+  .wave svg { display: block; width: 100%; }
+
+  /* セクション共通 */
+  section {
+    padding: 120px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .inner {
+    max-width: var(--width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* セクションタイトル（blobつき） */
+  .sec-head {
+    text-align: center;
+    margin-bottom: 64px;
+    position: relative;
+  }
+  .sec-blob {
+    display: inline-block;
+    position: relative;
+    padding: 8px 32px;
+  }
+  .sec-blob::before {
+    content: '';
+    position: absolute;
+    inset: -8px -20px;
+    background: rgba(255,163,83,0.22);
+    border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+    z-index: -1;
+  }
+  .sec-title {
+    font-size: 24px;
+    letter-spacing: 0.3em;
+    font-weight: 400;
+  }
+  .sec-sub {
+    margin-top: 8px;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--orange);
+  }
+
+  /* お知らせ */
+  .news { background: var(--bg2); }
+  .news-list { list-style: none; }
+  .news-list li {
+    display: flex;
+    gap: 32px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+  .news-list time { color: var(--sub); white-space: nowrap; font-size: 12px; }
+  .more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-decoration: none;
+  }
+  .more-link::after { content: ' ›'; }
+
+  /* ご挨拶 */
+  .greeting { background: var(--bg); }
+  .greeting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .greeting-img-wrap {
+    position: relative;
+  }
+  .greeting-img {
+    width: 100%;
+    height: 380px;
+    background: url('images/illust_temple.png') center center / contain no-repeat;
+    clip-path: none;
+  }
+  /* 手描き風装飾SVG */
+  .deco-line {
+    position: absolute;
+    top: -20px; right: -30px;
+    opacity: 0.3;
+  }
+  .greeting-text p {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 2.2;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .btn-warm {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 1px solid var(--orange);
+    padding-bottom: 4px;
+  }
+  .btn-warm::after { content: ' ›'; }
+
+  /* 年中行事 */
+  .events { background: var(--bg2); }
+  .events-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .event-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .event-img-blob {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    clip-path: none;
+    background: center center / contain no-repeat;
+  }
+  .event-img-blob.i02 { background-image: url('images/illust_02.png'); }
+  .event-img-blob.i03 { background-image: url('images/illust_03.png'); }
+  .event-img-blob.i04 { background-image: url('images/illust_04.png'); }
+  .event-img-blob.i20 { background-image: url('images/illust_20.png'); }
+  .event-body { flex: 1; }
+  .event-date { font-size: 11px; letter-spacing: 0.2em; color: var(--orange); margin-bottom: 4px; }
+  .event-name { font-size: 16px; letter-spacing: 0.15em; margin-bottom: 8px; }
+  .event-desc { font-size: 13px; color: var(--sub); line-height: 1.9; }
+
+  /* サービス */
+  .services { background: var(--bg); }
+  .services-list { list-style: none; }
+  .services-list li {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 32px;
+    align-items: center;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .svc-icon {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,163,83,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .svc-icon img {
+    width: 64px; height: 64px;
+    object-fit: contain;
+  }
+  .svc-name { font-size: 18px; letter-spacing: 0.2em; margin-bottom: 6px; }
+  .svc-desc { font-size: 13px; color: var(--sub); line-height: 1.9; }
+  .svc-link {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .svc-link::after { content: ' ›'; }
+
+  /* アクセス */
+  .access { background: var(--bg2); }
+  .access-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 48px;
+  }
+  .access-map {
+    height: 300px;
+    background: linear-gradient(135deg, #d8e8d0 0%, #a8c8a0 100%);
+    clip-path: ellipse(49% 47% at 50% 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sub);
+    font-size: 13px;
+  }
+  .access-info dt {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    margin-top: 20px;
+    margin-bottom: 4px;
+  }
+  .access-info dt:first-child { margin-top: 0; }
+  .access-info dd { font-size: 14px; letter-spacing: 0.05em; line-height: 1.8; }
+
+  /* フッター */
+  footer {
+    background: var(--bg);
+    padding: 64px 0 32px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 1;
+  }
+  .footer-inner {
+    max-width: var(--width);
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .footer-name { font-size: 16px; letter-spacing: 0.3em; margin-bottom: 24px; }
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    list-style: none;
+    margin-bottom: 32px;
+  }
+  .footer-nav a { font-size: 12px; letter-spacing: 0.1em; color: var(--sub); text-decoration: none; }
+  .copy { font-size: 11px; color: var(--sub); letter-spacing: 0.1em; }
+
+  .direction-label {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    background: var(--orange);
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 8px 16px;
+    border-radius: 2px;
+    z-index: 999;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+  }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
+
+  @media (max-width: 768px) {
+    .header-inner { padding: 0 20px; }
+    nav { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { height: 360px; }
+    .hero-text h1 { font-size: 22px; }
+
+    section { padding: 72px 0; }
+    .inner { padding: 0 20px; }
+    .sec-title { font-size: 20px; }
+
+    .greeting-grid { grid-template-columns: 1fr; gap: 32px; }
+    .greeting-img { height: 240px; clip-path: ellipse(49% 47% at 52% 50%); }
+
+    .events-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    .services-list li { grid-template-columns: 64px 1fr auto; gap: 16px; padding: 20px 0; }
+    .svc-icon { width: 60px; height: 60px; font-size: 22px; }
+
+    .access-grid { grid-template-columns: 1fr; gap: 40px; }
+    .access-map { clip-path: none; border-radius: 12px; height: 240px; }
+
+    .footer-inner { text-align: center; }
+    .footer-nav { gap: 12px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <svg class="logo-mark" viewBox="0 0 142 118" fill="none">
+        <path d="M141.86,57.28c-.55,25.77-14.84,48.16-35.83,60.12-10.35-5.92-22.33-20.28-35.1-20.28s-24.75,14.36-35.1,20.28C14.84,105.43.55,83.04,0,57.28c-.02-.76.73-1.29,1.45-1.06,45.32,14.57,91.52,15.31,138.96,0,.72-.23,1.47.31,1.45,1.06Z" fill="#FFA353"/>
+        <circle cx="70.93" cy="27.32" r="27.32" fill="#FFA353"/>
+      </svg>
+      <div class="logo-text">
+        <span>天台宗 医王山</span>
+        安養院
+      </div>
+    </a>
+    <nav>
+      <a href="#">お知らせ</a>
+      <a href="#">年中行事</a>
+      <a href="#">寺院について</a>
+      <a href="#">法要・御祈願</a>
+      <a href="#">お墓</a>
+      <a href="#">アクセス</a>
+    </nav>
+    <button class="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-text">
+    <h1>地域の拠り所として</h1>
+    <p>天台宗 医王山 安養院 真福寺</p>
+  </div>
+</div>
+
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#FAF9F5"/>
+</svg>
+
+<section class="news">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-blob"><h2 class="sec-title">お知らせ</h2></div>
+      <p class="sec-sub">NEWS</p>
+    </div>
+    <ul class="news-list">
+      <li><time>2026.05.01</time><span>令和8年 盂蘭盆会のご案内</span></li>
+      <li><time>2026.04.08</time><span>花祭り（お釈迦さまの誕生日）を執り行いました</span></li>
+      <li><time>2026.02.03</time><span>節分会・護摩祈祷を行いました</span></li>
+    </ul>
+    <a href="#" class="more-link">お知らせ一覧</a>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:#FAF9F5">
+  <path d="M0,30 C240,0 480,60 720,30 C960,0 1200,60 1440,30 L1440,0 L0,0 Z" fill="#EEEBE7"/>
+</svg>
+
+<section class="greeting">
+  <div class="inner">
+    <div class="greeting-grid">
+      <div class="greeting-img-wrap">
+        <div class="greeting-img"></div>
+        <svg class="deco-line" width="80" height="80" viewBox="0 0 80 80">
+          <path d="M10,40 Q25,10 40,40 Q55,70 70,40" stroke="#FFA353" stroke-width="1.5" fill="none"/>
+          <circle cx="10" cy="40" r="3" fill="#FFA353"/>
+          <circle cx="70" cy="40" r="3" fill="#FFA353"/>
+        </svg>
+      </div>
+      <div class="greeting-text">
+        <div class="sec-head" style="text-align:left; margin-bottom:32px;">
+          <div class="sec-blob" style="padding-left:0;">
+            <h2 class="sec-title" style="font-size:20px;">安養院について</h2>
+          </div>
+        </div>
+        <p>安養院は天台宗のお寺で、正式名称を「医王山 安養院 真福寺」といいます。室町時代に開山し、地域とともに歩んできました。</p>
+        <p>明治7年には本堂が笂井小学校の礎となり、地域の歴史と深く結びついています。これからも気張らなくていい、訪れやすいお寺でありたいと思っています。</p>
+        <a href="#" class="btn-warm">くわしく読む</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:#EEEBE7">
+  <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#FAF9F5"/>
+</svg>
+
+<section class="events">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-blob"><h2 class="sec-title">年中行事</h2></div>
+      <p class="sec-sub">ANNUAL EVENTS</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-img-blob i02"></div>
+        <div class="event-body">
+          <p class="event-date">2月3日</p>
+          <h3 class="event-name">節分会</h3>
+          <p class="event-desc">護摩祈祷・豆まき・鬼退治の劇。厄除け祈願を行います。</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img-blob i03"></div>
+        <div class="event-body">
+          <p class="event-date">2月15日</p>
+          <h3 class="event-name">天道念仏</h3>
+          <p class="event-desc">太陽を拝んで五穀の豊作を祈願する儀礼です。</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img-blob i04"></div>
+        <div class="event-body">
+          <p class="event-date">4月8日</p>
+          <h3 class="event-name">花祭り</h3>
+          <p class="event-desc">お釈迦さまの誕生を祝い、誕生仏に甘茶をそそぎます。</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img-blob i20"></div>
+        <div class="event-body">
+          <p class="event-date">8月16日</p>
+          <h3 class="event-name">灯籠流し</h3>
+          <p class="event-desc">桃の木川でご先祖様を供養する灯籠流しを行います。</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="#" class="more-link">行事一覧を見る</a>
+    </div>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:#FAF9F5">
+  <path d="M0,30 C240,0 480,60 720,30 C960,0 1200,60 1440,30 L1440,0 L0,0 Z" fill="#EEEBE7"/>
+</svg>
+
+<section class="services">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-blob"><h2 class="sec-title">ご相談・ご依頼</h2></div>
+      <p class="sec-sub">SERVICES</p>
+    </div>
+    <ul class="services-list">
+      <li>
+        <div class="svc-icon"><img src="images/illust_14.png" alt="御祈願"></div>
+        <div>
+          <p class="svc-name">御祈願・厄除け</p>
+          <p class="svc-desc">厄除開運、家内安全、無病息災ほか。随時受け付けております。</p>
+        </div>
+        <a href="#" class="svc-link">詳しく見る</a>
+      </li>
+      <li>
+        <div class="svc-icon"><img src="images/illust_09.png" alt="法要"></div>
+        <div>
+          <p class="svc-name">法要・年忌</p>
+          <p class="svc-desc">一周忌から三十三回忌まで。ペットの法要も執り行います。</p>
+        </div>
+        <a href="#" class="svc-link">詳しく見る</a>
+      </li>
+      <li>
+        <div class="svc-icon"><img src="images/freu_pink.png" alt="お墓"></div>
+        <div>
+          <p class="svc-name">お墓</p>
+          <p class="svc-desc">累代墓、永代供養墓、樹木葬、ペットのお墓。</p>
+        </div>
+        <a href="#" class="svc-link">詳しく見る</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:#EEEBE7">
+  <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#FAF9F5"/>
+</svg>
+
+<section class="access">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-blob"><h2 class="sec-title">アクセス</h2></div>
+      <p class="sec-sub">ACCESS</p>
+    </div>
+    <div class="access-grid">
+      <div class="access-map">Googleマップ</div>
+      <dl class="access-info">
+        <dt>住所</dt>
+        <dd>〒379-2115<br>群馬県前橋市笂井町1164番地</dd>
+        <dt>電話</dt>
+        <dd style="font-size:20px; letter-spacing:0.05em;">027-266-1378</dd>
+        <dt>お問い合わせ</dt>
+        <dd style="color:var(--sub); font-size:13px;">電話にてお気軽にご相談ください。</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-name">安養院 真福寺</p>
+    <ul class="footer-nav">
+      <li><a href="#">お知らせ</a></li>
+      <li><a href="#">年中行事</a></li>
+      <li><a href="#">寺院について</a></li>
+      <li><a href="#">法要・御祈願</a></li>
+      <li><a href="#">お墓</a></li>
+      <li><a href="#">アクセス</a></li>
+    </ul>
+    <p class="copy">© 安養院 真福寺　群馬県前橋市笂井町1164番地</p>
+  </div>
+</footer>
+
+<div class="direction-label">② 親しみやすい（イラスト入り）</div>
+
+</body>
+</html>
