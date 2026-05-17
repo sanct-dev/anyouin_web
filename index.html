@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安養院 ウェブサイト方向性モックアップ</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Shippori Mincho', serif;
+    background: #F7F4F0;
+    color: #1a1a18;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .site-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #8e1a1a;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 22px;
+    letter-spacing: 0.25em;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #1a1a18;
+  }
+  .desc {
+    margin-top: 16px;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: #6a6a68;
+    line-height: 2;
+  }
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 560px;
+  }
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 1px solid #dedad4;
+    border-radius: 4px;
+    padding: 24px 32px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    border-color: #8e1a1a;
+    box-shadow: 0 2px 12px rgba(142,26,26,0.08);
+  }
+  .card-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #8e1a1a;
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .card-sub {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: #6a6a68;
+    margin-top: 4px;
+  }
+  .card-arrow {
+    font-size: 18px;
+    color: #8e1a1a;
+    opacity: 0.6;
+  }
+  footer {
+    margin-top: 56px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="site-label">ANYOIN — MOCKUP COMPARISON</p>
+  <h1>安養院 ウェブサイト<br>方向性モックアップ</h1>
+  <p class="desc">各案を開いて、印象を比べてみてください。</p>
+</header>
+
+<div class="cards">
+  <a class="card" href="mockup_01_太宰府天満宮方向.html">
+    <div>
+      <p class="card-num">01</p>
+      <p class="card-title">太宰府天満宮方向</p>
+      <p class="card-sub">白背景・シンプル・情報整理優先</p>
+    </div>
+    <span class="card-arrow">›</span>
+  </a>
+  <a class="card" href="mockup_02_善称寺方向.html">
+    <div>
+      <p class="card-num">02</p>
+      <p class="card-title">善称寺方向</p>
+      <p class="card-sub">greige背景・ウェーブ・あたたかみ</p>
+    </div>
+    <span class="card-arrow">›</span>
+  </a>
+  <a class="card" href="mockup_03_安養寺方向.html">
+    <div>
+      <p class="card-num">03</p>
+      <p class="card-title">安養寺方向</p>
+      <p class="card-sub">peach背景・縦書き見出し・有機的</p>
+    </div>
+    <span class="card-arrow">›</span>
+  </a>
+  <a class="card" href="mockup_04_大興善寺方向.html">
+    <div>
+      <p class="card-num">04</p>
+      <p class="card-title">大興善寺方向</p>
+      <p class="card-sub">紫アクセント・格調・筑紫フォント感</p>
+    </div>
+    <span class="card-arrow">›</span>
+  </a>
+  <a class="card" href="mockup_05_ハイブリッド方向.html">
+    <div>
+      <p class="card-num">05</p>
+      <p class="card-title">ハイブリッド（01×02）</p>
+      <p class="card-sub">01の構造 + 02のウォームトーン</p>
+    </div>
+    <span class="card-arrow">›</span>
+  </a>
+</div>
+
+<footer>© 安養院 真福寺　制作用内部資料</footer>
+
+</body>
+</html>
