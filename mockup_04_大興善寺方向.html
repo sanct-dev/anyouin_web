@@ -413,6 +413,53 @@
     padding: 8px 16px;
     z-index: 999;
   }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+  }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
+
+  @media (max-width: 768px) {
+    .header-top-row { padding: 10px 0 6px; gap: 0; justify-content: space-between; }
+    .header-top-row .header-contact:first-child { display: none; }
+    .header-top-row .header-contact:last-child { font-size: 12px; }
+    .header-nav-row { display: none; }
+    .header-inner { padding: 0 20px; position: relative; }
+    .hamburger { display: flex; position: absolute; right: 20px; top: 12px; }
+
+    .hero { margin-top: 80px; height: 360px; }
+    .hero-text-panel { width: 56px; right: 5%; }
+    .hero-text-v { font-size: 16px; }
+
+    .inner { padding: 0 20px; }
+
+    .sec-head { gap: 14px; margin-bottom: 36px; }
+    .sec-title-v { font-size: 26px; }
+
+    .news { padding: 56px 0; }
+    .greeting { padding: 56px 0; }
+    .events { padding: 56px 0; }
+    .services { padding: 56px 0; }
+    .access { padding: 56px 0; }
+
+    .greeting-grid { grid-template-columns: 1fr; gap: 32px; }
+    .greeting-img { height: 220px; }
+
+    .events-grid { grid-template-columns: 1fr; gap: 2px; }
+
+    .services-grid { grid-template-columns: 1fr; gap: 20px; }
+
+    .access-grid { grid-template-columns: 1fr; gap: 40px; }
+    .access-map { height: 240px; }
+
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
 </style>
 </head>
 <body>
@@ -452,6 +499,9 @@
       <a href="#">アクセス</a>
       <a href="#" class="mail-btn">お問い合わせ</a>
     </div>
+    <button class="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 

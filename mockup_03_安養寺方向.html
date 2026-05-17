@@ -409,6 +409,60 @@
     border-radius: 999px;
     z-index: 999;
   }
+
+  @media (max-width: 768px) {
+    .header-top { padding: 6px 16px; }
+    .header-main { padding: 0 16px; }
+    nav { display: none; }
+
+    .hero {
+      margin-top: 88px;
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-img {
+      min-height: 260px;
+      clip-path: none;
+    }
+    .hero-text-side { padding: 40px 24px; }
+    .hero-kana { writing-mode: horizontal-tb; margin-bottom: 12px; font-size: 11px; }
+    .hero-title { font-size: 26px; }
+
+    section { padding: 72px 0; }
+    .inner { padding: 0 20px; }
+
+    .sec-head { gap: 16px; margin-bottom: 36px; }
+    .sec-title-v { font-size: 26px; }
+
+    .greeting-grid { grid-template-columns: 1fr; gap: 32px; }
+    .greeting-img {
+      height: 220px;
+      clip-path: none;
+      border-radius: 12px 48px 12px 12px;
+    }
+
+    .events-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .badge-cluster { gap: 10px; }
+    .badge { width: 68px; height: 68px; font-size: 11px; }
+    .badge.sm { width: 52px; height: 52px; font-size: 10px; }
+    .badge.lg { width: 80px; height: 80px; font-size: 12px; }
+
+    .services-grid { grid-template-columns: 1fr; gap: 20px; }
+
+    .access-grid { grid-template-columns: 1fr; gap: 40px; }
+    .access-map {
+      height: 240px;
+      clip-path: none;
+      border-radius: 12px 48px 12px 12px;
+    }
+
+    .footer-inner { flex-direction: column; gap: 24px; }
+    .footer-nav { flex-wrap: wrap; gap: 12px 20px; }
+  }
+  @media (max-width: 480px) {
+    .events-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>

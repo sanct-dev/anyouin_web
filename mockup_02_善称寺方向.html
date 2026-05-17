@@ -369,6 +369,44 @@
     border-radius: 2px;
     z-index: 999;
   }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+  }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
+
+  @media (max-width: 768px) {
+    .header-inner { padding: 0 20px; }
+    nav { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { height: 360px; }
+    .hero-text h1 { font-size: 22px; }
+
+    section { padding: 72px 0; }
+    .inner { padding: 0 20px; }
+    .sec-title { font-size: 20px; }
+
+    .greeting-grid { grid-template-columns: 1fr; gap: 32px; }
+    .greeting-img { height: 240px; clip-path: ellipse(49% 47% at 52% 50%); }
+
+    .events-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    .services-list li { grid-template-columns: 64px 1fr auto; gap: 16px; padding: 20px 0; }
+    .svc-icon { width: 60px; height: 60px; font-size: 22px; }
+
+    .access-grid { grid-template-columns: 1fr; gap: 40px; }
+    .access-map { clip-path: none; border-radius: 12px; height: 240px; }
+
+    .footer-inner { text-align: center; }
+    .footer-nav { gap: 12px 20px; }
+  }
 </style>
 </head>
 <body>
@@ -393,6 +431,9 @@
       <a href="#">お墓</a>
       <a href="#">アクセス</a>
     </nav>
+    <button class="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
