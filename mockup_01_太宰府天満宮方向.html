@@ -430,9 +430,9 @@
 
   /* レスポンシブ */
   @media (max-width: 768px) {
-    .header-inner { padding: 0 20px; }
+    .header-inner { padding: 0 20px; justify-content: center; position: relative; }
     nav { display: none; }
-    .hamburger { display: flex; }
+    .hamburger { display: flex; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
 
     .hero { height: 380px; }
     .hero-caption { width: 100%; padding: 0 20px; bottom: 40px; text-align: center; }
