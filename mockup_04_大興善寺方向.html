@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安養院 ── 大興善寺方向</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --cream: #F5F1E1;
+    --purple: #AA4C8F;
+    --gold: #b8963e;
+    --text: #444444;
+    --sub: #888;
+    --width: 900px;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', 'Meiryo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  /* 花シルエット背景 */
+  .flower-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.06;
+  }
+  .flower-bg svg { width: 100%; height: 100%; }
+
+  /* ヘッダー */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid rgba(184,150,62,0.3);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .header-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 0 8px;
+    gap: 24px;
+    border-bottom: 1px solid rgba(184,150,62,0.2);
+  }
+  .logo-center {
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-mark { width: 36px; height: 30px; }
+  .logo-text-block {
+    text-align: left;
+  }
+  .logo-main {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    letter-spacing: 0.3em;
+    color: var(--text);
+    display: block;
+  }
+  .logo-sub {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--sub);
+    display: block;
+    margin-top: 2px;
+  }
+  .header-contact {
+    font-size: 11px;
+    color: var(--sub);
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+    text-align: right;
+  }
+  .header-contact strong {
+    display: block;
+    font-size: 16px;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
+  .header-nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 0;
+  }
+  .header-nav-row a {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0 20px;
+  }
+  .header-nav-row a:hover { color: var(--purple); }
+  .nav-dot {
+    color: var(--purple);
+    font-size: 8px;
+    line-height: 1;
+  }
+  .mail-btn {
+    background: var(--purple);
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 6px 16px;
+    text-decoration: none;
+    margin-left: 16px;
+  }
+
+  /* ヒーロー */
+  .hero {
+    margin-top: 110px;
+    position: relative;
+    height: 540px;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #d4e8c2 0%, #a8c88a 40%, #6a9a50 100%);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.1);
+  }
+  .hero-text-panel {
+    position: absolute;
+    top: 0; right: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: rgba(255,255,255,0.85);
+    width: 80px;
+  }
+  .hero-text-v {
+    writing-mode: vertical-rl;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    letter-spacing: 0.3em;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .hero-text-v .c { color: var(--purple); }
+
+  /* 金の区切り線 */
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0;
+  }
+
+  /* セクション共通 */
+  .inner {
+    max-width: var(--width);
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* セクション見出し */
+  .sec-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 48px;
+    padding-left: 0;
+  }
+  .sec-title-v {
+    writing-mode: vertical-rl;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 34px;
+    letter-spacing: 0.175em;
+    line-height: 50px;
+    font-weight: 400;
+    color: var(--text);
+  }
+  .sec-title-v .first { color: var(--purple); }
+  .sec-deco-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 4px;
+  }
+  /* 手描き風の同心四角形 */
+  .concentric-box {
+    position: relative;
+    width: 40px; height: 40px;
+  }
+  .concentric-box span {
+    position: absolute;
+    border: 1.5px solid var(--purple);
+    border-radius: 1px;
+  }
+  .concentric-box span:nth-child(1) { inset: 0; opacity: 0.9; transform: rotate(2deg); }
+  .concentric-box span:nth-child(2) { inset: 6px; opacity: 0.6; transform: rotate(-1deg); }
+  .concentric-box span:nth-child(3) { inset: 12px; opacity: 0.4; transform: rotate(1.5deg); }
+  .sec-en {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--sub);
+    writing-mode: vertical-rl;
+    margin-top: 8px;
+  }
+
+  /* お知らせ */
+  .news { padding: 80px 0; background: var(--bg); }
+  .news-list { list-style: none; }
+  .news-list li {
+    display: flex;
+    gap: 32px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(184,150,62,0.2);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+  .news-list time { color: var(--sub); white-space: nowrap; font-size: 12px; }
+
+  /* ご挨拶 */
+  .greeting { padding: 80px 0; background: var(--cream); position: relative; overflow: hidden; }
+  .greeting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+  .greeting-img {
+    height: 400px;
+    background: linear-gradient(135deg, #c5dba8 0%, #8fb86e 50%, #6a9a50 100%);
+  }
+  .greeting-text { font-family: 'Shippori Mincho', serif; }
+  .greeting-text p {
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    line-height: 2.1;
+    margin-bottom: 20px;
+  }
+  .btn-square {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--text);
+    padding: 10px 20px;
+    margin-top: 12px;
+    transition: all 0.2s;
+  }
+  .btn-square:hover { border-color: var(--purple); color: var(--purple); }
+  .btn-square::before { content: '› '; }
+
+  /* 年中行事 */
+  .events { padding: 80px 0; background: var(--bg); }
+  .events-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 40px;
+  }
+  .event-card { overflow: hidden; }
+  .event-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #f0c8c8, #d89098);
+    display: block;
+  }
+  .event-img.green { background: linear-gradient(135deg, #c5dba8, #8fb86e); }
+  .event-img.amber { background: linear-gradient(135deg, #f0d8a8, #c8a050); }
+  .event-img.blue { background: linear-gradient(135deg, #b8d0e8, #7098c0); }
+  .event-body { padding: 20px; text-align: center; }
+  .event-date { font-size: 11px; letter-spacing: 0.2em; color: var(--purple); margin-bottom: 6px; }
+  .event-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px; letter-spacing: 0.15em; margin-bottom: 8px;
+  }
+  .event-desc { font-size: 13px; color: var(--sub); line-height: 1.8; }
+
+  /* サービス */
+  .services { padding: 80px 0; background: var(--cream); position: relative; overflow: hidden; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    position: relative; z-index: 1;
+  }
+  .service-card {
+    background: var(--bg);
+    padding: 36px 32px;
+  }
+  .service-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .service-title-v {
+    writing-mode: vertical-rl;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    line-height: 50px;
+  }
+  .service-title-v .first { color: var(--purple); }
+  .service-desc { font-size: 13px; color: var(--sub); line-height: 2; margin-bottom: 20px; }
+  .btn-square-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    transition: all 0.2s;
+  }
+  .btn-square-sm:hover { border-color: var(--purple); color: var(--purple); }
+  .btn-square-sm::before { content: '› '; }
+
+  /* アクセス */
+  .access { padding: 80px 0; background: var(--bg); }
+  .access-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-top: 40px;
+  }
+  .access-map {
+    height: 300px;
+    background: linear-gradient(135deg, #d8e8d0 0%, #a8c8a0 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--sub); font-size: 13px;
+  }
+  .access-info { font-family: 'Shippori Mincho', serif; }
+  .access-info dt {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--purple);
+    margin-top: 20px; margin-bottom: 4px;
+  }
+  .access-info dt:first-child { margin-top: 0; }
+  .access-info dd { font-size: 14px; letter-spacing: 0.05em; line-height: 1.8; }
+
+  /* フッター */
+  footer {
+    background: var(--cream);
+    border-top: 1px solid rgba(184,150,62,0.3);
+    padding: 48px 0 32px;
+  }
+  .footer-inner {
+    max-width: var(--width);
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-logo { font-family: 'Shippori Mincho', serif; font-size: 16px; letter-spacing: 0.2em; margin-bottom: 8px; }
+  .footer-addr { font-size: 12px; color: var(--sub); line-height: 1.8; }
+  .footer-nav { list-style: none; }
+  .footer-nav li { margin-bottom: 8px; }
+  .footer-nav a { font-size: 12px; letter-spacing: 0.1em; color: var(--sub); text-decoration: none; }
+  .footer-nav a:hover { color: var(--purple); }
+  .footer-sns { display: flex; gap: 12px; margin-top: 16px; }
+  .sns-icon {
+    width: 32px; height: 32px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #fff; text-decoration: none;
+  }
+  .copy {
+    max-width: var(--width);
+    margin: 32px auto 0;
+    padding: 20px 40px 0;
+    border-top: 1px solid rgba(184,150,62,0.2);
+    font-size: 11px;
+    color: var(--sub);
+    letter-spacing: 0.1em;
+  }
+
+  .direction-label {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    background: var(--purple);
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 8px 16px;
+    z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-top-row">
+      <div class="header-contact" style="text-align:left;">
+        〒379-2115 群馬県前橋市笂井町1164番地
+      </div>
+      <a href="#" class="logo-center">
+        <svg class="logo-mark" viewBox="0 0 142 118" fill="none">
+          <path d="M141.86,57.28c-.55,25.77-14.84,48.16-35.83,60.12-10.35-5.92-22.33-20.28-35.1-20.28s-24.75,14.36-35.1,20.28C14.84,105.43.55,83.04,0,57.28c-.02-.76.73-1.29,1.45-1.06,45.32,14.57,91.52,15.31,138.96,0,.72-.23,1.47.31,1.45,1.06Z" fill="#AA4C8F"/>
+          <circle cx="70.93" cy="27.32" r="27.32" fill="#AA4C8F"/>
+        </svg>
+        <div class="logo-text-block">
+          <span class="logo-main">安養院</span>
+          <span class="logo-sub">天台宗 医王山 真福寺</span>
+        </div>
+      </a>
+      <div class="header-contact">
+        <strong>027-266-1378</strong>
+        受付時間 9:00〜17:00
+      </div>
+    </div>
+    <div class="header-nav-row">
+      <a href="#">お知らせ</a>
+      <span class="nav-dot">●</span>
+      <a href="#">年中行事</a>
+      <span class="nav-dot">●</span>
+      <a href="#">寺院について</a>
+      <span class="nav-dot">●</span>
+      <a href="#">法要・御祈願</a>
+      <span class="nav-dot">●</span>
+      <a href="#">お墓</a>
+      <span class="nav-dot">●</span>
+      <a href="#">アクセス</a>
+      <a href="#" class="mail-btn">お問い合わせ</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-text-panel">
+    <p class="hero-text-v"><span class="c">地</span>域の<br>拠り所</p>
+  </div>
+</div>
+
+<div class="gold-line"></div>
+
+<section class="news">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-deco-box">
+        <div class="concentric-box">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <h2 class="sec-title-v"><span class="first">お</span>知らせ</h2>
+      <p class="sec-en">NEWS</p>
+    </div>
+    <ul class="news-list">
+      <li><time>2026.05.01</time><span>令和8年 盂蘭盆会のご案内</span></li>
+      <li><time>2026.04.08</time><span>花祭り（お釈迦さまの誕生日）を執り行いました</span></li>
+      <li><time>2026.02.03</time><span>節分会・護摩祈祷を行いました</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<section class="greeting">
+  <div class="flower-bg">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="180" fill="none" stroke="#AA4C8F" stroke-width="0.5"/>
+      <circle cx="200" cy="200" r="120" fill="none" stroke="#AA4C8F" stroke-width="0.5"/>
+      <circle cx="200" cy="200" r="60" fill="none" stroke="#AA4C8F" stroke-width="0.5"/>
+      <line x1="200" y1="20" x2="200" y2="380" stroke="#AA4C8F" stroke-width="0.5"/>
+      <line x1="20" y1="200" x2="380" y2="200" stroke="#AA4C8F" stroke-width="0.5"/>
+      <line x1="73" y1="73" x2="327" y2="327" stroke="#AA4C8F" stroke-width="0.5"/>
+      <line x1="327" y1="73" x2="73" y2="327" stroke="#AA4C8F" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="inner">
+    <div class="greeting-grid">
+      <div class="greeting-img"></div>
+      <div class="greeting-text">
+        <div class="sec-head" style="margin-bottom:28px;">
+          <div class="sec-deco-box">
+            <div class="concentric-box"><span></span><span></span><span></span></div>
+          </div>
+          <h2 class="sec-title-v" style="font-size:22px; line-height:40px;"><span class="first">安</span>養院について</h2>
+        </div>
+        <p>天台宗のお寺で、正式名称を「医王山 安養院 真福寺」といいます。室町時代に開山し、江戸時代に現在の地に再建されました。</p>
+        <p>明治7年には本堂が笂井小学校の礎となり、地域の歴史と深く結びついています。これからも地域の拠り所として、次の世代へと引き継いでいきたいと思います。</p>
+        <a href="#" class="btn-square">寺院について</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<section class="events">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-deco-box">
+        <div class="concentric-box"><span></span><span></span><span></span></div>
+      </div>
+      <h2 class="sec-title-v"><span class="first">年</span>中行事</h2>
+      <p class="sec-en">ANNUAL EVENTS</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-img"></div>
+        <div class="event-body">
+          <p class="event-date">2月3日</p>
+          <h3 class="event-name">節分会</h3>
+          <p class="event-desc">護摩祈祷・豆まき・鬼退治の劇を行います。厄除け祈願、家内安全をお祈りします。</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img blue"></div>
+        <div class="event-body">
+          <p class="event-date">2月15日</p>
+          <h3 class="event-name">天道念仏</h3>
+          <p class="event-desc">太陽を拝んで五穀の豊作を祈願する儀礼です。</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img green"></div>
+        <div class="event-body">
+          <p class="event-date">4月8日</p>
+          <h3 class="event-name">花祭り</h3>
+          <p class="event-desc">お釈迦さまの誕生を祝い、誕生仏に甘茶をそそぎます。</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img amber"></div>
+        <div class="event-body">
+          <p class="event-date">8月16日</p>
+          <h3 class="event-name">灯籠流し</h3>
+          <p class="event-desc">桃の木川でご先祖様を供養する灯籠流しを行います。</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:32px;">
+      <a href="#" class="btn-square">年中行事一覧</a>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<section class="services">
+  <div class="flower-bg">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="180" fill="none" stroke="#AA4C8F" stroke-width="0.5"/>
+      <circle cx="200" cy="200" r="100" fill="none" stroke="#AA4C8F" stroke-width="0.5"/>
+      <line x1="200" y1="20" x2="200" y2="380" stroke="#AA4C8F" stroke-width="0.5"/>
+      <line x1="20" y1="200" x2="380" y2="200" stroke="#AA4C8F" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-deco-box">
+        <div class="concentric-box"><span></span><span></span><span></span></div>
+      </div>
+      <h2 class="sec-title-v"><span class="first">ご</span>相談・ご依頼</h2>
+      <p class="sec-en">SERVICES</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-head">
+          <div class="concentric-box" style="width:30px;height:30px;"><span></span><span></span><span></span></div>
+          <p class="service-title-v" style="font-size:17px; line-height:36px;"><span class="first">御</span>祈願・厄除け</p>
+        </div>
+        <p class="service-desc">厄除開運、家内安全、無病息災ほか各種ご祈願。随時受け付けております。</p>
+        <a href="#" class="btn-square-sm">詳しく見る</a>
+      </div>
+      <div class="service-card">
+        <div class="service-head">
+          <div class="concentric-box" style="width:30px;height:30px;"><span></span><span></span><span></span></div>
+          <p class="service-title-v" style="font-size:17px; line-height:36px;"><span class="first">法</span>要・年忌</p>
+        </div>
+        <p class="service-desc">一周忌から三十三回忌まで。ペットの法要も執り行います。</p>
+        <a href="#" class="btn-square-sm">詳しく見る</a>
+      </div>
+      <div class="service-card">
+        <div class="service-head">
+          <div class="concentric-box" style="width:30px;height:30px;"><span></span><span></span><span></span></div>
+          <p class="service-title-v" style="font-size:17px; line-height:36px;"><span class="first">お</span>葬式</p>
+        </div>
+        <p class="service-desc">天台宗の作法に則り、亡くなった方を極楽浄土へ導きます。初めての方もご相談ください。</p>
+        <a href="#" class="btn-square-sm">詳しく見る</a>
+      </div>
+      <div class="service-card">
+        <div class="service-head">
+          <div class="concentric-box" style="width:30px;height:30px;"><span></span><span></span><span></span></div>
+          <p class="service-title-v" style="font-size:17px; line-height:36px;"><span class="first">お</span>墓</p>
+        </div>
+        <p class="service-desc">累代墓、永代供養墓、樹木葬、ペットのお墓。さまざまなご要望にお応えします。</p>
+        <a href="#" class="btn-square-sm">詳しく見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<section class="access">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-deco-box">
+        <div class="concentric-box"><span></span><span></span><span></span></div>
+      </div>
+      <h2 class="sec-title-v"><span class="first">ア</span>クセス</h2>
+      <p class="sec-en">ACCESS</p>
+    </div>
+    <div class="access-grid">
+      <div class="access-map">Googleマップ</div>
+      <dl class="access-info">
+        <dt>住所</dt>
+        <dd>〒379-2115<br>群馬県前橋市笂井町1164番地</dd>
+        <dt>電話</dt>
+        <dd style="font-size:22px; letter-spacing:0.05em;">027-266-1378</dd>
+        <dt>宗派</dt>
+        <dd>天台宗</dd>
+        <dt>お問い合わせ</dt>
+        <dd style="color:var(--sub); font-size:13px;">電話にてお気軽にご相談ください。</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-logo">安養院</p>
+      <p class="footer-addr">天台宗 医王山 真福寺<br>〒379-2115<br>群馬県前橋市笂井町1164番地<br>TEL 027-266-1378</p>
+      <div class="footer-sns">
+        <a href="#" class="sns-icon" style="background:#1877f2;">FB</a>
+        <a href="#" class="sns-icon" style="background:#06c755;">LINE</a>
+      </div>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#">お知らせ</a></li>
+      <li><a href="#">年中行事</a></li>
+      <li><a href="#">寺院について</a></li>
+    </ul>
+    <ul class="footer-nav">
+      <li><a href="#">法要・御祈願</a></li>
+      <li><a href="#">お葬式</a></li>
+      <li><a href="#">お墓</a></li>
+      <li><a href="#">アクセス</a></li>
+    </ul>
+  </div>
+  <p class="copy">© 安養院 真福寺　群馬県前橋市笂井町1164番地</p>
+</footer>
+
+<div class="direction-label">④ 大興善寺方向</div>
+
+</body>
+</html>
