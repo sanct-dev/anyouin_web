@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天台宗 医王山 安養院 真福寺</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --text: #606060;
+  --text-dark: #1a1a18;
+  --border: rgba(0,0,0,0.12);
+  --bg: #ffffff;
+  --width: 1280px;
+  --font: 'Shippori Mincho', '游明朝体', 'Yu Mincho', serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 2;
+}
+
+/* ========== HEADER ========== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.97);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px 0 46px;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  width: 200px;
+}
+.logo-sub {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--text);
+}
+.logo-main {
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  color: var(--text);
+  font-weight: 500;
+}
+nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+nav a {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+nav a:hover { opacity: 0.6; }
+
+/* ========== MV ========== */
+.mv {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+.mv-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: mvFade 20s infinite;
+}
+.mv-slide:nth-child(1) { animation-delay: 0s; }
+.mv-slide:nth-child(2) { animation-delay: 5s; }
+.mv-slide:nth-child(3) { animation-delay: 10s; }
+.mv-slide:nth-child(4) { animation-delay: 15s; }
+
+.mv-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes mvFade {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  25%  { opacity: 1; }
+  30%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.mv-dots {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.mv-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+.mv-dot.active { background: rgba(255,255,255,0.95); }
+
+/* ========== NEWS MAIN ========== */
+.news-main {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border);
+}
+.news-main-inner {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.news-kicker {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: #a0a0a0;
+  margin-bottom: 20px;
+}
+.news-title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+.news-body {
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  line-height: 2.4;
+  color: var(--text);
+  max-width: 900px;
+}
+
+/* ========== NEWS SUB ========== */
+.news-sub {
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+}
+.news-sub-inner {
+  max-width: var(--width);
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+}
+.news-label-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+.news-label-vertical span {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+.news-label-deco {
+  width: 1px;
+  height: 20px;
+  background: var(--text);
+  opacity: 0.4;
+  margin: 4px 0;
+}
+.news-grid {
+  flex: 1;
+}
+.news-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 36px;
+  border-top: 1px solid var(--border);
+}
+.news-row:last-child { border-bottom: 1px solid var(--border); }
+.news-card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 22px 10px;
+  text-decoration: none;
+}
+.news-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #ddd;
+}
+.news-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.news-category {
+  font-size: 13px;
+  color: #a0a0a0;
+}
+.news-card-title {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.news-sns {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+  padding-top: 22px;
+}
+.sns-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--text);
+  opacity: 0.3;
+  border-radius: 4px;
+}
+
+/* ========== LEAD ========== */
+.lead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 100px 40px;
+}
+.lead-img {
+  width: 100%;
+  max-width: 1280px;
+  height: 560px;
+  object-fit: cover;
+}
+.lead-title {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  color: var(--text);
+  text-align: center;
+}
+.lead-body {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  color: var(--text);
+  text-align: center;
+  line-height: 2.6;
+}
+
+/* ========== CARDS ========== */
+.cards {
+  padding: 0 40px 100px;
+}
+.cards-inner {
+  max-width: var(--width);
+  margin: 0 auto;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px 80px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+.card-img {
+  width: 100%;
+  height: 376px;
+  object-fit: cover;
+}
+.card-title {
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  text-align: center;
+}
+.card-body {
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  line-height: 1.87;
+  color: var(--text);
+  text-align: left;
+  width: 100%;
+}
+.card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 48px;
+  border: 1px solid var(--text);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.card-btn:hover { background: var(--text); color: #fff; }
+
+/* ========== ABOUT ========== */
+.about {
+  padding: 80px 0 100px;
+  border-top: 1px solid var(--border);
+}
+.about-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.about-img {
+  width: 100%;
+  max-width: 1440px;
+  height: 420px;
+  object-fit: cover;
+}
+.about-title {
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+.about-body {
+  font-size: 15px;
+  color: var(--text);
+  text-align: center;
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+/* ========== ACCESS ========== */
+.access {
+  padding: 80px 40px 100px;
+  border-top: 1px solid var(--border);
+}
+.access-inner {
+  max-width: var(--width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.access-map {
+  width: 100%;
+  height: 400px;
+  background: #dde8d8;
+}
+.access-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.access-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #a0a0a0;
+  margin-bottom: 40px;
+}
+.access-info dt {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #a0a0a0;
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+.access-info dt:first-child { margin-top: 0; }
+.access-info dd {
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  color: var(--text);
+}
+.access-tel {
+  font-size: 24px;
+  letter-spacing: 0.05em;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 60px 40px 40px;
+}
+.footer-inner {
+  max-width: var(--width);
+  margin: 0 auto;
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+.footer-logo {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  background: #ccc;
+}
+.footer-nav-group {
+  flex: 1;
+  display: flex;
+  gap: 48px;
+}
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+.footer-nav-col li:first-child a { font-size: 15px; }
+.footer-nav-col a {
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.footer-nav-col a:hover { opacity: 0.6; }
+.footer-sub-nav {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  max-width: 200px;
+}
+.footer-sub-nav a {
+  font-size: 12px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.copy {
+  max-width: var(--width);
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: #a0a0a0;
+  letter-spacing: 0.05em;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  header { height: 72px; padding: 0 20px; }
+  nav { display: none; }
+  .logo-main { font-size: 18px; }
+
+  .news-sub-inner { flex-direction: column; }
+  .news-row { grid-template-columns: 1fr; }
+  .news-sns { flex-direction: row; padding-top: 0; }
+
+  .lead-img { height: 300px; }
+  .lead-title { font-size: 22px; }
+
+  .cards { padding: 0 20px 60px; }
+  .cards-grid { grid-template-columns: 1fr; gap: 60px; }
+  .card-img { height: 260px; }
+
+  .access-inner { grid-template-columns: 1fr; gap: 40px; }
+
+  .footer-inner { flex-direction: column; gap: 40px; }
+  .footer-nav-group { flex-wrap: wrap; gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <a href="#" class="logo">
+    <span class="logo-sub">天台宗　医王山</span>
+    <span class="logo-main">安養院</span>
+  </a>
+  <nav>
+    <a href="#">安養院について</a>
+    <a href="#">おしらせ</a>
+    <a href="#">法要・お葬式</a>
+    <a href="#">御祈願・厄除け</a>
+    <a href="#">お墓</a>
+    <a href="#">年間行事</a>
+    <a href="#">アクセス</a>
+    <a href="#">よくある質問</a>
+  </nav>
+</header>
+
+<!-- MV：4枚クロスフェード -->
+<div class="mv" style="margin-top:0;">
+  <div class="mv-slide">
+    <img src="images/mv_01.jpg" alt="安養院 石碑">
+  </div>
+  <div class="mv-slide">
+    <img src="images/mv_02.jpg" alt="安養院 境内">
+  </div>
+  <div class="mv-slide">
+    <img src="images/mv_03.jpg" alt="安養院 枝垂れ桜">
+  </div>
+  <div class="mv-slide">
+    <img src="images/mv_04.jpg" alt="安養院 風景">
+  </div>
+  <div class="mv-dots">
+    <span class="mv-dot active"></span>
+    <span class="mv-dot"></span>
+    <span class="mv-dot"></span>
+    <span class="mv-dot"></span>
+  </div>
+</div>
+
+<!-- お知らせ メイン -->
+<section class="news-main" style="padding-top: 140px;">
+  <div class="news-main-inner">
+    <p class="news-kicker">&lt; 最新のおしらせ &gt;</p>
+    <h2 class="news-title">【中止】本日の灯籠流しは中止となりました</h2>
+    <p class="news-body">
+      台風18号の接近で安全の確保が難しいため、本日の灯籠流しおよび公民館への集合を中止いたします。<br>
+      手作り灯籠は、今後活かせる方法を検討しておりますので、大事に保管なさってください。<br>
+      本日はご自宅で安全にお過ごしくださいますようお願い申し上げます。
+    </p>
+  </div>
+</section>
+
+<!-- おしらせ一覧 -->
+<section class="news-sub">
+  <div class="news-sub-inner">
+    <!-- 縦書きラベル -->
+    <div class="news-label-vertical">
+      <div class="news-label-deco"></div>
+      <span>お</span>
+      <span>し</span>
+      <span>ら</span>
+      <span>せ</span>
+      <div class="news-label-deco"></div>
+    </div>
+    <!-- 2×2グリッド -->
+    <div class="news-grid">
+      <div class="news-row">
+        <a href="#" class="news-card">
+          <div class="news-thumb"></div>
+          <div class="news-card-text">
+            <span class="news-category">おしらせ</span>
+            <span class="news-card-title">お知らせのタイトルテキストが入ります</span>
+          </div>
+        </a>
+        <a href="#" class="news-card">
+          <div class="news-thumb"></div>
+          <div class="news-card-text">
+            <span class="news-category">おしらせ</span>
+            <span class="news-card-title">お知らせのタイトルテキストが入ります</span>
+          </div>
+        </a>
+      </div>
+      <div class="news-row">
+        <a href="#" class="news-card">
+          <div class="news-thumb"></div>
+          <div class="news-card-text">
+            <span class="news-category">おしらせ</span>
+            <span class="news-card-title">お知らせのタイトルテキストが入ります</span>
+          </div>
+        </a>
+        <a href="#" class="news-card">
+          <div class="news-thumb"></div>
+          <div class="news-card-text">
+            <span class="news-category">おしらせ</span>
+            <span class="news-card-title">お知らせのタイトルテキストが入ります</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- SNSアイコン -->
+    <div class="news-sns">
+      <div class="sns-icon"></div>
+      <div class="sns-icon"></div>
+      <div class="sns-icon"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lead：枝垂れ桜 -->
+<section class="lead">
+  <img class="lead-img" src="images/sakura_lead.jpg" alt="枝垂れ桜">
+  <h2 class="lead-title">枝垂れ桜とおしろい薬師</h2>
+  <p class="lead-body">
+    安養院は正式名称を「医王山 安養院 真福寺」といいます。<br>
+    室町時代に開山し、江戸時代に現在の地に再建されました。<br>
+    明治7年には本堂が笂井小学校の礎となり、安養院は地域の歴史と深く結びついています。<br>
+    これからも地域の拠り所として、次の世代へと引き継いでいきます。
+  </p>
+</section>
+
+<!-- 4カード -->
+<section class="cards">
+  <div class="cards-inner">
+    <div class="cards-grid">
+      <div class="card">
+        <img class="card-img" src="images/hoyo.jpg" alt="法要・お葬式">
+        <h3 class="card-title">法要・お葬式</h3>
+        <p class="card-body">大切な方を、きちんとお送りするために、枕経・通夜・葬儀から年忌法要まで、伝統的な作法に則って執り行っています。故人様が安らかに浄土へ向かえるよう、心を込めてご供養いたします。</p>
+        <a href="#" class="card-btn">詳しくはこちら</a>
+      </div>
+      <div class="card">
+        <img class="card-img" src="images/ohaka.jpg" alt="お墓">
+        <h3 class="card-title">お墓</h3>
+        <p class="card-body">大切な方の弔いの場所を守るために、それぞれのご事情やご家族の形に合わせた多様なお墓をご用意しています。どうぞご相談ください。</p>
+        <a href="#" class="card-btn">詳しくはこちら</a>
+      </div>
+      <div class="card">
+        <img class="card-img" src="images/goma.jpg" alt="厄除け・御祈願">
+        <h3 class="card-title">厄除け・御祈願</h3>
+        <p class="card-body">今を生きる人々の、安泰のために、厄除け・家内安全・病気平癒など様々な御祈願を随時承っています。節分会では護摩祈祷にて厄を焼き払い、安泰をお祈りいたします。</p>
+        <a href="#" class="card-btn">詳しくはこちら</a>
+      </div>
+      <div class="card">
+        <img class="card-img" src="images/nenchugyoji.jpg" alt="年中行事">
+        <h3 class="card-title">年中行事</h3>
+        <p class="card-body">初詣、節分会の厄除け護摩祈祷、盂蘭盆会、灯籠流し、大般若転読会。笂井の地で長く受け継がれてきた、安養院の一年をご紹介します。</p>
+        <a href="#" class="card-btn">詳しくはこちら</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 安養院について -->
+<section class="about">
+  <div class="about-inner">
+    <img class="about-img" src="images/about.jpg" alt="安養院について">
+    <h3 class="about-title">安養院について</h3>
+    <p class="about-body">
+      安養院の起源や歴史、ご本尊などのご仏像、最近の取り組みを紹介します<br>
+      地域にまつわるお話もご覧ください
+    </p>
+  </div>
+</section>
+
+<!-- アクセス -->
+<section class="access">
+  <div class="access-inner">
+    <div class="access-map">
+      <!-- Googleマップ埋め込み -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3211.2!2d139.0!3d36.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5a6J576F6Zmq!5e0!3m2!1sja!2sjp!4v1"
+        allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+    <div>
+      <p class="access-label">ACCESS</p>
+      <dl class="access-info">
+        <dt>住所</dt>
+        <dd>〒379-2115<br>群馬県前橋市笂井町1164番地</dd>
+        <dt>電話</dt>
+        <dd><span class="access-tel">027-266-1378</span></dd>
+        <dt>宗派</dt>
+        <dd>天台宗</dd>
+        <dt>駐車場</dt>
+        <dd>あり（境内）</dd>
+        <dt>お問い合わせ</dt>
+        <dd>電話にてお気軽にご相談ください。</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"></div>
+    <nav class="footer-nav-group">
+      <ul class="footer-nav-col">
+        <li><a href="#">安養院について</a></li>
+        <li><a href="#">歴史・由緒</a></li>
+        <li><a href="#">ご本尊</a></li>
+        <li><a href="#">境内案内</a></li>
+      </ul>
+      <ul class="footer-nav-col">
+        <li><a href="#">おしらせ</a></li>
+        <li><a href="#">法要・お葬式</a></li>
+        <li><a href="#">御祈願・厄除け</a></li>
+        <li><a href="#">お墓</a></li>
+      </ul>
+      <ul class="footer-nav-col">
+        <li><a href="#">年間行事</a></li>
+        <li><a href="#">アクセス</a></li>
+        <li><a href="#">よくある質問</a></li>
+      </ul>
+    </nav>
+    <ul class="footer-sub-nav">
+      <li><a href="#">お問い合わせ</a></li>
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">ご利用規約</a></li>
+    </ul>
+  </div>
+  <p class="copy">© 安養院 真福寺　群馬県前橋市笂井町1164番地</p>
+</footer>
+
+<script>
+// MVドットインジケーター連動
+const slides = document.querySelectorAll('.mv-slide');
+const dots = document.querySelectorAll('.mv-dot');
+const total = slides.length;
+const interval = 5000; // 各画像の表示時間(ms)
+
+let current = 0;
+setInterval(() => {
+  dots[current].classList.remove('active');
+  current = (current + 1) % total;
+  dots[current].classList.add('active');
+}, interval);
+</script>
+
+</body>
+</html>
