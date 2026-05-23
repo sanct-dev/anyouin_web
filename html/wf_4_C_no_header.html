@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WF④｜C案 ヘッダーなし（タイル型）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background: #F0EDE8; color: #333; font-size: 13px; }
+
+.box { background: #D8D4CE; display: flex; align-items: center; justify-content: center; color: #888; font-size: 12px; text-align: center; line-height: 1.6; }
+.text-line { height: 11px; background: #D8D4CE; border-radius: 2px; margin-bottom: 8px; }
+.section-en { font-size: 10px; letter-spacing: 0.35em; color: #C4A870; margin-bottom: 8px; }
+
+/* ── FV：非対称グリッド ── */
+.fv {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: 60vh 40vh;
+  height: 100vh;
+}
+.fv-main {
+  grid-row: 1 / 3;
+  position: relative;
+  overflow: hidden;
+}
+.fv-main .box { width: 100%; height: 100%; border-radius: 0; font-size: 14px; }
+.fv-main-overlay {
+  position: absolute; inset: 0;
+  background: rgba(240,237,232,0.3);
+}
+.fv-title-block {
+  position: absolute;
+  bottom: 48px; left: 48px;
+}
+.fv-title-block .fv-en { font-size: 10px; letter-spacing: 0.4em; color: #ccc; margin-bottom: 16px; }
+.fv-title-block .fv-title { font-size: 48px; letter-spacing: 0.4em; color: #fff; line-height: 1.4; text-shadow: 0 2px 20px rgba(0,0,0,0.2); }
+/* 右上タイル：テキスト */
+.fv-text-tile {
+  background: #FAF8F4;
+  padding: 48px 40px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-bottom: 1px solid #E0DDD8;
+}
+.fv-text-tile .temple-name { font-size: 13px; letter-spacing: 0.25em; color: #555; margin-bottom: 16px; }
+.fv-text-tile .catch { font-size: 16px; letter-spacing: 0.2em; color: #1F1E1D; line-height: 2; margin-bottom: 24px; }
+/* 右下タイル：ナビ */
+.fv-nav-tile {
+  background: #2a2a28;
+  padding: 32px 40px;
+  display: flex; flex-direction: column; justify-content: center; gap: 14px;
+}
+.fv-nav-tile a { font-size: 12px; letter-spacing: 0.15em; color: #999; display: flex; align-items: center; gap: 12px; }
+.fv-nav-tile a::before { content: ''; display: block; width: 20px; height: 1px; background: #555; flex-shrink: 0; }
+
+/* ── マガジンセクション：3カラムグリッド ── */
+.magazine {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 2px;
+  background: #D8D4CE;
+}
+.mag-tile {
+  background: #F0EDE8;
+  padding: 48px 40px;
+  position: relative;
+}
+.mag-tile.large {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.mag-tile.photo-only { padding: 0; }
+.mag-tile.photo-only .box { width: 100%; height: 100%; min-height: 280px; border-radius: 0; }
+.mag-tile.dark { background: #3a3836; }
+.mag-tile h2 { font-size: 22px; letter-spacing: 0.3em; color: #1F1E1D; margin-bottom: 20px; line-height: 1.8; }
+.mag-tile.dark h2 { color: #ddd; }
+.mag-tile.dark .section-en { color: #887750; }
+.mag-tile.dark .text-line { background: #4a4846; }
+
+/* ── 行事タイル：4分割 ── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: #D8D4CE;
+}
+.event-tile {
+  background: #FAF8F4;
+  padding: 40px 28px;
+  text-align: center;
+}
+.event-tile .illust-box {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+.event-tile .event-month { font-size: 10px; letter-spacing: 0.2em; color: #C4A870; margin-bottom: 8px; }
+.event-tile .event-name { font-size: 14px; letter-spacing: 0.2em; color: #1F1E1D; margin-bottom: 14px; }
+.event-tile .event-copy { font-size: 11px; color: #888; letter-spacing: 0.05em; line-height: 1.8; }
+
+/* ── ニュース + アクセス 2カラム ── */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: #D8D4CE;
+}
+.news-block { background: #F0EDE8; padding: 64px 48px; }
+.news-block h3 { font-size: 18px; letter-spacing: 0.3em; color: #1F1E1D; margin-bottom: 32px; }
+.news-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #D8D4CE; align-items: center; }
+.news-thumb .box { width: 56px; height: 56px; border-radius: 4px; font-size: 10px; }
+.news-date { font-size: 10px; color: #C4A870; margin-bottom: 4px; }
+.news-title { font-size: 12px; color: #1F1E1D; }
+
+.access-block { background: #2a2a28; padding: 64px 48px; }
+.access-block h3 { font-size: 18px; letter-spacing: 0.3em; color: #ddd; margin-bottom: 32px; }
+.map-box .box { width: 100%; height: 180px; background: #3a3a38; color: #555; border-radius: 4px; margin-bottom: 24px; }
+.access-info { font-size: 12px; color: #777; line-height: 2.2; }
+
+/* ── フッター ── */
+footer {
+  background: #1a1a18;
+  padding: 48px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-logo { font-size: 14px; letter-spacing: 0.4em; color: #888; }
+.footer-copy { font-size: 10px; color: #444; }
+
+.wf-note {
+  position: fixed; bottom: 20px; right: 20px;
+  background: #2a2a28; color: #ccc;
+  font-size: 11px; padding: 12px 16px;
+  border-radius: 8px; line-height: 1.8;
+  opacity: 0.85; pointer-events: none; z-index: 999;
+}
+</style>
+</head>
+<body>
+
+<div class="wf-note">WF④ C案｜ヘッダーなし（タイル型）<br>非対称グリッド・マガジン風・ナビ内包</div>
+
+<!-- FV：非対称グリッド -->
+<section class="fv">
+  <div class="fv-main">
+    <div class="box">写真（桜 or 本堂）</div>
+    <div class="fv-main-overlay"></div>
+    <div class="fv-title-block">
+      <div class="fv-en">ANYOIN SHINPOJI · EST. 1340</div>
+      <div class="fv-title">安養院<br>真福寺</div>
+    </div>
+  </div>
+  <div class="fv-text-tile">
+    <div class="temple-name">天台宗　医王山 安養院 真福寺</div>
+    <div class="catch">笂井の地に、<br>680年。</div>
+    <div class="text-line" style="width:90%"></div>
+    <div class="text-line" style="width:75%"></div>
+  </div>
+  <div class="fv-nav-tile">
+    <a>法要・お葬式</a>
+    <a>厄除け・御祈願</a>
+    <a>年中行事</a>
+    <a>安養院について</a>
+    <a>アクセス</a>
+  </div>
+</section>
+
+<!-- マガジングリッド：About + Services -->
+<div class="magazine">
+  <!-- About：写真＋テキスト 2カラム -->
+  <div class="mag-tile large">
+    <div>
+      <div class="section-en">ABOUT</div>
+      <h2>笂井の地に<br>息づくお寺</h2>
+      <div class="text-line"></div>
+      <div class="text-line"></div>
+      <div class="text-line" style="width:80%"></div>
+      <div class="text-line"></div>
+      <div class="text-line" style="width:70%"></div>
+    </div>
+    <div>
+      <div class="box" style="height:280px;border-radius:55% 45% 50% 50%/45% 55% 50% 50%;">写真<br>ブロブマスク</div>
+    </div>
+  </div>
+  <!-- 法要タイル -->
+  <div class="mag-tile dark">
+    <div class="section-en">MEMORIAL</div>
+    <h2>法要・<br>お葬式</h2>
+    <div class="text-line"></div>
+    <div class="text-line"></div>
+    <div class="text-line" style="width:75%"></div>
+  </div>
+  <!-- 写真タイル -->
+  <div class="mag-tile photo-only">
+    <div class="box">写真（御祈願）</div>
+  </div>
+  <!-- 御祈願タイル -->
+  <div class="mag-tile">
+    <div class="section-en">PRAYER</div>
+    <h2>厄除け・<br>御祈願</h2>
+    <div class="text-line"></div>
+    <div class="text-line"></div>
+    <div class="text-line" style="width:75%"></div>
+  </div>
+  <!-- 写真タイル -->
+  <div class="mag-tile photo-only">
+    <div class="box">写真（法要）</div>
+  </div>
+</div>
+
+<!-- 行事グリッド：4分割 -->
+<div class="events-grid">
+  <div class="event-tile">
+    <div class="illust-box box">節分イラスト</div>
+    <div class="event-month">2月3日</div>
+    <div class="event-name">節分会</div>
+    <div class="event-copy">炎で厄を焼き払う、<br>密教の秘法。</div>
+  </div>
+  <div class="event-tile">
+    <div class="illust-box box">花祭りイラスト</div>
+    <div class="event-month">4月8日</div>
+    <div class="event-name">花祭り</div>
+    <div class="event-copy">花に飾られたお堂で<br>甘茶をそそぎます。</div>
+  </div>
+  <div class="event-tile">
+    <div class="illust-box box">灯籠イラスト</div>
+    <div class="event-month">8月16日</div>
+    <div class="event-name">灯籠流し</div>
+    <div class="event-copy">川面をゆっくり、<br>願いが流れていく。</div>
+  </div>
+  <div class="event-tile" style="background:#F7F4EE;">
+    <div class="illust-box box">大般若イラスト</div>
+    <div class="event-month">3年に1度</div>
+    <div class="event-name">大般若転読会</div>
+    <div class="event-copy">600巻のお経を、<br>一気に読む。</div>
+  </div>
+</div>
+
+<!-- ニュース + アクセス -->
+<div class="bottom-grid">
+  <div class="news-block">
+    <div class="section-en">NEWS</div>
+    <h3>お知らせ</h3>
+    <div class="news-item">
+      <div class="news-thumb"><div class="box">写真</div></div>
+      <div><div class="news-date">2025.08.16</div><div class="news-title">灯籠流しのご案内</div></div>
+    </div>
+    <div class="news-item">
+      <div class="news-thumb"><div class="box">写真</div></div>
+      <div><div class="news-date">2025.04.08</div><div class="news-title">花祭りを行いました</div></div>
+    </div>
+    <div class="news-item">
+      <div class="news-thumb"><div class="box">写真</div></div>
+      <div><div class="news-date">2025.02.03</div><div class="news-title">節分会・豆まきのご案内</div></div>
+    </div>
+  </div>
+  <div class="access-block">
+    <div class="section-en" style="color:#887750;">ACCESS</div>
+    <h3>アクセス</h3>
+    <div class="map-box"><div class="box">地図</div></div>
+    <div class="access-info">
+      〒000-0000　福岡県久留米市　笂井町×××<br>
+      TEL 000-000-0000<br>
+      受付時間 ◯時〜◯時
+    </div>
+  </div>
+</div>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-logo">安養院　真福寺</div>
+  <div class="footer-copy">© Anyoin Shinpoji. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
