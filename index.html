@@ -15,7 +15,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 60px 24px;
   }
   header {
@@ -43,12 +42,36 @@
     color: #6a6a68;
     line-height: 2;
   }
+
+  .section {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 48px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dedad4;
+  }
+  .section-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: #8e1a1a;
+  }
+  .section-title {
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+
   .cards {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    max-width: 560px;
+    gap: 10px;
   }
   .card {
     display: flex;
@@ -57,7 +80,7 @@
     background: #fff;
     border: 1px solid #dedad4;
     border-radius: 4px;
-    padding: 24px 32px;
+    padding: 18px 28px;
     text-decoration: none;
     color: inherit;
     transition: border-color 0.2s, box-shadow 0.2s;
@@ -66,60 +89,70 @@
     border-color: #8e1a1a;
     box-shadow: 0 2px 12px rgba(142,26,26,0.08);
   }
-  .card-num {
+  .card-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .card-label {
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     letter-spacing: 0.2em;
     color: #8e1a1a;
-    margin-bottom: 6px;
+    min-width: 20px;
   }
   .card-title {
-    font-size: 16px;
-    letter-spacing: 0.2em;
-    font-weight: 500;
-  }
-  .card-sub {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    color: #6a6a68;
-    margin-top: 4px;
-  }
-  .card-arrow {
-    font-size: 18px;
-    color: #8e1a1a;
-    opacity: 0.6;
-  }
-  .section-block {
-    margin-top: 24px;
-    width: 100%;
-    max-width: 560px;
-    border-top: 1px solid #dedad4;
-    padding-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: #aaa;
-    text-align: center;
-    margin-bottom: 4px;
+    font-size: 14px;
+    letter-spacing: 0.15em;
   }
   .card-tag {
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
     font-size: 9px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     color: #8e1a1a;
     border: 1px solid #c88;
     border-radius: 2px;
-    padding: 1px 6px;
+    padding: 1px 5px;
     margin-left: 8px;
     vertical-align: middle;
+    opacity: 0.7;
   }
+  .card-arrow {
+    font-size: 18px;
+    color: #8e1a1a;
+    opacity: 0.5;
+  }
+
+  .card.omake {
+    background: #faf9f7;
+    border-style: dashed;
+  }
+  .card.omake .card-label {
+    color: #aaa;
+  }
+  .card.omake .card-tag {
+    color: #aaa;
+    border-color: #ccc;
+  }
+
+  .wireframe-section {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 48px;
+  }
+  .wireframe-header {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: #aaa;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #dedad4;
+  }
+
   footer {
-    margin-top: 56px;
+    margin-top: 16px;
     font-size: 11px;
     letter-spacing: 0.1em;
     color: #aaa;
@@ -134,87 +167,108 @@
   <p class="desc">各案を開いて、印象を比べてみてください。</p>
 </header>
 
-<div class="cards">
-  <a class="card" href="mockup_01_太宰府天満宮方向.html">
-    <div>
-      <p class="card-num">01</p>
-      <p class="card-title">端正で、アクセスしやすい</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
-  <a class="card" href="mockup_02_善称寺方向.html">
-    <div>
-      <p class="card-num">02</p>
-      <p class="card-title">親しみやすい</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
-  <a class="card" href="mockup_03_安養寺方向.html">
-    <div>
-      <p class="card-num">03</p>
-      <p class="card-title">縦書きリズム</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
-  <a class="card" href="mockup_04_大興善寺方向.html">
-    <div>
-      <p class="card-num">04</p>
-      <p class="card-title">縦書き格調</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
-  <a class="card" href="mockup_05_ハイブリッド方向.html">
-    <div>
-      <p class="card-num">05</p>
-      <p class="card-title">ハイブリッド</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
+<!-- 01 端正でアクセスしやすい -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">端正でアクセスしやすい</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="mockup_01_太宰府天満宮方向_photo.html">
+      <div class="card-left">
+        <span class="card-label">A</span>
+        <span class="card-title">写真入り</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+    <a class="card" href="main01.html">
+      <div class="card-left">
+        <span class="card-label">B</span>
+        <span class="card-title">ダーク</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+    <a class="card" href="main01_red.html">
+      <div class="card-left">
+        <span class="card-label">C</span>
+        <span class="card-title">赤</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+    <a class="card omake" href="mockup_01_太宰府天満宮方向_photo_anime.html">
+      <div class="card-left">
+        <span class="card-label">—</span>
+        <span class="card-title">おまけ<span class="card-tag">ANIME</span></span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+    <a class="card omake" href="mockup_01_太宰府天満宮方向_photo_anime_shadow.html">
+      <div class="card-left">
+        <span class="card-label">—</span>
+        <span class="card-title">おまけ<span class="card-tag">ANIME + SHADOW</span></span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+  </div>
 </div>
 
-<div class="section-block">
-  <p class="section-label">写真入り</p>
-  <a class="card" href="mockup_01_太宰府天満宮方向_photo.html">
-    <div>
-      <p class="card-num">A1</p>
-      <p class="card-title">端正でアクセスしやすい（写真入り）</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
-  <a class="card" href="mockup_02_善称寺方向_photo.html">
-    <div>
-      <p class="card-num">B1</p>
-      <p class="card-title">親しみやすい（写真入り）</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
-  <a class="card" href="mockup_02_善称寺方向_illust.html">
-    <div>
-      <p class="card-num">B2</p>
-      <p class="card-title">親しみやすい（イラスト入り）</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
+<!-- 02 親しみやすい -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">親しみやすい</span>
+  </div>
+  <div class="cards">
+    <a class="card" href="mockup_02_善称寺方向_photo.html">
+      <div class="card-left">
+        <span class="card-label">A</span>
+        <span class="card-title">写真入り</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+    <a class="card" href="mockup_02_善称寺方向_illust.html">
+      <div class="card-left">
+        <span class="card-label">B</span>
+        <span class="card-title">イラスト入り</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+  </div>
 </div>
 
-<div class="section-block">
-  <p class="section-label">アニメーション比較</p>
-  <a class="card" href="mockup_01_太宰府天満宮方向_photo_anime.html">
-    <div>
-      <p class="card-num">A1 <span class="card-tag">ANIME</span></p>
-      <p class="card-title">端正でアクセスしやすい</p>
-      <p class="card-sub">球体アニメーション・影なし</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
-  <a class="card" href="mockup_01_太宰府天満宮方向_photo_anime_shadow.html">
-    <div>
-      <p class="card-num">A1 <span class="card-tag">ANIME + SHADOW</span></p>
-      <p class="card-title">端正でアクセスしやすい</p>
-      <p class="card-sub">球体アニメーション・接地影あり</p>
-    </div>
-    <span class="card-arrow">›</span>
-  </a>
+<!-- ワイヤーフレーム集 -->
+<div class="wireframe-section">
+  <p class="wireframe-header">WIREFRAMES</p>
+  <div class="cards">
+    <a class="card" href="mockup_01_太宰府天満宮方向.html">
+      <div class="card-left">
+        <span class="card-label">01</span>
+        <span class="card-title">端正でアクセスしやすい</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+    <a class="card" href="mockup_02_善称寺方向.html">
+      <div class="card-left">
+        <span class="card-label">02</span>
+        <span class="card-title">親しみやすい</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+    <a class="card" href="mockup_03_安養寺方向.html">
+      <div class="card-left">
+        <span class="card-label">03</span>
+        <span class="card-title">縦書きリズム</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+    <a class="card" href="mockup_04_大興善寺方向.html">
+      <div class="card-left">
+        <span class="card-label">04</span>
+        <span class="card-title">縦書き格調</span>
+      </div>
+      <span class="card-arrow">›</span>
+    </a>
+  </div>
 </div>
 
 <footer>© 安養院 真福寺　制作用内部資料</footer>
