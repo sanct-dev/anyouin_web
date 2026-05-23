@@ -97,7 +97,7 @@
   .hero-img {
     width: 100%;
     height: 100%;
-    background: url('images/hero_sakura.png') center center / cover no-repeat;
+    background: url('images/fv/fv01_sakura.jpg') center center / cover no-repeat;
     position: relative;
   }
   .hero-img::after {
@@ -196,7 +196,7 @@
   }
   .greeting-img {
     height: 420px;
-    background: url('images/gaikan_01.png') center center / cover no-repeat;
+    background: url('images/main/main_goaisatu.jpg') center center / cover no-repeat;
     border-radius: 2px;
   }
   .greeting-text p {
@@ -281,9 +281,22 @@
     margin-top: 48px;
   }
   .service-item {
-    padding: 48px 48px 56px;
+    padding: 0 0 56px;
     border: 1px solid var(--border);
     position: relative;
+    overflow: hidden;
+  }
+  .service-img {
+    height: 180px;
+    background: center center / cover no-repeat;
+    margin-bottom: 32px;
+  }
+  .service-img.gokigan { background-image: url('images/con_card/card03_gokigan.jpeg'); }
+  .service-img.houyou  { background-image: url('images/con_card/card01_houyou.jpeg'); }
+  .service-img.ohaka   { background-image: url('images/con_card/card02_ohaka.jpg'); }
+  .service-img.gyouji  { background-image: url('images/con_card/card04_gyouji.jpg'); }
+  .service-body {
+    padding: 0 48px;
   }
   .service-num {
     font-size: 10px;
@@ -462,7 +475,8 @@
     .event-name { text-align: center; }
 
     .services-grid { grid-template-columns: 1fr; }
-    .service-item { padding: 32px 24px 44px; text-align: center; }
+    .service-item { padding: 0 0 44px; text-align: center; }
+    .service-body { padding: 0 24px; }
     .service-desc { text-align: left; }
     .service-num { text-align: center; }
     .service-link { right: 50%; transform: translateX(50%); bottom: 20px; }
@@ -603,27 +617,39 @@
     <h2 class="section-title">ご相談・ご依頼</h2>
     <div class="services-grid">
       <div class="service-item">
-        <p class="service-num">01</p>
-        <h3 class="service-name">御祈願・厄除け</h3>
-        <p class="service-desc">厄除開運、家内安全、無病息災、当病平癒、商売繁盛、交通安全、良縁吉祥、子宝恵受、試験合格など。ご祈願は随時受け付けております。</p>
+        <div class="service-img gokigan"></div>
+        <div class="service-body">
+          <p class="service-num">01</p>
+          <h3 class="service-name">御祈願・厄除け</h3>
+          <p class="service-desc">厄除開運、家内安全、無病息災、当病平癒、商売繁盛、交通安全、良縁吉祥、子宝恵受、試験合格など。ご祈願は随時受け付けております。</p>
+        </div>
         <a href="#" class="service-link">詳しく見る</a>
       </div>
       <div class="service-item">
-        <p class="service-num">02</p>
-        <h3 class="service-name">法要・年忌</h3>
-        <p class="service-desc">一周忌、三回忌、七回忌をはじめとした年忌法要。年忌に限らず、随時回向供養を行っております。ペットの法要も執り行っています。</p>
+        <div class="service-img houyou"></div>
+        <div class="service-body">
+          <p class="service-num">02</p>
+          <h3 class="service-name">法要・年忌</h3>
+          <p class="service-desc">一周忌、三回忌、七回忌をはじめとした年忌法要。年忌に限らず、随時回向供養を行っております。ペットの法要も執り行っています。</p>
+        </div>
         <a href="#" class="service-link">詳しく見る</a>
       </div>
       <div class="service-item">
-        <p class="service-num">03</p>
-        <h3 class="service-name">お葬式</h3>
-        <p class="service-desc">天台宗の作法に則り、亡くなった方を極楽浄土へ導くための儀式を執り行います。初めての方もご相談ください。</p>
+        <div class="service-img gyouji"></div>
+        <div class="service-body">
+          <p class="service-num">03</p>
+          <h3 class="service-name">お葬式</h3>
+          <p class="service-desc">天台宗の作法に則り、亡くなった方を極楽浄土へ導くための儀式を執り行います。初めての方もご相談ください。</p>
+        </div>
         <a href="#" class="service-link">詳しく見る</a>
       </div>
       <div class="service-item">
-        <p class="service-num">04</p>
-        <h3 class="service-name">お墓</h3>
-        <p class="service-desc">先祖代々の墓、永代供養墓、樹木葬、ペットのお墓。さまざまなご要望にお応えします。まずはお電話ください。</p>
+        <div class="service-img ohaka"></div>
+        <div class="service-body">
+          <p class="service-num">04</p>
+          <h3 class="service-name">お墓</h3>
+          <p class="service-desc">先祖代々の墓、永代供養墓、樹木葬、ペットのお墓。さまざまなご要望にお応えします。まずはお電話ください。</p>
+        </div>
         <a href="#" class="service-link">詳しく見る</a>
       </div>
     </div>
