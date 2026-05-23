@@ -89,6 +89,35 @@
     color: #8e1a1a;
     opacity: 0.6;
   }
+  .section-block {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 560px;
+    border-top: 1px solid #dedad4;
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #aaa;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .card-tag {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: #8e1a1a;
+    border: 1px solid #c88;
+    border-radius: 2px;
+    padding: 1px 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
   footer {
     margin-top: 56px;
     font-size: 11px;
@@ -143,8 +172,8 @@
   </a>
 </div>
 
-<div style="margin-top:40px; width:100%; max-width:560px; border-top:1px solid #dedad4; padding-top:32px;">
-  <p style="font-size:11px; letter-spacing:0.2em; color:#aaa; text-align:center; margin-bottom:16px;">写真入り</p>
+<div class="section-block">
+  <p class="section-label">写真入り</p>
   <a class="card" href="mockup_01_太宰府天満宮方向_photo.html">
     <div>
       <p class="card-num">A1</p>
@@ -163,6 +192,26 @@
     <div>
       <p class="card-num">B2</p>
       <p class="card-title">親しみやすい（イラスト入り）</p>
+    </div>
+    <span class="card-arrow">›</span>
+  </a>
+</div>
+
+<div class="section-block">
+  <p class="section-label">アニメーション比較</p>
+  <a class="card" href="mockup_01_太宰府天満宮方向_photo_anime.html">
+    <div>
+      <p class="card-num">A1 <span class="card-tag">ANIME</span></p>
+      <p class="card-title">端正でアクセスしやすい</p>
+      <p class="card-sub">球体アニメーション・影なし</p>
+    </div>
+    <span class="card-arrow">›</span>
+  </a>
+  <a class="card" href="mockup_01_太宰府天満宮方向_photo_anime_shadow.html">
+    <div>
+      <p class="card-num">A1 <span class="card-tag">ANIME + SHADOW</span></p>
+      <p class="card-title">端正でアクセスしやすい</p>
+      <p class="card-sub">球体アニメーション・接地影あり</p>
     </div>
     <span class="card-arrow">›</span>
   </a>
