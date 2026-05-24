@@ -104,7 +104,7 @@
   .hero {
     position: relative;
     height: 80vh;
-    overflow: hidden;
+    overflow: visible;
   }
   .hero-curve {
     position: absolute;
@@ -152,11 +152,12 @@
   .hero-monk {
     position: absolute;
     bottom: 0;
-    left: 4%;
+    left: -3%;
     height: 72%;
     width: auto;
     z-index: 1;
     pointer-events: none;
+    transform: scaleX(-1);
   }
 
   /* ウェーブ区切り */
