@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WF-B｜問いかけ型</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background: #F0EDE8; color: #333; font-size: 13px; min-height: 100vh; }
+
+/* ── ニュース ── */
+.news-strip {
+  background: #FAF8F4;
+  border-bottom: 1px solid #D8D4CE;
+  padding: 0 24px;
+}
+.news-strip-inner {
+  max-width: 700px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 0;
+}
+.news-item {
+  display: flex; gap: 20px; align-items: baseline;
+  padding: 14px 0; border-bottom: 1px solid #E8E5E0;
+}
+.news-item:last-child { border-bottom: none; }
+.news-date { font-size: 10px; color: #C4A870; letter-spacing: 0.15em; flex-shrink: 0; }
+.news-title { font-size: 13px; color: #1F1E1D; letter-spacing: 0.05em; line-height: 1.7; }
+
+/* ── メイン：問いかけ ── */
+.main {
+  min-height: calc(100vh - 140px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 80px 24px;
+}
+
+/* お寺名 */
+.temple {
+  text-align: center; margin-bottom: 64px;
+}
+.temple-mark {
+  width: 56px; height: 56px;
+  background: #D8D4CE; border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: #888;
+}
+.temple-name { font-size: 22px; letter-spacing: 0.4em; color: #1F1E1D; margin-bottom: 8px; }
+.temple-sub { font-size: 11px; letter-spacing: 0.2em; color: #AAA; }
+
+/* 問いかけ文 */
+.question {
+  text-align: center; margin-bottom: 52px;
+}
+.question-text {
+  font-size: 20px; letter-spacing: 0.2em; color: #1F1E1D; line-height: 1.9;
+}
+.question-sub { font-size: 12px; color: #AAA; letter-spacing: 0.1em; margin-top: 8px; }
+
+/* 選択肢ボタン */
+.choices {
+  display: flex; flex-direction: column; gap: 16px;
+  width: 100%; max-width: 480px;
+}
+.choice-btn {
+  display: flex; align-items: center; gap: 20px;
+  background: #fff;
+  border: 1.5px solid #D8D4CE;
+  border-radius: 12px;
+  padding: 22px 28px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+}
+.choice-btn:hover {
+  border-color: #C4A870;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.choice-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: #F0EDE8; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #888; text-align: center; line-height: 1.4;
+}
+.choice-body { flex: 1; }
+.choice-title { font-size: 15px; letter-spacing: 0.15em; color: #1F1E1D; margin-bottom: 4px; }
+.choice-desc { font-size: 11px; color: #AAA; letter-spacing: 0.05em; }
+.choice-arrow { font-size: 18px; color: #C4A870; flex-shrink: 0; }
+
+/* もっと見る */
+.more-links {
+  margin-top: 44px; text-align: center;
+  display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+}
+.more-link { font-size: 12px; color: #AAA; letter-spacing: 0.12em; text-decoration: underline; }
+
+/* ── Footer ── */
+footer {
+  background: #2a2a28; padding: 32px 24px;
+  text-align: center;
+}
+.footer-logo { font-size: 13px; letter-spacing: 0.35em; color: #888; margin-bottom: 6px; }
+.footer-addr { font-size: 11px; color: #555; line-height: 2; }
+
+/* ── レスポンシブ ── */
+@media (max-width: 600px) {
+  .main { padding: 48px 20px; }
+  .question-text { font-size: 17px; }
+  .choice-btn { padding: 18px 20px; gap: 16px; }
+  .choice-title { font-size: 14px; }
+  .choice-icon { width: 40px; height: 40px; }
+  .temple { margin-bottom: 48px; }
+  .question { margin-bottom: 40px; }
+  .more-links { gap: 20px; }
+}
+
+.wf-note {
+  position: fixed; bottom: 16px; right: 16px;
+  background: #2a2a28; color: #ccc; font-size: 11px; padding: 10px 14px;
+  border-radius: 8px; line-height: 1.8; opacity: 0.85; pointer-events: none; z-index: 999;
+}
+</style>
+</head>
+<body>
+
+<div class="wf-note">WF-B｜問いかけ型<br>3択ボタン・大きなタップ領域</div>
+
+<!-- お知らせ -->
+<div class="news-strip">
+  <div class="news-strip-inner">
+    <div class="news-item">
+      <div class="news-date">2025.08.16</div>
+      <div class="news-title">灯籠流しのご案内（8月16日・桃ノ木川）</div>
+    </div>
+    <div class="news-item">
+      <div class="news-date">2025.04.08</div>
+      <div class="news-title">花祭りを行いました</div>
+    </div>
+    <div class="news-item">
+      <div class="news-date">2025.02.03</div>
+      <div class="news-title">節分会・豆まきのご案内</div>
+    </div>
+  </div>
+</div>
+
+<!-- 問いかけメイン -->
+<main class="main">
+
+  <div class="temple">
+    <div class="temple-mark">印</div>
+    <div class="temple-name">安養院　真福寺</div>
+    <div class="temple-sub">天台宗　笂井の地に 1340年より</div>
+  </div>
+
+  <div class="question">
+    <div class="question-text">今日はどんなご用件ですか？</div>
+    <div class="question-sub">下からお選びください</div>
+  </div>
+
+  <div class="choices">
+    <a class="choice-btn" href="#">
+      <div class="choice-icon">法要<br>葬儀</div>
+      <div class="choice-body">
+        <div class="choice-title">法要・お葬式のこと</div>
+        <div class="choice-desc">枕経・葬儀・年忌法要など</div>
+      </div>
+      <div class="choice-arrow">›</div>
+    </a>
+    <a class="choice-btn" href="#">
+      <div class="choice-icon">御祈願<br>厄除け</div>
+      <div class="choice-body">
+        <div class="choice-title">御祈願・厄除けのこと</div>
+        <div class="choice-desc">護摩祈祷・家内安全・交通安全など</div>
+      </div>
+      <div class="choice-arrow">›</div>
+    </a>
+    <a class="choice-btn" href="#">
+      <div class="choice-icon">お寺を<br>知りたい</div>
+      <div class="choice-body">
+        <div class="choice-title">お寺のことを知りたい</div>
+        <div class="choice-desc">歴史・年中行事・アクセスなど</div>
+      </div>
+      <div class="choice-arrow">›</div>
+    </a>
+  </div>
+
+  <div class="more-links">
+    <a class="more-link" href="#">年中行事</a>
+    <a class="more-link" href="#">アクセス</a>
+    <a class="more-link" href="#">お問い合わせ</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">安養院　真福寺</div>
+  <div class="footer-addr">〒000-0000　福岡県久留米市　笂井町×××　TEL 000-000-0000</div>
+</footer>
+
+</body>
+</html>

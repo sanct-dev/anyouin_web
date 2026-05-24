@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WF-A｜境内マップ型</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background: #F0EDE8; color: #333; font-size: 13px; overflow-x: hidden; }
+
+/* ── ニュースティッカー ── */
+.ticker {
+  background: #2a2a28; color: #C4A870;
+  height: 36px; display: flex; align-items: center;
+  overflow: hidden; position: relative;
+}
+.ticker-label {
+  flex-shrink: 0; padding: 0 20px;
+  font-size: 10px; letter-spacing: 0.2em;
+  border-right: 1px solid #444;
+  height: 100%; display: flex; align-items: center;
+}
+.ticker-track {
+  display: flex; gap: 80px;
+  animation: ticker 20s linear infinite;
+  white-space: nowrap; padding-left: 40px;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-item { font-size: 11px; color: #aaa; letter-spacing: 0.08em; }
+.ticker-item span { color: #C4A870; margin-right: 12px; font-size: 10px; }
+
+/* ── ロゴバー ── */
+.logobar {
+  background: #FAF8F4;
+  border-bottom: 1px solid #D8D4CE;
+  height: 56px; display: flex; align-items: center;
+  padding: 0 32px; justify-content: space-between;
+}
+.logo-name { font-size: 15px; letter-spacing: 0.3em; color: #1F1E1D; }
+.logo-sub { font-size: 10px; letter-spacing: 0.2em; color: #AAA; }
+.tel { font-size: 13px; letter-spacing: 0.1em; color: #888; }
+
+/* ── マップエリア ── */
+.map-section {
+  position: relative;
+  background: #E8E4DC;
+  min-height: calc(100vh - 92px);
+  overflow: hidden;
+}
+
+/* 境内の地面 */
+.grounds {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.grounds-bg {
+  width: 92%; max-width: 900px; height: 80%;
+  background: #DDD8CE;
+  border-radius: 12px;
+  border: 2px dashed #C8C4B8;
+  position: relative;
+}
+
+/* 参道 */
+.sando {
+  position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 45%;
+  background: #C8C4B8;
+}
+/* 山門 */
+.sanmon {
+  position: absolute; bottom: 42%; left: 50%;
+  transform: translateX(-50%);
+  width: 100px; height: 36px;
+  background: #B8A870; border-radius: 4px 4px 0 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #fff; letter-spacing: 0.1em;
+}
+
+/* クリッカブルエリア共通 */
+.spot {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.spot:hover { transform: scale(1.04); }
+.spot-box {
+  background: #FAF8F4;
+  border: 1.5px solid #C8C4B8;
+  border-radius: 8px;
+  padding: 12px 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.spot-box.dark { background: #2a2a28; border-color: #3a3a38; }
+.spot-icon {
+  width: 48px; height: 48px;
+  background: #E0DCD4; border-radius: 50%;
+  margin: 0 auto 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #888;
+}
+.spot-box.dark .spot-icon { background: #3a3a38; color: #666; }
+.spot-name { font-size: 12px; letter-spacing: 0.15em; color: #1F1E1D; margin-bottom: 2px; }
+.spot-box.dark .spot-name { color: #ccc; }
+.spot-sub { font-size: 10px; color: #AAA; letter-spacing: 0.08em; }
+.spot-tag {
+  display: inline-block;
+  background: #C4A870; color: #fff;
+  font-size: 9px; letter-spacing: 0.1em;
+  padding: 2px 8px; border-radius: 10px;
+  margin-top: 6px;
+}
+
+/* 各スポット配置 */
+.spot-hondo   { top: 12%; left: 50%; transform: translateX(-50%); }
+.spot-hoyo    { top: 20%; left: 8%; }
+.spot-kigan   { top: 20%; right: 8%; }
+.spot-gyoji   { bottom: 20%; left: 10%; }
+.spot-about   { bottom: 20%; right: 10%; }
+.spot-access  { bottom: 6%; left: 50%; transform: translateX(-50%); }
+
+/* 点線の動線 */
+.path {
+  position: absolute; pointer-events: none;
+}
+
+/* ── 凡例 ── */
+.legend {
+  position: absolute; bottom: 16px; right: 16px;
+  background: rgba(250,248,244,0.92);
+  border: 1px solid #D8D4CE;
+  padding: 12px 16px; border-radius: 8px;
+  font-size: 11px; color: #888;
+  line-height: 2;
+}
+
+/* ── レスポンシブ ── */
+@media (max-width: 768px) {
+  .logobar { padding: 0 20px; }
+  .tel { display: none; }
+  .grounds-bg { width: 96%; height: 85%; }
+
+  /* スマホ：スポットを小さく */
+  .spot-box { padding: 8px 10px; }
+  .spot-icon { width: 36px; height: 36px; font-size: 9px; }
+  .spot-name { font-size: 11px; }
+  .spot-sub { display: none; }
+
+  /* スポット位置微調整 */
+  .spot-hoyo  { left: 2%; }
+  .spot-kigan { right: 2%; }
+  .spot-gyoji { left: 2%; }
+  .spot-about { right: 2%; }
+}
+
+.wf-note {
+  position: fixed; bottom: 16px; left: 16px;
+  background: #2a2a28; color: #ccc; font-size: 11px; padding: 10px 14px;
+  border-radius: 8px; line-height: 1.8; opacity: 0.85; pointer-events: none; z-index: 999;
+}
+</style>
+</head>
+<body>
+
+<div class="wf-note">WF-A｜境内マップ型<br>タップで各ページへ・お知らせはティッカー</div>
+
+<!-- お知らせティッカー -->
+<div class="ticker">
+  <div class="ticker-label">NEWS</div>
+  <div class="ticker-track">
+    <div class="ticker-item"><span>08.16</span>灯籠流しのご案内</div>
+    <div class="ticker-item"><span>04.08</span>花祭りを行いました</div>
+    <div class="ticker-item"><span>02.03</span>節分会・豆まきのご案内</div>
+    <div class="ticker-item"><span>08.16</span>灯籠流しのご案内</div>
+    <div class="ticker-item"><span>04.08</span>花祭りを行いました</div>
+    <div class="ticker-item"><span>02.03</span>節分会・豆まきのご案内</div>
+  </div>
+</div>
+
+<!-- ロゴバー -->
+<div class="logobar">
+  <div>
+    <div class="logo-name">安養院　真福寺</div>
+    <div class="logo-sub">天台宗　医王山 安養院 真福寺</div>
+  </div>
+  <div class="tel">☎ 000-000-0000</div>
+</div>
+
+<!-- 境内マップ -->
+<section class="map-section">
+  <div class="grounds">
+    <div class="grounds-bg">
+
+      <!-- 山門 -->
+      <div class="sanmon">山門</div>
+      <!-- 参道 -->
+      <div class="sando"></div>
+
+      <!-- 本堂：中央上 -->
+      <div class="spot spot-hondo">
+        <div class="spot-box dark">
+          <div class="spot-icon">本堂</div>
+          <div class="spot-name">本堂</div>
+          <div class="spot-sub">安養院のご本尊</div>
+        </div>
+      </div>
+
+      <!-- 法要 -->
+      <div class="spot spot-hoyo">
+        <div class="spot-box">
+          <div class="spot-icon">法要</div>
+          <div class="spot-name">法要・お葬式</div>
+          <div class="spot-sub">大切な方をお送りする</div>
+          <div class="spot-tag">→ 詳しく</div>
+        </div>
+      </div>
+
+      <!-- 御祈願 -->
+      <div class="spot spot-kigan">
+        <div class="spot-box">
+          <div class="spot-icon">祈願</div>
+          <div class="spot-name">厄除け・御祈願</div>
+          <div class="spot-sub">護摩祈祷・各種祈願</div>
+          <div class="spot-tag">→ 詳しく</div>
+        </div>
+      </div>
+
+      <!-- 年中行事 -->
+      <div class="spot spot-gyoji">
+        <div class="spot-box">
+          <div class="spot-icon">行事</div>
+          <div class="spot-name">年中行事</div>
+          <div class="spot-sub">節分・花祭り・灯籠流し</div>
+          <div class="spot-tag">→ 詳しく</div>
+        </div>
+      </div>
+
+      <!-- 安養院について -->
+      <div class="spot spot-about">
+        <div class="spot-box">
+          <div class="spot-icon">歴史</div>
+          <div class="spot-name">安養院について</div>
+          <div class="spot-sub">680年の歴史</div>
+          <div class="spot-tag">→ 詳しく</div>
+        </div>
+      </div>
+
+      <!-- アクセス -->
+      <div class="spot spot-access">
+        <div class="spot-box">
+          <div class="spot-icon">MAP</div>
+          <div class="spot-name">アクセス</div>
+          <div class="spot-sub">久留米市笂井町</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 凡例 -->
+  <div class="legend">
+    タップして各ページへ<br>
+    ← 境内を歩くようにご覧ください
+  </div>
+</section>
+
+</body>
+</html>

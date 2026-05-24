@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WF-D｜季節切り替え型</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; color: #333; font-size: 13px; }
+
+/* ── 季節テーマ変数 ── */
+body.spring { --bg: #F5F0EA; --bg2: #FAF7F3; --accent: #D4856A; --accent2: #A8C4A0; --dark: #3a2820; --fv-bg: #D8CCBF; }
+body.summer { --bg: #EAF0EE; --bg2: #F4F8F6; --accent: #5A9A8A; --accent2: #C4A870; --dark: #1a2a28; --fv-bg: #B8CEC8; }
+body.autumn { --bg: #F0EAE2; --bg2: #F8F4EE; --accent: #B87040; --accent2: #8A9870; --dark: #2a1e10; --fv-bg: #C8B090; }
+body.winter { --bg: #ECEEF2; --bg2: #F6F7FA; --accent: #6878A0; --accent2: #A09868; --dark: #1a1e2a; --fv-bg: #C0C8D8; }
+
+body { background: var(--bg); }
+
+/* ── 季節セレクター ── */
+.season-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--dark);
+  display: flex; align-items: stretch; height: 48px;
+}
+.season-btn {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  gap: 8px; cursor: pointer;
+  font-size: 12px; letter-spacing: 0.15em; color: #888;
+  border: none; background: none;
+  transition: background 0.2s, color 0.2s;
+  padding: 0;
+}
+.season-btn.active { background: rgba(255,255,255,0.08); color: #fff; }
+.season-btn:hover { color: #ccc; }
+.season-dot { width: 8px; height: 8px; border-radius: 50%; }
+.spring  .season-dot-sp { background: #D4856A; }
+.summer  .season-dot-su { background: #5A9A8A; }
+.autumn  .season-dot-au { background: #B87040; }
+.winter  .season-dot-wi { background: #6878A0; }
+
+/* ── ニュース ── */
+.news-strip { background: var(--bg2); border-bottom: 1px solid rgba(0,0,0,0.07); padding: 0 24px; }
+.news-inner { max-width: 700px; margin: 0 auto; }
+.news-row { display: flex; gap: 20px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.news-row:last-child { border-bottom: none; }
+.news-date { font-size: 10px; color: var(--accent); letter-spacing: 0.15em; flex-shrink: 0; }
+.news-title { font-size: 13px; color: #1F1E1D; line-height: 1.7; }
+
+/* ── FV：季節ビジュアル ── */
+.fv {
+  position: relative; height: 92vh; overflow: hidden;
+  background: var(--fv-bg);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+}
+.fv-illust {
+  width: 340px; height: 300px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50% 45% 55% 50% / 50% 55% 45% 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.6); font-size: 13px; text-align: center;
+  margin-bottom: 40px; line-height: 1.8;
+}
+.fv-season-label {
+  font-size: 10px; letter-spacing: 0.5em; color: rgba(255,255,255,0.5);
+  margin-bottom: 12px;
+}
+.fv-title { font-size: 38px; letter-spacing: 0.45em; color: rgba(255,255,255,0.9); text-align: center; line-height: 1.5; }
+.fv-event-badge {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 100px; padding: 10px 28px;
+  font-size: 12px; color: rgba(255,255,255,0.8); letter-spacing: 0.15em;
+  text-align: center; white-space: nowrap;
+}
+
+/* ── 今の季節のコンテンツ ── */
+.season-content { padding: 80px 24px; max-width: 760px; margin: 0 auto; }
+
+.current-event {
+  background: var(--bg2); border-radius: 12px;
+  padding: 40px; margin-bottom: 32px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+}
+.current-event-photo {
+  height: 240px; background: var(--fv-bg);
+  border-radius: 55% 45% 50% 50% / 45% 55% 50% 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #888; font-size: 12px;
+}
+.event-label { font-size: 10px; letter-spacing: 0.35em; color: var(--accent); margin-bottom: 10px; }
+.event-title { font-size: 22px; letter-spacing: 0.25em; color: #1F1E1D; margin-bottom: 16px; line-height: 1.7; }
+.text-line { height: 11px; background: #D8D4CE; border-radius: 2px; margin-bottom: 8px; }
+
+/* サービス2カード */
+.service-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.svc-card { background: var(--bg2); border-radius: 10px; padding: 28px 24px; }
+.svc-icon { width: 44px; height: 44px; background: var(--fv-bg); border-radius: 50%; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #888; }
+.svc-title { font-size: 14px; letter-spacing: 0.2em; color: #1F1E1D; margin-bottom: 8px; }
+
+/* 全行事リンク */
+.all-events-link {
+  display: block; text-align: center;
+  border: 1px solid var(--accent); border-radius: 8px;
+  padding: 16px; font-size: 12px; color: var(--accent);
+  letter-spacing: 0.2em; text-decoration: none;
+}
+
+/* ── Footer ── */
+footer { background: var(--dark); padding: 40px 24px; text-align: center; }
+.footer-logo { font-size: 14px; letter-spacing: 0.4em; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.footer-nav { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+.footer-nav span { font-size: 11px; color: rgba(255,255,255,0.25); }
+.footer-copy { font-size: 10px; color: rgba(255,255,255,0.15); }
+
+/* ── レスポンシブ ── */
+@media (max-width: 640px) {
+  .season-btn { font-size: 11px; gap: 5px; }
+  .season-btn span.season-name { display: none; }
+  .fv { height: 80vh; }
+  .fv-illust { width: 220px; height: 200px; margin-bottom: 28px; }
+  .fv-title { font-size: 28px; }
+  .season-content { padding: 56px 20px; }
+  .current-event { grid-template-columns: 1fr; gap: 28px; padding: 28px 24px; }
+  .current-event-photo { height: 200px; }
+  .service-cards { grid-template-columns: 1fr; }
+  .footer-nav { gap: 14px; }
+}
+
+.wf-note {
+  position: fixed; bottom: 16px; right: 16px;
+  background: #2a2a28; color: #ccc; font-size: 11px; padding: 10px 14px;
+  border-radius: 8px; line-height: 1.8; opacity: 0.85; pointer-events: none; z-index: 999;
+}
+</style>
+</head>
+<body class="summer">
+
+<div class="wf-note">WF-D｜季節切り替え型<br>上のタブで季節を切り替え</div>
+
+<!-- 季節セレクター -->
+<div class="season-bar">
+  <button class="season-btn" onclick="setSeason('spring')">
+    <div class="season-dot season-dot-sp" style="background:#D4856A"></div>
+    <span class="season-name">春</span>
+  </button>
+  <button class="season-btn active" onclick="setSeason('summer')">
+    <div class="season-dot season-dot-su" style="background:#5A9A8A"></div>
+    <span class="season-name">夏</span>
+  </button>
+  <button class="season-btn" onclick="setSeason('autumn')">
+    <div class="season-dot season-dot-au" style="background:#B87040"></div>
+    <span class="season-name">秋</span>
+  </button>
+  <button class="season-btn" onclick="setSeason('winter')">
+    <div class="season-dot season-dot-wi" style="background:#6878A0"></div>
+    <span class="season-name">冬</span>
+  </button>
+</div>
+
+<!-- お知らせ -->
+<div class="news-strip">
+  <div class="news-inner">
+    <div class="news-row"><div class="news-date">2025.08.16</div><div class="news-title">灯籠流しのご案内（8月16日・桃ノ木川）</div></div>
+    <div class="news-row"><div class="news-date">2025.04.08</div><div class="news-title">花祭りを行いました</div></div>
+  </div>
+</div>
+
+<!-- FV：季節ビジュアル -->
+<section class="fv">
+  <div class="fv-illust" id="fv-illust">イラスト<br>（夏：灯籠・蓮）</div>
+  <div class="fv-season-label" id="fv-season-label">SUMMER 2025</div>
+  <div class="fv-title" id="fv-title">安養院<br>真福寺</div>
+  <div class="fv-event-badge" id="fv-badge">次の行事：8月16日　桃ノ木川灯籠流し</div>
+</section>
+
+<!-- 季節コンテンツ -->
+<section class="season-content">
+  <div class="current-event">
+    <div class="current-event-photo" id="event-photo">写真<br>（灯籠流し）</div>
+    <div>
+      <div class="event-label" id="event-label">NEXT EVENT</div>
+      <div class="event-title" id="event-title">桃ノ木川<br>灯籠流し</div>
+      <div class="text-line" style="width:100%"></div>
+      <div class="text-line" style="width:85%"></div>
+      <div class="text-line" style="width:90%"></div>
+    </div>
+  </div>
+
+  <div class="service-cards">
+    <div class="svc-card">
+      <div class="svc-icon">法要</div>
+      <div class="svc-title">法要・お葬式</div>
+      <div class="text-line"></div>
+      <div class="text-line" style="width:75%"></div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">祈願</div>
+      <div class="svc-title">厄除け・御祈願</div>
+      <div class="text-line"></div>
+      <div class="text-line" style="width:75%"></div>
+    </div>
+  </div>
+
+  <a class="all-events-link" href="#">年中行事をすべて見る →</a>
+</section>
+
+<footer>
+  <div class="footer-logo">安養院　真福寺</div>
+  <div class="footer-nav">
+    <span>法要・お葬式</span><span>厄除け・御祈願</span>
+    <span>年中行事</span><span>安養院について</span><span>アクセス</span>
+  </div>
+  <div class="footer-copy">© Anyoin Shinpoji. All rights reserved.</div>
+</footer>
+
+<script>
+const seasons = {
+  spring: {
+    illust: 'イラスト\n（春：桜・花祭り）',
+    label: 'SPRING 2026',
+    badge: '次の行事：4月8日　花祭り',
+    photo: '写真\n（花祭り）',
+    eventLabel: 'NEXT EVENT',
+    eventTitle: '花祭り',
+  },
+  summer: {
+    illust: 'イラスト\n（夏：灯籠・蓮）',
+    label: 'SUMMER 2025',
+    badge: '次の行事：8月16日　桃ノ木川灯籠流し',
+    photo: '写真\n（灯籠流し）',
+    eventLabel: 'NEXT EVENT',
+    eventTitle: '桃ノ木川\n灯籠流し',
+  },
+  autumn: {
+    illust: 'イラスト\n（秋：銀杏・彼岸）',
+    label: 'AUTUMN 2025',
+    badge: '次の行事：9月　秋彼岸',
+    photo: '写真\n（秋彼岸）',
+    eventLabel: 'NEXT EVENT',
+    eventTitle: '秋彼岸',
+  },
+  winter: {
+    illust: 'イラスト\n（冬：節分・護摩）',
+    label: 'WINTER 2026',
+    badge: '次の行事：2月3日　節分会',
+    photo: '写真\n（節分会・護摩）',
+    eventLabel: 'NEXT EVENT',
+    eventTitle: '節分会',
+  },
+};
+
+function setSeason(s) {
+  document.body.className = s;
+  document.querySelectorAll('.season-btn').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  const d = seasons[s];
+  document.getElementById('fv-illust').textContent = d.illust;
+  document.getElementById('fv-season-label').textContent = d.label;
+  document.getElementById('fv-badge').textContent = d.badge;
+  document.getElementById('event-photo').textContent = d.photo;
+  document.getElementById('event-label').textContent = d.eventLabel;
+  document.getElementById('event-title').textContent = d.eventTitle;
+}
+</script>
+</body>
+</html>
