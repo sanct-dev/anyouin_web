@@ -116,17 +116,31 @@
     height: 150px;
     z-index: 2;
   }
-  .hero-img {
+  .hero-img,
+  .hero-img-alt {
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 80vh;
+  }
+  .hero-img {
     background: url('../images/niwa.jpg') center center / cover no-repeat;
   }
-  .hero-img::after {
-    content: '';
+  .hero-img-alt {
+    background: url('../images/main/main_goaisatu.jpg') center center / cover no-repeat;
+    animation: hero-crossfade 10s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes hero-crossfade {
+    0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+  }
+  .hero-overlay {
     position: absolute;
-    inset: 0;
+    top: 0; left: 0; right: 0;
+    height: 80vh;
     background: rgba(238,235,231,0.35);
+    z-index: 2;
+    pointer-events: none;
   }
   .hero-text {
     position: absolute;
@@ -455,6 +469,8 @@
 
 <div class="fv">
   <div class="hero-img"></div>
+  <div class="hero-img-alt"></div>
+  <div class="hero-overlay"></div>
   <svg class="fv-band" viewBox="0 0 1440 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,150 L0,58 C120,30 260,72 420,48 C580,24 680,62 860,38 C1020,16 1160,55 1300,36 C1360,26 1400,44 1440,40 L1440,150 Z" fill="#EED1B7"/>
   </svg>
