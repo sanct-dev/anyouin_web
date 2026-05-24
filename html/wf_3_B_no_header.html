@@ -7,130 +7,134 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: sans-serif; background: #F0EDE8; color: #333; font-size: 13px; }
-
 .box { background: #D8D4CE; display: flex; align-items: center; justify-content: center; color: #888; font-size: 12px; text-align: center; line-height: 1.6; }
 .text-line { height: 11px; background: #D8D4CE; border-radius: 2px; margin-bottom: 8px; }
-.wave svg { width: 100%; display: block; }
 .section-en { font-size: 10px; letter-spacing: 0.35em; color: #C4A870; margin-bottom: 8px; }
+.stripe { max-width: 800px; margin: 0 auto; padding: 0 40px; }
+.sec-header { margin-bottom: 48px; }
+.sec-header h2 { font-size: 20px; letter-spacing: 0.3em; color: #1F1E1D; }
+.wave-divider { overflow: hidden; line-height: 0; }
+.wave-divider svg { width: 100%; display: block; }
 
-/* ── FV：写真全画面 + 左寄せタイトル ── */
-.fv {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-.fv-bg { width: 100%; height: 100%; }
-.fv-bg .box { width: 100%; height: 100%; border-radius: 0; font-size: 14px; }
+/* ── FV：写真全画面・左寄せ ── */
+.fv { position: relative; height: 100vh; overflow: hidden; }
+.fv .box { width: 100%; height: 100%; border-radius: 0; font-size: 14px; }
 .fv-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(240,237,232,0.85) 40%, rgba(240,237,232,0.1) 100%);
+  background: linear-gradient(to right, rgba(240,237,232,0.88) 45%, rgba(240,237,232,0.1) 100%);
 }
-.fv-content {
-  position: absolute;
-  top: 50%; left: 10%;
-  transform: translateY(-50%);
-}
-.fv-label { font-size: 10px; letter-spacing: 0.4em; color: #AAA; margin-bottom: 24px; }
-.fv-title { font-size: 52px; letter-spacing: 0.4em; color: #1F1E1D; line-height: 1.5; margin-bottom: 24px; }
-.fv-sub { font-size: 13px; letter-spacing: 0.2em; color: #666; line-height: 2; margin-bottom: 40px; }
-.fv-cta {
-  display: inline-block;
-  border: 1px solid #C4A870;
-  padding: 12px 32px;
-  font-size: 12px; letter-spacing: 0.2em; color: #666;
-}
-/* ロゴ：右上に小さく */
-.fv-logo {
-  position: absolute; top: 32px; right: 40px;
-  text-align: right;
-  font-size: 12px; letter-spacing: 0.2em; color: #888;
-  line-height: 2;
-}
-.fv-logo small { font-size: 10px; color: #AAA; display: block; }
-/* スクロール */
-.fv-scroll {
-  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-  font-size: 10px; letter-spacing: 0.2em; color: #AAA;
-}
+.fv-logo { position: absolute; top: 28px; right: 32px; text-align: right; font-size: 12px; letter-spacing: 0.2em; color: #888; line-height: 1.9; }
+.fv-logo small { display: block; font-size: 10px; color: #AAA; }
+.fv-content { position: absolute; top: 50%; left: 8%; transform: translateY(-50%); }
+.fv-label { font-size: 10px; letter-spacing: 0.4em; color: #AAA; margin-bottom: 20px; }
+.fv-title { font-size: 52px; letter-spacing: 0.4em; color: #1F1E1D; line-height: 1.5; margin-bottom: 20px; }
+.fv-sub { font-size: 13px; letter-spacing: 0.18em; color: #666; line-height: 2; margin-bottom: 36px; }
+.fv-cta { display: inline-block; border: 1px solid #C4A870; padding: 11px 28px; font-size: 11px; letter-spacing: 0.2em; color: #888; }
+.fv-scroll { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); font-size: 10px; letter-spacing: 0.2em; color: #AAA; }
 
-/* ── 細帯コンテンツ：中央800px ── */
-.stripe { max-width: 800px; margin: 0 auto; padding: 0 40px; }
+/* ── News：FV直下 ── */
+.news { padding: 80px 0; background: #FAF8F4; }
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-top: 40px;
+}
+.news-card { background: #fff; border-radius: 6px; overflow: hidden; }
+.news-card .box { height: 96px; border-radius: 0; font-size: 11px; }
+.news-card-body { padding: 14px; }
+.news-date { font-size: 10px; color: #C4A870; margin-bottom: 6px; }
+.news-title-text { font-size: 12px; color: #1F1E1D; line-height: 1.7; }
 
-/* ── About：テキスト左・写真右 ── */
-.about { padding: 120px 0; }
+/* ── About ── */
+.about { padding: 100px 0; }
 .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.about-text h2 { font-size: 26px; letter-spacing: 0.3em; color: #1F1E1D; margin-bottom: 28px; line-height: 1.8; }
-.about-photo .box {
-  width: 100%; height: 360px;
-  border-radius: 55% 45% 60% 40% / 45% 55% 50% 50%;
-}
-/* ウェーブ区切り */
-.wave-divider { overflow: hidden; line-height: 0; }
+.about-text h2 { font-size: 24px; letter-spacing: 0.3em; color: #1F1E1D; margin-bottom: 24px; line-height: 1.8; }
+.about-photo .box { width: 100%; height: 340px; border-radius: 55% 45% 60% 40% / 45% 55% 50% 50%; }
 
-/* ── Services：1カラム縦積み・交互 ── */
+/* ── Services：ジグザグ ── */
 .services { padding: 100px 0; background: #FAF8F4; }
-.svc-row {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center;
-  margin-bottom: 80px;
-}
+.svc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; }
 .svc-row:last-child { margin-bottom: 0; }
-.svc-row.rev { }
 .svc-row.rev .svc-photo { order: 2; }
 .svc-row.rev .svc-text { order: 1; }
 .svc-photo .box { width: 100%; height: 280px; border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%; }
 .svc-text h3 { font-size: 20px; letter-spacing: 0.25em; color: #1F1E1D; margin-bottom: 20px; line-height: 1.8; }
 
-/* ── Events：タイムライン風 ── */
-.events { padding: 120px 0; }
-.events h2 { font-size: 22px; letter-spacing: 0.35em; color: #1F1E1D; margin-bottom: 56px; }
-.timeline { position: relative; padding-left: 32px; border-left: 1px solid #D0CCC6; }
-.tl-item { display: grid; grid-template-columns: 72px 1fr; gap: 32px; margin-bottom: 48px; align-items: start; position: relative; }
-.tl-item::before { content: ''; position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: #C4A870; }
+/* ── Events：タイムライン ── */
+.events { padding: 100px 0; }
+.timeline { padding-left: 28px; border-left: 1px solid #D0CCC6; margin-top: 40px; }
+.tl-item { display: grid; grid-template-columns: 72px 1fr; gap: 28px; margin-bottom: 40px; align-items: start; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: -33px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: #C4A870; }
 .tl-illust .box { width: 72px; height: 72px; border-radius: 50%; font-size: 11px; }
 .tl-date { font-size: 10px; letter-spacing: 0.2em; color: #C4A870; margin-bottom: 6px; }
 .tl-title { font-size: 15px; letter-spacing: 0.2em; color: #1F1E1D; margin-bottom: 10px; }
 
-/* ── News ── */
-.news { padding: 80px 0; background: #FAF8F4; }
-.news h2 { font-size: 20px; letter-spacing: 0.3em; color: #1F1E1D; margin-bottom: 40px; }
-.news-list { display: flex; flex-direction: column; }
-.news-item { display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid #D8D4CE; align-items: center; }
-.news-thumb .box { width: 60px; height: 60px; border-radius: 6px; font-size: 10px; }
-.news-date { font-size: 10px; color: #C4A870; margin-bottom: 4px; }
-.news-title { font-size: 13px; color: #1F1E1D; }
-
-/* ── フッター ── */
-footer { background: #2a2a28; padding: 80px 40px 48px; }
+/* ── Footer ── */
+footer { background: #2a2a28; padding: 72px 40px 48px; }
 .footer-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-.footer-info .footer-logo { font-size: 16px; letter-spacing: 0.4em; color: #ddd; margin-bottom: 8px; }
-.footer-info .footer-sub { font-size: 10px; letter-spacing: 0.15em; color: #555; margin-bottom: 24px; }
-.footer-info .footer-addr { font-size: 11px; color: #555; line-height: 2; }
-.footer-links { display: flex; flex-direction: column; gap: 12px; padding-top: 4px; }
+.footer-logo { font-size: 15px; letter-spacing: 0.4em; color: #ddd; margin-bottom: 6px; }
+.footer-sub { font-size: 10px; letter-spacing: 0.12em; color: #555; margin-bottom: 20px; }
+.footer-addr { font-size: 11px; color: #555; line-height: 2; }
+.footer-links { display: flex; flex-direction: column; gap: 12px; }
 .footer-links span { font-size: 12px; color: #777; letter-spacing: 0.1em; }
-.footer-copy { max-width: 800px; margin: 40px auto 0; font-size: 10px; color: #444; border-top: 1px solid #3a3a38; padding-top: 20px; }
+.footer-copy { max-width: 800px; margin: 36px auto 0; font-size: 10px; color: #444; border-top: 1px solid #3a3a38; padding-top: 20px; }
+
+/* ══════════════════════════
+   レスポンシブ
+══════════════════════════ */
+@media (max-width: 768px) {
+  .stripe { padding: 0 20px; }
+
+  /* FV：左寄せ → 中央寄せ */
+  .fv-overlay { background: rgba(240,237,232,0.72); }
+  .fv-content { left: 50%; transform: translate(-50%, -50%); text-align: center; width: 88%; }
+  .fv-title { font-size: 36px; letter-spacing: 0.3em; }
+  .fv-logo { top: 20px; right: 20px; font-size: 11px; }
+
+  /* News：3col → 1col */
+  .news { padding: 56px 0; }
+  .news-grid { grid-template-columns: 1fr; gap: 10px; }
+
+  /* About：2col → 1col */
+  .about { padding: 64px 0; }
+  .about-inner { grid-template-columns: 1fr; gap: 36px; }
+  .about-photo { order: -1; }
+  .about-photo .box { height: 240px; }
+
+  /* Services：2col → 1col */
+  .services { padding: 64px 0; }
+  .svc-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 56px; }
+  .svc-row.rev .svc-photo { order: -1; }
+  .svc-photo .box { height: 220px; }
+
+  /* Events：タイムライン（グリッド2col → 維持、ただし幅縮小） */
+  .events { padding: 64px 0; }
+  .tl-item { grid-template-columns: 56px 1fr; gap: 20px; }
+  .tl-illust .box { width: 56px; height: 56px; }
+  .timeline { padding-left: 20px; }
+  .tl-item::before { left: -25px; }
+
+  /* Footer：2col → 1col */
+  footer { padding: 56px 20px 40px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-copy { margin-top: 28px; }
+}
 
 .wf-note {
-  position: fixed; bottom: 20px; right: 20px;
-  background: #2a2a28; color: #ccc;
-  font-size: 11px; padding: 12px 16px;
-  border-radius: 8px; line-height: 1.8;
-  opacity: 0.85; pointer-events: none; z-index: 999;
+  position: fixed; bottom: 16px; right: 16px;
+  background: #2a2a28; color: #ccc; font-size: 11px; padding: 10px 14px;
+  border-radius: 8px; line-height: 1.8; opacity: 0.85; pointer-events: none; z-index: 999;
 }
 </style>
 </head>
 <body>
 
-<div class="wf-note">WF③ B案｜ヘッダーなし（パンフレット型）<br>写真FV左寄せ・ロゴ右上・タイムライン行事</div>
+<div class="wf-note">WF③ B案｜ヘッダーなし（パンフレット型）<br>お知らせFV直下・スマホ中央寄せ対応</div>
 
-<!-- FV：写真全画面 + 左寄せタイトル + ロゴ右上 -->
 <section class="fv">
-  <div class="fv-bg"><div class="box">写真（桜 or 本堂）<br>ウォームオーバーレイ</div></div>
+  <div class="box">写真（桜 or 本堂）</div>
   <div class="fv-overlay"></div>
-  <div class="fv-logo">
-    安養院　真福寺
-    <small>Anyoin Shinpoji</small>
-  </div>
+  <div class="fv-logo">安養院　真福寺<small>Anyoin Shinpoji</small></div>
   <div class="fv-content">
     <div class="fv-label">天台宗　医王山 安養院 真福寺</div>
     <div class="fv-title">笂井の地に、<br>680年。</div>
@@ -140,165 +144,97 @@ footer { background: #2a2a28; padding: 80px 40px 48px; }
   <div class="fv-scroll">↓ scroll</div>
 </section>
 
-<!-- ウェーブ -->
-<div class="wave-divider">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px;">
-    <path d="M0,30 C360,60 1080,0 1440,30 L1440,0 L0,0 Z" fill="#F0EDE8"/>
+<!-- お知らせ：FV直下 -->
+<section class="news">
+  <div class="stripe">
+    <div class="sec-header">
+      <div class="section-en">NEWS</div>
+      <h2>お知らせ</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card"><div class="box">写真</div><div class="news-card-body"><div class="news-date">2025.08.16</div><div class="news-title-text">灯籠流しのご案内</div></div></div>
+      <div class="news-card"><div class="box">写真</div><div class="news-card-body"><div class="news-date">2025.04.08</div><div class="news-title-text">花祭りを行いました</div></div></div>
+      <div class="news-card"><div class="box">写真</div><div class="news-card-body"><div class="news-date">2025.02.03</div><div class="news-title-text">節分会・豆まきのご案内</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider" style="background:#FAF8F4;">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" height="48">
+    <path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#F0EDE8"/>
   </svg>
 </div>
 
-<!-- About -->
 <section class="about">
   <div class="stripe">
     <div class="about-inner">
       <div class="about-text">
         <div class="section-en">ABOUT</div>
         <h2>笂井の地に<br>息づくお寺</h2>
-        <div class="text-line" style="width:100%"></div>
-        <div class="text-line" style="width:90%"></div>
-        <div class="text-line" style="width:95%"></div>
-        <div class="text-line" style="width:85%"></div>
-        <div class="text-line" style="width:70%"></div>
+        <div class="text-line"></div><div class="text-line" style="width:90%"></div>
+        <div class="text-line"></div><div class="text-line" style="width:75%"></div>
       </div>
-      <div class="about-photo">
-        <div class="box">写真<br>（ブロブマスク）</div>
-      </div>
+      <div class="about-photo"><div class="box">写真（ブロブマスク）</div></div>
     </div>
   </div>
 </section>
 
-<!-- ウェーブ -->
 <div class="wave-divider" style="background:#F0EDE8;">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px;">
-    <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="#FAF8F4"/>
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" height="48">
+    <path d="M0,24 C360,0 1080,48 1440,24 L1440,48 L0,48 Z" fill="#FAF8F4"/>
   </svg>
 </div>
 
-<!-- Services -->
 <section class="services">
   <div class="stripe">
-    <div class="section-en">SERVICES</div>
-    <div style="font-size:22px;letter-spacing:0.3em;color:#1F1E1D;margin-bottom:56px;">ご相談・ご依頼</div>
+    <div class="sec-header"><div class="section-en">SERVICES</div><h2>ご相談・ご依頼</h2></div>
     <div class="svc-row">
       <div class="svc-photo"><div class="box">写真（ブロブ）</div></div>
-      <div class="svc-text">
-        <div class="section-en">MEMORIAL</div>
-        <h3>法要・お葬式</h3>
-        <div class="text-line"></div>
-        <div class="text-line"></div>
-        <div class="text-line" style="width:80%"></div>
-      </div>
+      <div class="svc-text"><div class="section-en">MEMORIAL</div><h3>法要・お葬式</h3><div class="text-line"></div><div class="text-line" style="width:80%"></div></div>
     </div>
     <div class="svc-row rev">
       <div class="svc-photo"><div class="box">写真（ブロブ）</div></div>
-      <div class="svc-text">
-        <div class="section-en">PRAYER</div>
-        <h3>厄除け・御祈願</h3>
-        <div class="text-line"></div>
-        <div class="text-line"></div>
-        <div class="text-line" style="width:80%"></div>
-      </div>
+      <div class="svc-text"><div class="section-en">PRAYER</div><h3>厄除け・御祈願</h3><div class="text-line"></div><div class="text-line" style="width:80%"></div></div>
     </div>
   </div>
 </section>
 
-<!-- ウェーブ -->
 <div class="wave-divider" style="background:#FAF8F4;">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px;">
-    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F0EDE8"/>
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" height="48">
+    <path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#F0EDE8"/>
   </svg>
 </div>
 
-<!-- Events：タイムライン -->
 <section class="events">
   <div class="stripe">
-    <div class="section-en">EVENTS</div>
-    <h2>年中行事</h2>
+    <div class="sec-header"><div class="section-en">EVENTS</div><h2>年中行事</h2></div>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-illust"><div class="box">節分</div></div>
-        <div>
-          <div class="tl-date">2月3日</div>
-          <div class="tl-title">節分会</div>
-          <div class="text-line" style="width:85%"></div>
-          <div class="text-line" style="width:65%"></div>
-        </div>
+        <div><div class="tl-date">2月3日</div><div class="tl-title">節分会</div><div class="text-line" style="width:85%"></div><div class="text-line" style="width:65%"></div></div>
       </div>
       <div class="tl-item">
         <div class="tl-illust"><div class="box">花祭り</div></div>
-        <div>
-          <div class="tl-date">4月8日</div>
-          <div class="tl-title">花祭り</div>
-          <div class="text-line" style="width:85%"></div>
-          <div class="text-line" style="width:65%"></div>
-        </div>
+        <div><div class="tl-date">4月8日</div><div class="tl-title">花祭り</div><div class="text-line" style="width:85%"></div><div class="text-line" style="width:65%"></div></div>
       </div>
       <div class="tl-item">
         <div class="tl-illust"><div class="box">灯籠</div></div>
-        <div>
-          <div class="tl-date">8月16日</div>
-          <div class="tl-title">桃ノ木川灯籠流し</div>
-          <div class="text-line" style="width:85%"></div>
-          <div class="text-line" style="width:65%"></div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-illust"><div class="box">大般若</div></div>
-        <div>
-          <div class="tl-date">3年に1度</div>
-          <div class="tl-title">大般若転読会</div>
-          <div class="text-line" style="width:85%"></div>
-          <div class="text-line" style="width:65%"></div>
-        </div>
+        <div><div class="tl-date">8月16日</div><div class="tl-title">桃ノ木川灯籠流し</div><div class="text-line" style="width:85%"></div><div class="text-line" style="width:65%"></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ウェーブ -->
-<div class="wave-divider" style="background:#F0EDE8;">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px;">
-    <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="#FAF8F4"/>
-  </svg>
-</div>
-
-<!-- News -->
-<section class="news">
-  <div class="stripe">
-    <div class="section-en">NEWS</div>
-    <h2>お知らせ</h2>
-    <div class="news-list">
-      <div class="news-item">
-        <div class="news-thumb"><div class="box">写真</div></div>
-        <div><div class="news-date">2025.08.16</div><div class="news-title">灯籠流しのご案内</div></div>
-      </div>
-      <div class="news-item">
-        <div class="news-thumb"><div class="box">写真</div></div>
-        <div><div class="news-date">2025.04.08</div><div class="news-title">花祭りを行いました</div></div>
-      </div>
-      <div class="news-item">
-        <div class="news-thumb"><div class="box">写真</div></div>
-        <div><div class="news-date">2025.02.03</div><div class="news-title">節分会・豆まきのご案内</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- フッター -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-info">
+    <div>
       <div class="footer-logo">安養院　真福寺</div>
       <div class="footer-sub">医王山 安養院 真福寺｜天台宗</div>
-      <div class="footer-addr">〒000-0000　福岡県久留米市　笂井町×××<br>TEL 000-000-0000<br>受付時間 ◯時〜◯時</div>
+      <div class="footer-addr">〒000-0000　福岡県久留米市　笂井町×××<br>TEL 000-000-0000</div>
     </div>
     <div class="footer-links">
-      <span>法要・お葬式</span>
-      <span>厄除け・御祈願</span>
-      <span>年中行事</span>
-      <span>安養院について</span>
-      <span>アクセス</span>
-      <span>お知らせ</span>
+      <span>法要・お葬式</span><span>厄除け・御祈願</span><span>年中行事</span>
+      <span>安養院について</span><span>アクセス</span><span>お知らせ</span>
     </div>
   </div>
   <div class="footer-copy">© Anyoin Shinpoji. All rights reserved.</div>
