@@ -39,19 +39,24 @@
     opacity: 0.5;
   }
 
-  /* ヘッダー */
-  header {
+  /* サイトナビ（FV直下 → スクロールでヘッダー化） */
+  .sitenav {
+    position: relative;
+    z-index: 100;
+    background: rgba(238,235,231,0.97);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s;
+  }
+  .sitenav.is-sticky {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(238,235,231,0.96);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
   }
-  .header-inner {
+  .sitenav-inner {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 48px;
-    height: 68px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,15 +64,20 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
   }
-  .logo-mark {
-    width: 38px; height: 32px;
+  .sitenav.is-sticky .logo {
+    opacity: 1;
+    pointer-events: auto;
   }
+  .logo-mark { width: 32px; height: 28px; }
   .logo-text {
-    font-size: 14px;
-    letter-spacing: 0.2em;
+    font-size: 13px;
+    letter-spacing: 0.18em;
     color: var(--text);
     line-height: 1.6;
   }
@@ -75,7 +85,7 @@
     display: block;
     font-size: 10px;
     color: var(--sub);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
   }
   nav {
     display: flex;
@@ -92,9 +102,8 @@
 
   /* ヒーロー */
   .hero {
-    margin-top: 68px;
     position: relative;
-    height: 580px;
+    height: 100vh;
     overflow: hidden;
   }
   .hero-img {
@@ -388,12 +397,15 @@
   }
   .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
 
+  /* sticky時にコンテンツが隠れないよう余白を確保 */
+  body.nav-sticky-active { padding-top: 60px; }
+
   @media (max-width: 768px) {
-    .header-inner { padding: 0 20px; }
+    .sitenav-inner { padding: 0 20px; }
     nav { display: none; }
     .hamburger { display: flex; }
 
-    .hero { height: 360px; }
+    .hero { height: 100svh; }
     .hero-text h1 { font-size: 22px; }
 
     section { padding: 72px 0; }
@@ -418,17 +430,22 @@
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
+<div class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-text">
+    <h1>地域の拠り所として</h1>
+    <p>天台宗 医王山 安養院 真福寺</p>
+  </div>
+</div>
+
+<div class="sitenav" id="sitenav">
+  <div class="sitenav-inner">
     <a href="#" class="logo">
       <svg class="logo-mark" viewBox="0 0 142 118" fill="none">
         <path d="M141.86,57.28c-.55,25.77-14.84,48.16-35.83,60.12-10.35-5.92-22.33-20.28-35.1-20.28s-24.75,14.36-35.1,20.28C14.84,105.43.55,83.04,0,57.28c-.02-.76.73-1.29,1.45-1.06,45.32,14.57,91.52,15.31,138.96,0,.72-.23,1.47.31,1.45,1.06Z" fill="#FFA353"/>
         <circle cx="70.93" cy="27.32" r="27.32" fill="#FFA353"/>
       </svg>
-      <div class="logo-text">
-        <span>天台宗 医王山</span>
-        安養院
-      </div>
+      <div class="logo-text"><span>天台宗 医王山</span>安養院</div>
     </a>
     <nav>
       <a href="#">お知らせ</a>
@@ -441,14 +458,6 @@
     <button class="hamburger" aria-label="メニュー">
       <span></span><span></span><span></span>
     </button>
-  </div>
-</header>
-
-<div class="hero">
-  <div class="hero-img"></div>
-  <div class="hero-text">
-    <h1>地域の拠り所として</h1>
-    <p>天台宗 医王山 安養院 真福寺</p>
   </div>
 </div>
 
@@ -562,7 +571,9 @@
     </div>
     <ul class="services-list">
       <li>
-        <div class="svc-icon">🙏</div>
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA353" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
         <div>
           <p class="svc-name">御祈願・厄除け</p>
           <p class="svc-desc">厄除開運、家内安全、無病息災ほか。随時受け付けております。</p>
@@ -570,7 +581,9 @@
         <a href="#" class="svc-link">詳しく見る</a>
       </li>
       <li>
-        <div class="svc-icon">🕯</div>
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA353" stroke-width="1.5" stroke-linecap="round"><path d="M9 3h6l1 9H8L9 3z"/><path d="M8 12v9h8v-9"/><path d="M12 3V1"/></svg>
+        </div>
         <div>
           <p class="svc-name">法要・年忌</p>
           <p class="svc-desc">一周忌から三十三回忌まで。ペットの法要も執り行います。</p>
@@ -578,7 +591,9 @@
         <a href="#" class="svc-link">詳しく見る</a>
       </li>
       <li>
-        <div class="svc-icon">🌸</div>
+        <div class="svc-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA353" stroke-width="1.5" stroke-linecap="round"><rect x="6" y="4" width="12" height="14" rx="6"/><path d="M12 18v3"/><path d="M9 21h6"/></svg>
+        </div>
         <div>
           <p class="svc-name">お墓</p>
           <p class="svc-desc">累代墓、永代供養墓、樹木葬、ペットのお墓。</p>
@@ -629,6 +644,27 @@
 </footer>
 
 <div class="direction-label">② 親しみやすい（写真入り）</div>
+
+<script>
+const sitenav = document.getElementById('sitenav');
+let navTop = sitenav.offsetTop;
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY >= navTop) {
+    sitenav.classList.add('is-sticky');
+    document.body.classList.add('nav-sticky-active');
+  } else {
+    sitenav.classList.remove('is-sticky');
+    document.body.classList.remove('nav-sticky-active');
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (!sitenav.classList.contains('is-sticky')) {
+    navTop = sitenav.offsetTop;
+  }
+});
+</script>
 
 </body>
 </html>
