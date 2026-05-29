@@ -592,10 +592,12 @@ footer {
   #about .btn-text, #access .btn-text { display: block; text-align: right; }
 
   /* About */
-  .about-layout { flex-direction: column; gap: 24px; }
+  #about .sec-hd { margin-bottom: 20px; }
+  .about-layout { flex-direction: column; gap: 12px; }
   .about-img { width: 100%; flex: none; }
   .about-text p:not(:first-child) { display: none; }
-  .about-text p { font-size: 14px; }
+  .about-text p { font-size: 14px; margin-bottom: 0; }
+  #about .btn-text { margin-top: 6px; }
 
   /* Event: 4枚・2列・日時あり・説明なし */
   .event-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
