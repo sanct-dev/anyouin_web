@@ -560,10 +560,12 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
+  /* Nav */
   .sitenav-inner { padding: 0 20px; }
   nav { display: none; }
-  .hamburger { display: flex; }
+  .hamburger { display: flex; margin-left: auto; }
 
+  /* FV */
   .fv { height: calc(70vh + 60px); }
   .hero-text { top: 36vh; }
   .hero-text h1 { font-size: 28px; letter-spacing: 0.3em; }
@@ -572,22 +574,43 @@ footer {
   .hero-leaf-01   { left: 42% !important; height: 28px !important; }
   .hero-leaf-yoko { left: 30% !important; height: 13px !important; }
 
-  section { padding: 88px 20px; }
+  /* Section common */
+  section { padding: 64px 20px; }
+  .sec-hd { margin-bottom: 48px; }
   .sec-h2 { font-size: 18px; }
 
-  .about-layout { flex-direction: column; gap: 32px; }
+  /* News */
+  .news-item { padding: 14px 0; }
+
+  /* About */
+  .about-layout { flex-direction: column; gap: 24px; }
   .about-img { width: 100%; flex: none; }
+  .about-text p:not(:first-child),
+  .about-text .btn-text { display: none; }
+  .about-text p { font-size: 14px; }
 
-  .event-grid { grid-template-columns: 1fr; gap: 16px; }
+  /* Event: 4枚・2列・タイトルのみ */
+  .event-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .event-card:nth-child(3),
+  .event-card:nth-child(4) { display: none; }
+  .event-date, .event-desc, .event-card .btn-text { display: none; }
+  .event-body { padding: 10px 12px 14px; }
+  .event-title { font-size: 15px; }
 
-  .consul-grid { grid-template-columns: 1fr; gap: 20px; }
+  /* Consul */
+  .consul-grid { grid-template-columns: 1fr; gap: 16px; }
+  .consul-card { padding: 28px 20px 24px; }
+  .consul-blob { width: 64px; height: 80px; margin-bottom: 16px; }
 
+  /* Access */
   .access-layout { flex-direction: column; gap: 32px; }
   .access-map { width: 100%; }
 
+  /* Footer */
   footer { padding: 48px 20px 0; }
   .footer-inner { flex-direction: column; gap: 32px; }
   .footer-nav-group { flex-wrap: wrap; gap: 24px; }
+  .footer-nav-col li:not(:first-child) { display: none; }
   .footer-sub { flex-direction: row; flex-wrap: wrap; gap: 12px 24px; }
 }
 </style>
@@ -694,7 +717,7 @@ footer {
     </div>
     <div class="about-layout">
       <div class="about-text">
-        <p>天台宗　医王山　安養院は、埼玉県川口市に位置する寺院です。</p>
+        <p>天台宗　医王山　安養院は、前橋市笂井町（うつぼいまち）にあるお寺です。</p>
         <p>地域の皆さまにとって「いつでも立ち寄れる場所」であることを大切にしています。法要・供養のご相談から、地域行事まで。敷居の高さを感じることなく、お気軽にお越しください。</p>
         <p>一人で来て、一人で帰れる。そんな場所でありたいと思っています。</p>
         <a href="#" class="btn-text">詳しくみる ›</a>
