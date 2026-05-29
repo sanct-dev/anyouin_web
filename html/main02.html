@@ -104,9 +104,10 @@ nav a {
   letter-spacing: 0.12em;
   color: #1F1E1E;
   opacity: 0.85;
-  transition: opacity 0.15s;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.2s, border-color 0.2s;
 }
-nav a:hover { opacity: 1; }
+nav a:hover { opacity: 1; border-bottom-color: #1F1E1E; }
 .hamburger {
   display: none;
   flex-direction: column;
@@ -298,10 +299,9 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   gap: 20px;
   padding: 22px 0;
   border-bottom: 1px solid var(--border);
-  transition: background 0.2s ease-out;
   cursor: pointer;
 }
-.news-item:hover { background: var(--header); }
+.news-item:hover .news-title { color: var(--accent); }
 .news-date {
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
@@ -331,15 +331,12 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   overflow: hidden;
   border-radius: 2px;
   flex-shrink: 0;
-  cursor: pointer;
 }
 .about-img img {
   width: 100%; height: 100%;
   object-fit: cover;
   filter: brightness(1.1) contrast(0.92);
-  transition: transform 0.35s ease-out;
 }
-.about-img:hover img { transform: scale(1.02); }
 
 /* ── EVENT ── */
 #event { background: var(--bg); padding-top: 64px; }
@@ -568,8 +565,9 @@ footer {
   letter-spacing: 0.03em;
   white-space: nowrap;
   line-height: 1.5;
+  transition: color 0.2s;
 }
-.footer-nav-col a:hover { opacity: 0.6; }
+.footer-nav-col a:hover { color: var(--text); }
 .footer-copy {
   margin: 40px 0 0;
   padding: 24px 0;
