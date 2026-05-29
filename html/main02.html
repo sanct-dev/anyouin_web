@@ -280,6 +280,35 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 
 /* ── NEWS ── */
 #news { background: var(--bg); }
+.news-latest {
+  padding: 24px 28px;
+  margin-bottom: 56px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg2);
+}
+.news-latest-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+.news-latest-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.news-latest-date {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--sub);
+}
+.news-latest-body {
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
+  font-size: 15px;
+  line-height: 2;
+}
 .news-list { list-style: none; }
 .news-item {
   display: flex;
@@ -710,6 +739,13 @@ footer {
 <!-- ── NEWS ── -->
 <section id="news">
   <div class="inner">
+    <div class="news-latest">
+      <div class="news-latest-meta">
+        <span class="news-latest-label">最新のお知らせ</span>
+        <span class="news-latest-date">2026.05.20　10:00 更新</span>
+      </div>
+      <p class="news-latest-body">灯籠流しを行います。当日は18時より受付を開始いたします。</p>
+    </div>
     <div class="sec-hd">
       <div class="sec-en">News</div>
       <div class="sec-h2-wrap">
