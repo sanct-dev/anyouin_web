@@ -582,25 +582,32 @@ footer {
   /* News */
   .news-item { padding: 14px 0; }
 
+  /* Blob */
+  .sec-h2-blob { width: 40px; height: 50px; top: -20px; left: -12px; }
+  #about  .sec-h2-blob { left: 70%; }
+  #event  .sec-h2-blob { left: 10px; }
+  #access .sec-h2-blob { left: auto; right: -12px; }
+
   /* About */
   .about-layout { flex-direction: column; gap: 24px; }
   .about-img { width: 100%; flex: none; }
-  .about-text p:not(:first-child),
-  .about-text .btn-text { display: none; }
+  .about-text p:not(:first-child) { display: none; }
   .about-text p { font-size: 14px; }
 
-  /* Event: 4枚・2列・タイトルのみ */
+  /* Event: 4枚・2列・日時あり・説明なし */
   .event-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .event-card:nth-child(3),
   .event-card:nth-child(4) { display: none; }
-  .event-date, .event-desc, .event-card .btn-text { display: none; }
+  .event-desc, .event-card .btn-text { display: none; }
   .event-body { padding: 10px 12px 14px; }
   .event-title { font-size: 15px; }
 
-  /* Consul */
-  .consul-grid { grid-template-columns: 1fr; gap: 16px; }
-  .consul-card { padding: 28px 20px 24px; }
-  .consul-blob { width: 64px; height: 80px; margin-bottom: 16px; }
+  /* Consul: 3列 */
+  .consul-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .consul-card { padding: 20px 10px 18px; }
+  .consul-blob { width: 52px; height: 64px; margin-bottom: 12px; }
+  .consul-title { font-size: 14px; letter-spacing: 0.08em; }
+  .consul-desc { display: none; }
 
   /* Access */
   .access-layout { flex-direction: column; gap: 32px; }
