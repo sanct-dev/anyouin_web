@@ -495,6 +495,7 @@ footer {
   gap: 80px;
   align-items: flex-start;
 }
+/* footerの右側の列グループ（サイトマップ5列）をまとめて均等配置 */
 .footer-logo {
   flex-shrink: 0;
   display: flex;
@@ -536,7 +537,7 @@ footer {
 .footer-sns-link:hover { opacity: 1; }
 .footer-nav-group {
   display: flex;
-  gap: 48px;
+  justify-content: space-between;
   flex: 1;
   align-items: flex-start;
 }
@@ -561,21 +562,6 @@ footer {
   line-height: 1.5;
 }
 .footer-nav-col a:hover { opacity: 0.6; }
-.footer-sub {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  list-style: none;
-  flex-shrink: 0;
-  padding-top: 2px;
-}
-.footer-sub a {
-  font-size: 12px;
-  color: var(--sub);
-  text-decoration: none;
-  white-space: nowrap;
-}
-.footer-sub a:hover { opacity: 0.6; }
 .footer-copy {
   margin: 40px 0 0;
   padding: 24px 0;
@@ -961,15 +947,13 @@ footer {
         <li><a href="#">灯籠流し</a></li>
         <li><a href="#">大般若転読会</a></li>
       </ul>
+      <ul class="footer-nav-col">
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+        <li><a href="#">よくあるご質問</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+      </ul>
     </nav>
-
-    <!-- サブリンク -->
-    <ul class="footer-sub">
-      <li><a href="#access">アクセス</a></li>
-      <li><a href="#">お問い合わせ</a></li>
-      <li><a href="#">よくあるご質問</a></li>
-      <li><a href="#">プライバシーポリシー</a></li>
-    </ul>
 
   </div><!-- /.footer-inner -->
 
