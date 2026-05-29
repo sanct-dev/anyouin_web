@@ -121,9 +121,20 @@ nav a:hover { opacity: 1; color: var(--accent); text-decoration: underline; text
 /* ── FV ── */
 .fv {
   position: relative;
-  height: calc(88vh + 60px);
+  height: calc(88svh + 60px);
   overflow: hidden;
 }
+/* 初回ロード時のフェードイン用カバー（画像が読めたらJSでフェードアウト） */
+.fv-cover {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  z-index: 60;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 1.4s ease-out;
+}
+.fv.is-ready .fv-cover { opacity: 0; }
 
 /* 画像クロスフェード */
 .hero-img,
@@ -215,6 +226,12 @@ nav a:hover { opacity: 1; color: var(--accent); text-decoration: underline; text
   50%{opacity:0}76%{opacity:0}79%{opacity:0.7}85%{opacity:0.7}100%{opacity:0}
 }
 
+/* ドロップダウンナビ（SP）開閉アニメーション */
+@keyframes nav-drop {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ── WAVE ── */
 .wave { display: block; width: 100%; overflow: hidden; line-height: 0; margin-top: -2px; }
 .wave svg { display: block; width: 100%; }
@@ -301,7 +318,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: var(--sub);
+  color: var(--text);
 }
 .news-latest-body {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
@@ -321,7 +338,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .news-date {
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
-  color: var(--sub);
+  color: var(--text);
   letter-spacing: 0.08em;
   white-space: nowrap;
   flex-shrink: 0;
@@ -393,6 +410,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .event-title {
   font-family: '游ゴシック体', 'Yu Gothic', '游ゴシック', YuGothic, sans-serif;
   font-size: 18px;
+  font-weight: 400;
   letter-spacing: 0.12em;
   margin-bottom: 6px;
 }
@@ -405,9 +423,9 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 }
 .event-desc {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
-  font-size: 11px;
-  line-height: 1.7;
-  color: var(--sub);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
   margin-bottom: 4px;
 }
 
@@ -453,14 +471,15 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .consul-title {
   font-family: '游ゴシック体', 'Yu Gothic', '游ゴシック', YuGothic, sans-serif;
   font-size: 20px;
+  font-weight: 400;
   letter-spacing: 0.15em;
   margin-bottom: 12px;
 }
 .consul-desc {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 2;
-  color: var(--sub);
+  color: var(--text);
 }
 
 .consul-other {
@@ -477,14 +496,15 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .consul-other-title {
   font-family: '游ゴシック体', 'Yu Gothic', '游ゴシック', YuGothic, sans-serif;
   font-size: 20px;
+  font-weight: 400;
   letter-spacing: 0.15em;
   margin-bottom: 10px;
 }
 .consul-other-desc {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 2;
-  color: var(--sub);
+  color: var(--text);
 }
 
 /* ── ACCESS ── */
@@ -550,8 +570,8 @@ footer {
 .footer-logo-type   { width: 80px;  height: auto; }
 .footer-address {
   font-style: normal;
-  font-size: 12px;
-  color: var(--sub);
+  font-size: 14px;
+  color: var(--text);
   line-height: 1.9;
   letter-spacing: 0.03em;
 }
@@ -592,7 +612,7 @@ footer {
 }
 .footer-nav-col a {
   font-size: 12px;
-  color: var(--sub);
+  color: var(--text);
   text-decoration: none;
   letter-spacing: 0.03em;
   white-space: nowrap;
@@ -613,12 +633,33 @@ footer {
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   /* Nav */
-  .sitenav-inner { padding: 0 20px; }
-  nav { display: none; }
+  .sitenav-inner { padding: 0 20px; position: relative; }
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    margin-left: 0;
+    background: var(--header);
+    padding: 4px 20px 12px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+  }
+  .sitenav.is-open nav { display: flex; animation: nav-drop 0.25s ease-out; }
+  nav a {
+    font-size: 16px;
+    padding: 13px 2px;
+    border-bottom: 1px solid rgba(71,70,70,0.08);
+  }
+  nav a:last-child { border-bottom: none; }
   .hamburger { display: flex; margin-left: auto; }
+  .hamburger span { transition: transform 0.2s ease, opacity 0.2s ease; }
+  .sitenav.is-open .hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .sitenav.is-open .hamburger span:nth-child(2) { opacity: 0; }
+  .sitenav.is-open .hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
   /* FV */
-  .fv { height: calc(70vh + 60px); }
+  .fv { height: calc(70svh + 60px); }
   .hero-text { top: 36vh; }
   .hero-text h1 { font-size: 28px; letter-spacing: 0.3em; }
   .hero-monk { height: 36%; }
@@ -688,7 +729,7 @@ footer {
 <body>
 
 <!-- ── FV ── -->
-<div class="fv">
+<header class="fv">
 
   <div class="hero-img"></div>
   <div class="hero-img-alt"></div>
@@ -704,7 +745,7 @@ footer {
         <span class="logo-sub">天台宗　医王山</span>
         <span class="logo-ja">安養院</span>
       </a>
-      <nav>
+      <nav id="sitemenu" aria-label="メインメニュー">
         <a href="#about">安養院について</a>
         <a href="#event">年間行事</a>
         <a href="#consul">葬儀・法要</a>
@@ -712,7 +753,7 @@ footer {
         <a href="#consul">お墓</a>
         <a href="#access">アクセス</a>
       </nav>
-      <button class="hamburger" aria-label="メニュー">
+      <button class="hamburger" aria-label="メニューを開く" aria-controls="sitemenu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -729,7 +770,12 @@ footer {
   <img class="hero-leaf" src="../illust/otiba_yoko.svg" alt=""
     style="left:11%; bottom:6px; height:20px; transform:rotate(-12deg); animation:leaf-yoko2-anim 12s ease-in-out infinite;">
 
-</div>
+  <div class="fv-cover"></div>
+  <noscript><style>.fv-cover{display:none}</style></noscript>
+
+</header>
+
+<main>
 
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="background:var(--header)">
   <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="var(--bg)"/>
@@ -828,7 +874,7 @@ footer {
         <div class="event-img"><img src="../images/eventcard/お正月.jpg" alt="初詣"></div>
         <div class="event-body">
           <div class="event-date">1月1日</div>
-          <div class="event-title">初詣</div>
+          <h3 class="event-title">初詣</h3>
           <div class="event-desc">新年の始まりに、ご参拝ください。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
@@ -838,7 +884,7 @@ footer {
         <div class="event-img"><img src="../images/eventcard/ヤクドシマン_ぼかし.jpg" alt="節分会"></div>
         <div class="event-body">
           <div class="event-date">2月 第一日曜日</div>
-          <div class="event-title">節分会</div>
+          <h3 class="event-title">節分会</h3>
           <div class="event-desc">豆まき・厄除け祈願を行います。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
@@ -848,7 +894,7 @@ footer {
         <div class="event-img"><img src="../images/eventcard/天道念仏.JPG" alt="天道念仏"></div>
         <div class="event-body">
           <div class="event-date">2月10日</div>
-          <div class="event-title">天道念仏</div>
+          <h3 class="event-title">天道念仏</h3>
           <div class="event-desc">太陽を拝んで五穀の豊作を祈願します。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
@@ -858,7 +904,7 @@ footer {
         <div class="event-img"><img src="../images/eventcard/お盆.jpeg" alt="盂蘭盆会"></div>
         <div class="event-body">
           <div class="event-date">8月13日〜15日</div>
-          <div class="event-title">盂蘭盆会</div>
+          <h3 class="event-title">盂蘭盆会</h3>
           <div class="event-desc">ご先祖様をお迎えするお盆の法要。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
@@ -868,7 +914,7 @@ footer {
         <div class="event-img"><img src="../images/eventcard/灯籠流し 2.jpg" alt="灯籠流し"></div>
         <div class="event-body">
           <div class="event-date">8月16日</div>
-          <div class="event-title">灯籠流し</div>
+          <h3 class="event-title">灯籠流し</h3>
           <div class="event-desc">桃の木川でご先祖様を供養します。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
@@ -878,7 +924,7 @@ footer {
         <div class="event-img"><img src="../images/eventcard/大般若 2.JPG" alt="大般若転読会"></div>
         <div class="event-body">
           <div class="event-date">3年に1度</div>
-          <div class="event-title">大般若転読会</div>
+          <h3 class="event-title">大般若転読会</h3>
           <div class="event-desc">大般若経六百巻を転読し、国家安泰を祈ります。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
@@ -908,7 +954,7 @@ footer {
         <div class="consul-blob">
           <span class="consul-blob-ph">イラスト</span>
         </div>
-        <div class="consul-title">御祈願・厄除け</div>
+        <h3 class="consul-title">御祈願・厄除け</h3>
         <div class="consul-desc">各種御祈願・厄除けについてお気軽にご相談ください。</div>
         <a href="#" class="btn-text">詳しくみる ›</a>
       </div>
@@ -917,7 +963,7 @@ footer {
         <div class="consul-blob">
           <span class="consul-blob-ph">イラスト</span>
         </div>
-        <div class="consul-title">お葬式・法要</div>
+        <h3 class="consul-title">お葬式・法要</h3>
         <div class="consul-desc">葬儀・法事・年忌法要など、ご先祖様の供養についてご相談ください。</div>
         <a href="#" class="btn-text">詳しくみる ›</a>
       </div>
@@ -926,14 +972,14 @@ footer {
         <div class="consul-blob">
           <span class="consul-blob-ph">イラスト</span>
         </div>
-        <div class="consul-title">お墓</div>
+        <h3 class="consul-title">お墓</h3>
         <div class="consul-desc">墓地・永代供養墓・納骨堂についてのご相談を承っています。</div>
         <a href="#" class="btn-text">詳しくみる ›</a>
       </div>
 
     </div>
     <a href="contact.html" class="consul-other">
-      <div class="consul-other-title">その他のご相談</div>
+      <h3 class="consul-other-title">その他のご相談</h3>
       <div class="consul-other-desc">法要のこと、お墓のこと、人生のご相談も。お気軽にお声がけください。</div>
     </a>
   </div>
@@ -973,6 +1019,8 @@ footer {
     <a href="#" class="btn-text">詳しくみる ›</a>
   </div>
 </section>
+
+</main>
 
 <!-- ── FOOTER ── -->
 <footer>
@@ -1052,12 +1100,51 @@ footer {
 
 <script>
 (function () {
+  // ── FV：画像が読めたらカバーをふわっとフェードアウト ──
+  const fv = document.querySelector('.fv');
+  if (fv) {
+    const sources = ['../images/fv/niwa.jpg', '../images/fv/sakura.jpg'];
+    let settled = 0, done = false;
+    function reveal() { if (!done) { done = true; fv.classList.add('is-ready'); } }
+    sources.forEach(function (src) {
+      const im = new Image();
+      im.onload = im.onerror = function () { if (++settled >= sources.length) reveal(); };
+      im.src = src;
+    });
+    setTimeout(reveal, 3000); // 安全網：遅くても3秒で表示
+  }
+
   const nav = document.getElementById('sitenav');
   let trigger = nav.offsetTop;
   function onScroll() { nav.classList.toggle('is-sticky', window.scrollY >= trigger); }
   function onResize() { if (!nav.classList.contains('is-sticky')) trigger = nav.offsetTop; }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize, { passive: true });
+
+  // ── ハンバーガー（SP）ドロップダウン ──
+  const hamburger = nav.querySelector('.hamburger');
+  const menu = document.getElementById('sitemenu');
+  function setMenu(open) {
+    nav.classList.toggle('is-open', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  }
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setMenu(!nav.classList.contains('is-open'));
+  });
+  // メニュー内リンクをタップしたら閉じる
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setMenu(false);
+  });
+  // メニュー外タップで閉じる
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('is-open') && !nav.contains(e.target)) setMenu(false);
+  });
+  // Escで閉じる
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setMenu(false);
+  });
 }());
 </script>
 
