@@ -483,16 +483,67 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 }
 
 /* ── FOOTER ── */
-footer { background: var(--text); padding: 56px 24px 32px; position: relative; z-index: 1; }
-.footer-inner {
+footer { background: var(--text); position: relative; z-index: 1; }
+
+.footer-main-nav {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 36px 24px;
+}
+.footer-main-nav-inner {
   max-width: var(--w-wide);
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 64px;
-  padding-bottom: 40px;
+  gap: 48px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-main-nav a {
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  color: rgba(253,248,242,0.85);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-main-nav a:hover { color: var(--bg); }
+
+.footer-body {
+  max-width: var(--w-wide);
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+}
+
+.footer-sitemap {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 56px;
+  padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-sitemap-col { flex: 1; min-width: 0; }
+.footer-sitemap-cat {
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: rgba(253,248,242,0.75);
+  margin-bottom: 16px;
+}
+.footer-sitemap-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-sitemap-col ul li a {
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(253,248,242,0.45);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-sitemap-col ul li a::before { content: '— '; }
+.footer-sitemap-col ul li a:hover { color: rgba(253,248,242,0.8); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 .footer-logo-sub {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
@@ -515,23 +566,12 @@ footer { background: var(--text); padding: 56px 24px 32px; position: relative; z
   color: rgba(253,248,242,0.5);
   line-height: 2.2;
 }
-.footer-nav-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.footer-nav-list a {
-  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  color: rgba(253,248,242,0.6);
-  transition: color 0.15s;
-}
-.footer-nav-list a:hover { color: var(--bg); }
 .footer-copy {
-  max-width: var(--w-wide);
-  margin: 28px auto 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 9px;
   letter-spacing: 0.1em;
   color: rgba(253,248,242,0.25);
-  text-align: center;
+  text-align: right;
 }
 
 /* ── RESPONSIVE ── */
@@ -561,7 +601,11 @@ footer { background: var(--text); padding: 56px 24px 32px; position: relative; z
   .access-layout { flex-direction: column; gap: 32px; }
   .access-map { width: 100%; }
 
-  .footer-inner { flex-direction: column; gap: 32px; }
+  .footer-main-nav-inner { gap: 24px; }
+  .footer-main-nav a { font-size: 14px; }
+  .footer-sitemap { flex-wrap: wrap; gap: 32px; }
+  .footer-sitemap-col { min-width: calc(50% - 16px); }
+  .footer-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
 }
 </style>
 </head>
@@ -698,78 +742,60 @@ footer { background: var(--text); padding: 56px 24px 32px; position: relative; z
     <div class="event-grid">
 
       <div class="event-card">
-        <div class="event-img">
-          <img src="../02images/02eventcard/お正月.jpg" alt="初詣">
-        </div>
+        <div class="event-img"><img src="../02images/02eventcard/お正月.jpg" alt="初詣"></div>
         <div class="event-body">
-          <div class="event-month">January</div>
-          <div class="event-title">初詣</div>
           <div class="event-date">1月1日</div>
+          <div class="event-title">初詣</div>
           <div class="event-desc">新年の始まりに、ご参拝ください。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
       </div>
 
       <div class="event-card">
-        <div class="event-img">
-          <img src="../02images/02eventcard/ヤクドシマン_ぼかし.jpg" alt="節分会">
-        </div>
+        <div class="event-img"><img src="../02images/02eventcard/ヤクドシマン_ぼかし.jpg" alt="節分会"></div>
         <div class="event-body">
-          <div class="event-month">February</div>
-          <div class="event-title">節分会</div>
           <div class="event-date">2月 第一日曜日</div>
+          <div class="event-title">節分会</div>
           <div class="event-desc">豆まき・厄除け祈願を行います。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
       </div>
 
       <div class="event-card">
-        <div class="event-img">
-          <img src="../02images/02eventcard/天道念仏.JPG" alt="天道念仏">
-        </div>
+        <div class="event-img"><img src="../02images/02eventcard/天道念仏.JPG" alt="天道念仏"></div>
         <div class="event-body">
-          <div class="event-month">February</div>
-          <div class="event-title">天道念仏</div>
           <div class="event-date">2月10日</div>
+          <div class="event-title">天道念仏</div>
           <div class="event-desc">太陽を拝んで五穀の豊作を祈願します。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
       </div>
 
       <div class="event-card">
-        <div class="event-img">
-          <img src="../02images/02eventcard/お盆.jpeg" alt="盂蘭盆会">
-        </div>
+        <div class="event-img"><img src="../02images/02eventcard/お盆.jpeg" alt="盂蘭盆会"></div>
         <div class="event-body">
-          <div class="event-month">July</div>
-          <div class="event-title">盂蘭盆会</div>
           <div class="event-date">8月13日〜15日</div>
+          <div class="event-title">盂蘭盆会</div>
           <div class="event-desc">ご先祖様をお迎えするお盆の法要。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
       </div>
 
       <div class="event-card">
-        <div class="event-img">
-          <img src="../02images/02eventcard/灯籠流し 2.jpg" alt="灯籠流し">
-        </div>
+        <div class="event-img"><img src="../02images/02eventcard/灯籠流し 2.jpg" alt="灯籠流し"></div>
         <div class="event-body">
-          <div class="event-month">August</div>
-          <div class="event-title">灯籠流し</div>
           <div class="event-date">8月16日</div>
+          <div class="event-title">灯籠流し</div>
           <div class="event-desc">桃の木川でご先祖様を供養します。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
       </div>
 
       <div class="event-card">
-        <div class="event-img">
-          <img src="../02images/02eventcard/大般若 2.JPG" alt="大般若転読会">
-        </div>
+        <div class="event-img"><img src="../02images/02eventcard/大般若 2.JPG" alt="大般若転読会"></div>
         <div class="event-body">
-          <div class="event-month">December</div>
-          <div class="event-title">大般若転読会</div>
           <div class="event-date">3年に1度</div>
+          <div class="event-title">大般若転読会</div>
           <div class="event-desc">大般若経六百巻を転読し、国家安泰を祈ります。</div>
           <a href="#" class="btn-text">詳しくみる ›</a>
         </div>
@@ -857,30 +883,84 @@ footer { background: var(--text); padding: 56px 24px 32px; position: relative; z
         <span class="access-map-ph">Google Map</span>
       </div>
     </div>
+    <a href="#" class="btn-text">詳しくみる ›</a>
   </div>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo-sub">天台宗　医王山</div>
-      <div class="footer-logo">安養院</div>
-      <div class="footer-info">
-        〒333-0846 埼玉県川口市南鳩ヶ谷8丁目<br>
-        Tel. 048-000-0000
+
+  <!-- メインナビ -->
+  <div class="footer-main-nav">
+    <div class="footer-main-nav-inner">
+      <a href="#about">安養院について</a>
+      <a href="#event">年間行事</a>
+      <a href="#consul">葬儀・法要</a>
+      <a href="#consul">御祈願・厄除け</a>
+      <a href="#consul">お墓</a>
+      <a href="#access">アクセス</a>
+    </div>
+  </div>
+
+  <!-- サイトマップ＋ボトム -->
+  <div class="footer-body">
+
+    <div class="footer-sitemap">
+      <div class="footer-sitemap-col">
+        <div class="footer-sitemap-cat">安養院について</div>
+        <ul>
+          <li><a href="#">歴史</a></li>
+          <li><a href="#">仏像</a></li>
+          <li><a href="#">取り組み</a></li>
+        </ul>
+      </div>
+      <div class="footer-sitemap-col">
+        <div class="footer-sitemap-cat">年間行事</div>
+        <ul>
+          <li><a href="#">初詣</a></li>
+          <li><a href="#">節分会</a></li>
+          <li><a href="#">天道念仏</a></li>
+          <li><a href="#">お盆</a></li>
+          <li><a href="#">灯籠流し</a></li>
+          <li><a href="#">大般若転読会</a></li>
+        </ul>
+      </div>
+      <div class="footer-sitemap-col">
+        <div class="footer-sitemap-cat">葬儀・法要</div>
+        <ul>
+          <li><a href="#">葬儀について</a></li>
+          <li><a href="#">法要について</a></li>
+        </ul>
+      </div>
+      <div class="footer-sitemap-col">
+        <div class="footer-sitemap-cat">御祈願・厄除け</div>
+        <ul>
+          <li><a href="#">各種御祈願</a></li>
+          <li><a href="#">厄年供養</a></li>
+          <li><a href="#">お守り・お札</a></li>
+        </ul>
+      </div>
+      <div class="footer-sitemap-col">
+        <div class="footer-sitemap-cat">お墓</div>
+        <ul>
+          <li><a href="#">安養院の４つのお墓</a></li>
+        </ul>
       </div>
     </div>
-    <ul class="footer-nav-list">
-      <li><a href="#about">安養院について</a></li>
-      <li><a href="#event">年間行事</a></li>
-      <li><a href="#consul">葬儀・法要</a></li>
-      <li><a href="#consul">御祈願・厄除け</a></li>
-      <li><a href="#consul">お墓</a></li>
-      <li><a href="#access">アクセス</a></li>
-    </ul>
+
+    <div class="footer-bottom">
+      <div>
+        <div class="footer-logo-sub">天台宗　医王山</div>
+        <div class="footer-logo">安養院</div>
+        <div class="footer-info">
+          〒333-0846 埼玉県川口市南鳩ヶ谷8丁目<br>
+          Tel. 048-000-0000
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 天台宗 医王山 安養院 All rights reserved.</p>
+    </div>
+
   </div>
-  <p class="footer-copy">© 2026 天台宗 医王山 安養院 All rights reserved.</p>
 </footer>
 
 <script>
