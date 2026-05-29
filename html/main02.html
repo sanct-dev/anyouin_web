@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安養院 — 正覚山 安養院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hannari&family=Shippori+Mincho:wght@400;500&family=Kosugi+Maru&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* ── Variables ── */
+:root {
+  --bg:       #F9EEE1;
+  --bg-white: #FFFFFF;
+  --header:   #EAB8AC;
+  --accent:   #6D0F0F;
+  --text:     #474646;
+  --sub:      #8A8178;
+  --mint:     #D8EFED;
+  --border:   #E5DDD0;
+  --w-content: 780px;
+  --w-wide:    1100px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Shippori Mincho', '游明朝体', serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 2.1;
+  letter-spacing: 0.05em;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ── Header ── */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--header);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.header-inner {
+  max-width: var(--w-wide);
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+.logo-ja {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  color: var(--text);
+  line-height: 1.2;
+}
+.logo-en {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  opacity: 0.65;
+}
+nav {
+  display: flex;
+  gap: 28px;
+}
+nav a {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+nav a:hover { opacity: 1; }
+.header-cta {
+  background: var(--accent);
+  color: white;
+  padding: 9px 22px;
+  border-radius: 2px;
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.header-cta:hover { opacity: 0.85; }
+
+/* ── FV ── */
+.fv {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+}
+.fv-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+.fv-slide.active { opacity: 1; }
+.fv-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.12) contrast(0.9) saturate(1.05);
+}
+.fv-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(249,238,225,0.12) 0%,
+    rgba(249,238,225,0.05) 40%,
+    rgba(249,238,225,0.3) 100%
+  );
+  z-index: 2;
+}
+.fv-content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.fv-title {
+  font-family: 'Hannari', 'Shippori Mincho', serif;
+  font-size: clamp(48px, 7vw, 80px);
+  letter-spacing: 0.55em;
+  color: var(--text);
+  text-shadow: 0 2px 32px rgba(249,238,225,0.9);
+}
+.fv-sub {
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--sub);
+  text-shadow: 0 1px 16px rgba(249,238,225,1);
+}
+.fv-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.fv-scroll span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--sub);
+}
+.fv-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--sub), transparent);
+  animation: scrollline 2s ease-in-out infinite;
+}
+@keyframes scrollline {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+/* 和尚イラスト */
+.fv-illust {
+  position: absolute;
+  bottom: 0;
+  right: 8%;
+  z-index: 4;
+  width: 180px;
+}
+.fv-illust-placeholder {
+  width: 110px;
+  height: 220px;
+  margin: 0 auto;
+  background: rgba(249,238,225,0.35);
+  border: 1px dashed rgba(71,70,70,0.18);
+  border-radius: 55px 55px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fv-illust-placeholder span {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 9px;
+  color: rgba(71,70,70,0.35);
+  letter-spacing: 0.08em;
+  writing-mode: vertical-rl;
+}
+
+/* 花びら */
+.petals {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+.petal {
+  position: absolute;
+  top: -20px;
+  animation: petalfall linear infinite;
+}
+@keyframes petalfall {
+  0%   { transform: translateY(-20px) rotate(0deg) translateX(0); opacity: 0; }
+  8%   { opacity: 0.75; }
+  88%  { opacity: 0.55; }
+  100% { transform: translateY(102svh) rotate(420deg) translateX(40px); opacity: 0; }
+}
+
+/* ── Section Common ── */
+.sec {
+  padding: 100px 48px;
+}
+.sec-white { background: var(--bg-white); }
+.sec-inner { max-width: var(--w-content); margin: 0 auto; }
+.sec-inner-wide { max-width: var(--w-wide); margin: 0 auto; }
+.sec-inner-mid { max-width: 1000px; margin: 0 auto; }
+
+.sec-hd { margin-bottom: 48px; }
+.sec-en {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--sub);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.sec-h2-wrap {
+  position: relative;
+  display: inline-block;
+}
+.sec-h2-circle {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--mint);
+  top: -10px;
+  left: -14px;
+  z-index: 0;
+}
+.sec-h2 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── News ── */
+.news-list { list-style: none; }
+.news-item {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.news-date {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: var(--sub);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.news-tag {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 10px;
+  padding: 2px 10px;
+  background: var(--mint);
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.news-title {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+.news-more {
+  display: inline-block;
+  margin-top: 32px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+/* ── About ── */
+.about-layout {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+}
+.about-text { flex: 1; }
+.about-text p { margin-bottom: 1.4em; }
+.about-img {
+  flex: 1;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.1) contrast(0.92);
+}
+
+/* ── Event ── */
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.event-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+}
+.event-card:hover {
+  box-shadow: 0 4px 20px rgba(71,70,70,0.1);
+  transform: translateY(-3px);
+}
+.event-img {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.event-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease-out;
+}
+.event-card:hover .event-img img { transform: scale(1.04); }
+.event-img-placeholder {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 10px;
+  color: var(--sub);
+  letter-spacing: 0.1em;
+}
+.event-body { padding: 20px 20px 24px; }
+.event-month {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--sub);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.event-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.event-desc {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--sub);
+  letter-spacing: 0.04em;
+}
+
+/* ── ご相談 ── */
+.consul-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.consul-card {
+  text-align: center;
+  padding: 40px 24px 36px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+}
+.consul-illust {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 28px;
+  background: var(--mint);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.consul-illust-label {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 9px;
+  color: var(--sub);
+  letter-spacing: 0.08em;
+}
+.consul-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.consul-desc {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 12px;
+  line-height: 2;
+  color: var(--sub);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+.consul-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  background: var(--accent);
+  color: white;
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  transition: opacity 0.2s;
+}
+.consul-btn:hover { opacity: 0.82; }
+
+/* ── Access ── */
+.access-layout {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+}
+.access-info { flex: 1; }
+.access-dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; }
+.access-dt {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--sub);
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+.access-dd { font-size: 14px; line-height: 2; margin-bottom: 8px; }
+.access-map {
+  flex: 1;
+  aspect-ratio: 4/3;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.access-map-placeholder {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 11px;
+  color: var(--sub);
+  letter-spacing: 0.1em;
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--text);
+  padding: 56px 48px 32px;
+}
+.footer-inner {
+  max-width: var(--w-wide);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 64px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-logo {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 22px;
+  letter-spacing: 0.35em;
+  color: var(--bg);
+  margin-bottom: 16px;
+}
+.footer-info {
+  font-family: 'Kosugi Maru', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(249,238,225,0.55);
+  line-height: 2.2;
+}
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-nav a {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: rgba(249,238,225,0.65);
+  transition: color 0.15s;
+}
+.footer-nav a:hover { color: var(--bg); }
+.footer-copy {
+  max-width: var(--w-wide);
+  margin: 28px auto 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(249,238,225,0.3);
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-ja">安養院</span>
+      <span class="logo-en">Anyoin Buddhist Temple</span>
+    </a>
+    <nav>
+      <a href="#about">安養院について</a>
+      <a href="#event">年間行事</a>
+      <a href="#consul">ご相談</a>
+      <a href="#access">アクセス</a>
+    </nav>
+    <a href="#consul" class="header-cta">お問い合わせ</a>
+  </div>
+</header>
+
+<!-- ── FV ── -->
+<div class="fv" id="fv">
+
+  <!-- スライド画像 -->
+  <div class="fv-slide active">
+    <img src="../02images/02fv/sakura.jpg" alt="安養院 枝垂れ桜と本堂">
+  </div>
+  <div class="fv-slide">
+    <img src="../02images/02fv/niwa.jpg" alt="安養院 境内の庭">
+  </div>
+
+  <!-- ベール -->
+  <div class="fv-veil"></div>
+
+  <!-- テキスト -->
+  <div class="fv-content">
+    <div class="fv-title">安養院</div>
+    <div class="fv-sub">静かな、縁側へ。</div>
+  </div>
+
+  <!-- スクロール誘導 -->
+  <div class="fv-scroll">
+    <div class="fv-scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+
+  <!-- 和尚イラスト（素材が揃い次第 img に差し替え） -->
+  <div class="fv-illust">
+    <div class="fv-illust-placeholder">
+      <span>和尚イラスト</span>
+    </div>
+  </div>
+
+  <!-- 花びら -->
+  <div class="petals" id="petals"></div>
+
+</div>
+
+<!-- ── NEWS ── -->
+<section class="sec" id="news">
+  <div class="sec-inner">
+    <div class="sec-hd">
+      <div class="sec-en">News</div>
+      <div class="sec-h2-wrap">
+        <div class="sec-h2-circle"></div>
+        <h2 class="sec-h2">お知らせ</h2>
+      </div>
+    </div>
+    <ul class="news-list">
+      <li class="news-item">
+        <span class="news-date">2026.05.20</span>
+        <span class="news-tag">お知らせ</span>
+        <span class="news-title">灯籠流しを行います</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2026.05.10</span>
+        <span class="news-tag">お知らせ</span>
+        <span class="news-title">新盆供養について</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2026.04.28</span>
+        <span class="news-tag">行事</span>
+        <span class="news-title">お盆迎えの時間について</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">2026.04.10</span>
+        <span class="news-tag">お知らせ</span>
+        <span class="news-title">春彼岸法要を終えて</span>
+      </li>
+    </ul>
+    <a href="#" class="news-more">一覧を見る →</a>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="sec sec-white" id="about">
+  <div class="sec-inner-mid">
+    <div class="sec-hd">
+      <div class="sec-en">About</div>
+      <div class="sec-h2-wrap">
+        <div class="sec-h2-circle"></div>
+        <h2 class="sec-h2">安養院について</h2>
+      </div>
+    </div>
+    <div class="about-layout">
+      <div class="about-text">
+        <p>安養院は埼玉県川口市に位置する、浄土宗の寺院です。</p>
+        <p>地域の皆さまにとって「いつでも立ち寄れる場所」であることを大切にしています。法要・供養のご相談から、地域行事まで。敷居の高さを感じることなく、お気軽にお越しください。</p>
+        <p>一人で来て、一人で帰れる。そんな場所でありたいと思っています。</p>
+      </div>
+      <div class="about-img">
+        <img src="../02images/02fv/sakura.jpg" alt="安養院 境内の枝垂れ桜">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EVENT ── -->
+<section class="sec" id="event">
+  <div class="sec-inner-wide">
+    <div class="sec-hd">
+      <div class="sec-en">Annual Events</div>
+      <div class="sec-h2-wrap">
+        <div class="sec-h2-circle"></div>
+        <h2 class="sec-h2">年間行事</h2>
+      </div>
+    </div>
+    <div class="event-grid">
+
+      <div class="event-card">
+        <div class="event-img">
+          <img src="../02images/02fv/fv01_sakura.jpg" alt="春彼岸法要">
+        </div>
+        <div class="event-body">
+          <div class="event-month">March</div>
+          <div class="event-title">春彼岸法要</div>
+          <div class="event-desc">春のお彼岸にご先祖様の供養を行います。</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-img">
+          <img src="../02images/02fv/fv03_hondou.jpeg" alt="花まつり">
+        </div>
+        <div class="event-body">
+          <div class="event-month">April</div>
+          <div class="event-title">花まつり</div>
+          <div class="event-desc">お釈迦様の誕生をお祝いする春の行事。</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-img">
+          <span class="event-img-placeholder">画像準備中</span>
+        </div>
+        <div class="event-body">
+          <div class="event-month">July</div>
+          <div class="event-title">盂蘭盆会</div>
+          <div class="event-desc">ご先祖様をお迎えするお盆の法要。</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-img">
+          <span class="event-img-placeholder">画像準備中</span>
+        </div>
+        <div class="event-body">
+          <div class="event-month">August</div>
+          <div class="event-title">灯籠流し</div>
+          <div class="event-desc">夏の夜、灯籠を川に流してご供養します。</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-img">
+          <span class="event-img-placeholder">画像準備中</span>
+        </div>
+        <div class="event-body">
+          <div class="event-month">September</div>
+          <div class="event-title">秋彼岸法要</div>
+          <div class="event-desc">秋のお彼岸にご先祖様の供養を行います。</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-img">
+          <img src="../02images/02fv/IMG_6123.jpg" alt="節分会">
+        </div>
+        <div class="event-body">
+          <div class="event-month">February</div>
+          <div class="event-title">節分会</div>
+          <div class="event-desc">豆まきで一年の無病息災を祈ります。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ご相談 ── -->
+<section class="sec sec-white" id="consul">
+  <div class="sec-inner-mid">
+    <div class="sec-hd">
+      <div class="sec-en">Consultation</div>
+      <div class="sec-h2-wrap">
+        <div class="sec-h2-circle"></div>
+        <h2 class="sec-h2">ご相談</h2>
+      </div>
+    </div>
+    <div class="consul-grid">
+
+      <div class="consul-card">
+        <div class="consul-illust">
+          <span class="consul-illust-label">イラスト</span>
+        </div>
+        <div class="consul-title">法要・供養</div>
+        <div class="consul-desc">葬儀・法事・年忌法要など、ご先祖様の供養についてお気軽にご相談ください。</div>
+        <a href="#" class="consul-btn">相談する</a>
+      </div>
+
+      <div class="consul-card">
+        <div class="consul-illust">
+          <span class="consul-illust-label">イラスト</span>
+        </div>
+        <div class="consul-title">永代供養・納骨</div>
+        <div class="consul-desc">墓地・永代供養墓・納骨堂についてのご相談を承っています。</div>
+        <a href="#" class="consul-btn">相談する</a>
+      </div>
+
+      <div class="consul-card">
+        <div class="consul-illust">
+          <span class="consul-illust-label">イラスト</span>
+        </div>
+        <div class="consul-title">その他のご相談</div>
+        <div class="consul-desc">地域の方のお悩みや、寺院へのご質問など、何でもお声がけください。</div>
+        <a href="#" class="consul-btn">相談する</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ACCESS ── -->
+<section class="sec" id="access">
+  <div class="sec-inner-mid">
+    <div class="sec-hd">
+      <div class="sec-en">Access</div>
+      <div class="sec-h2-wrap">
+        <div class="sec-h2-circle"></div>
+        <h2 class="sec-h2">アクセス</h2>
+      </div>
+    </div>
+    <div class="access-layout">
+      <div class="access-info">
+        <dl class="access-dl">
+          <dt class="access-dt">Address</dt>
+          <dd class="access-dd">〒333-0846<br>埼玉県川口市南鳩ヶ谷8丁目</dd>
+          <dt class="access-dt">Tel</dt>
+          <dd class="access-dd">048-000-0000</dd>
+          <dt class="access-dt">交通</dt>
+          <dd class="access-dd">埼玉高速鉄道「南鳩ヶ谷駅」より徒歩○分<br>駐車場あり</dd>
+          <dt class="access-dt">時間</dt>
+          <dd class="access-dd">9:00〜17:00（要事前連絡）</dd>
+        </dl>
+      </div>
+      <div class="access-map">
+        <span class="access-map-placeholder">Google Map</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">安養院</div>
+      <div class="footer-info">
+        浄土宗　正覚山 安養院<br>
+        〒333-0846 埼玉県川口市南鳩ヶ谷8丁目<br>
+        Tel. 048-000-0000
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <a href="#about">安養院について</a>
+      <a href="#event">年間行事</a>
+      <a href="#consul">ご相談</a>
+      <a href="#access">アクセス</a>
+      <a href="#">お問い合わせ</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© 2026 安養院 All rights reserved.</p>
+</footer>
+
+<script>
+// ── FV スライドショー ──
+(function () {
+  const slides = document.querySelectorAll('.fv-slide');
+  let current = 0;
+  setInterval(function () {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 6000);
+}());
+
+// ── 花びら生成 ──
+(function () {
+  const container = document.getElementById('petals');
+  const colors = ['#F5C1CB', '#F2B8C6', '#EDAFC0', '#F7CDD4', '#EEA8BB'];
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 10 + Math.random() * 8;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    p.innerHTML = `<svg width="${size}" height="${size * 0.75}" viewBox="0 0 20 15" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="10" cy="7.5" rx="9" ry="6" fill="${color}" opacity="0.82" transform="rotate(-15 10 7.5)"/>
+    </svg>`;
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.animationDuration = (9 + Math.random() * 8) + 's';
+    p.style.animationDelay = '-' + (Math.random() * 12) + 's';
+    container.appendChild(p);
+  }
+}());
+</script>
+
+</body>
+</html>
