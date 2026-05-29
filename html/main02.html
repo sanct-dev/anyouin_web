@@ -436,11 +436,16 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 }
 
 .consul-other {
+  display: block;
   margin-top: 40px;
   padding-top: 32px;
   border-top: 1px solid var(--border);
   text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease-out;
 }
+.consul-other:hover { opacity: 0.7; }
 .consul-other-title {
   font-family: '游ゴシック体', 'Yu Gothic', '游ゴシック', YuGothic, sans-serif;
   font-size: 20px;
@@ -889,10 +894,10 @@ footer {
       </div>
 
     </div>
-    <div class="consul-other">
+    <a href="contact.html" class="consul-other">
       <div class="consul-other-title">その他のご相談</div>
       <div class="consul-other-desc">上記以外のことでも、どうぞお気軽にお声がけください。</div>
-    </div>
+    </a>
   </div>
 </section>
 
