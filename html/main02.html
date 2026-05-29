@@ -436,14 +436,23 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 }
 
 .consul-other {
-  margin-top: 32px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
   text-align: center;
+}
+.consul-other-title {
   font-family: '游ゴシック体', 'Yu Gothic', '游ゴシック', YuGothic, sans-serif;
   font-size: 20px;
-  color: var(--sub);
   letter-spacing: 0.15em;
+  margin-bottom: 10px;
 }
-.consul-other:hover { color: var(--accent); cursor: pointer; }
+.consul-other-desc {
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
+  font-size: 12px;
+  line-height: 2;
+  color: var(--sub);
+}
 
 /* ── ACCESS ── */
 #access { background: var(--bg); padding-top: 64px; }
@@ -880,7 +889,10 @@ footer {
       </div>
 
     </div>
-    <p class="consul-other">その他のご相談もお気軽にどうぞ ›</p>
+    <div class="consul-other">
+      <div class="consul-other-title">その他のご相談</div>
+      <div class="consul-other-desc">上記以外のことでも、どうぞお気軽にお声がけください。</div>
+    </div>
   </div>
 </section>
 
