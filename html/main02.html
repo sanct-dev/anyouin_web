@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>安養院 — 天台宗 医王山 安養院</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Hannari&family=Kiwi+Maru:wght@400;500&family=Yomogi&family=Shippori+Mincho:wght@400;500&family=Kosugi+Maru&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hannari&family=Kiwi+Maru:wght@400;500&family=Shippori+Mincho:wght@400;500&family=Kosugi+Maru&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
 
 /* ── Variables ── */
@@ -72,7 +72,7 @@ a { text-decoration: none; color: inherit; }
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 32px;
 }
 /* ロゴ：スクロール後だけ表示 */
@@ -98,7 +98,7 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.28em;
   color: var(--accent);
 }
-nav { display: flex; gap: 28px; align-items: center; }
+nav { display: flex; gap: 28px; align-items: center; margin-left: auto; }
 nav a {
   font-family: 'Kosugi Maru', sans-serif;
   font-size: 14px;
@@ -244,7 +244,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .inner-wide { max-width: var(--w-wide); margin: 0 auto; }
 
 /* セクションヘッダー */
-.sec-hd { margin-bottom: 80px; text-align: center; }
+.sec-hd { margin-bottom: 96px; text-align: center; }
 .sec-en {
   font-family: 'Montserrat', sans-serif;
   font-size: 9px;
@@ -268,10 +268,10 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   z-index: 0;
 }
 .sec-h2 {
-  font-family: 'Yomogi', sans-serif;
-  font-size: 22px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 32px;
   font-weight: 400;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   color: var(--text);
   position: relative;
   z-index: 1;
@@ -586,10 +586,11 @@ footer { background: var(--text); padding: 56px 24px 32px; position: relative; z
         <span class="logo-ja">安養院</span>
       </a>
       <nav>
-        <a href="#news">お知らせ</a>
         <a href="#about">安養院について</a>
         <a href="#event">年間行事</a>
-        <a href="#consul">ご相談</a>
+        <a href="#consul">葬儀・法要</a>
+        <a href="#consul">御祈願・厄除け</a>
+        <a href="#consul">お墓</a>
         <a href="#access">アクセス</a>
       </nav>
       <button class="hamburger" aria-label="メニュー">
@@ -864,10 +865,11 @@ footer { background: var(--text); padding: 56px 24px 32px; position: relative; z
       </div>
     </div>
     <ul class="footer-nav-list">
-      <li><a href="#news">お知らせ</a></li>
       <li><a href="#about">安養院について</a></li>
       <li><a href="#event">年間行事</a></li>
-      <li><a href="#consul">ご相談</a></li>
+      <li><a href="#consul">葬儀・法要</a></li>
+      <li><a href="#consul">御祈願・厄除け</a></li>
+      <li><a href="#consul">お墓</a></li>
       <li><a href="#access">アクセス</a></li>
     </ul>
   </div>
