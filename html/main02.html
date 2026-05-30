@@ -376,9 +376,9 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   overflow: hidden;
   transition: background 0.2s ease-out, box-shadow 0.2s ease-out, transform 0.2s ease-out;
 }
-/* 通常は白を敷かず地色のまま。ホバーで淡い暖色カードがふわっと実体化 */
+/* 通常は白を敷かず地色のまま。ホバーで白カード+淡い影+浮きが実体化（色差より影と動きでフィードバック） */
 .event-card:hover {
-  background: var(--header);
+  background: var(--bg2);
   box-shadow: 0 4px 20px rgba(71,70,70,0.08);
   transform: translateY(-2px);
 }
@@ -445,8 +445,10 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   background: transparent;
   transition: none;
 }
-/* 面を動かさず、タイトルだけ朱色に（ニュース一覧と同じ作法） */
-.consul-card:hover .consul-title { color: var(--accent); }
+/* ブロブ（将来はイラスト）がふわっと浮く */
+.consul-card:hover .consul-blob {
+  transform: rotate(-10deg) translateY(-6px);
+}
 
 /* ご相談ブロブ：グレー */
 .consul-blob {
@@ -459,6 +461,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.25s ease-out;
 }
 .consul-blob img { width: 64px; height: 64px; object-fit: contain; transform: rotate(10deg); }
 .consul-blob-ph {
