@@ -376,10 +376,10 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   overflow: hidden;
   transition: background 0.2s ease-out, box-shadow 0.2s ease-out, transform 0.2s ease-out;
 }
-/* 通常は白を敷かず地色のまま。ホバーで白カードがふわっと実体化 */
+/* 通常は白を敷かず地色のまま。ホバーで淡い暖色カードがふわっと実体化 */
 .event-card:hover {
-  background: var(--bg2);
-  box-shadow: 0 4px 20px rgba(71,70,70,0.1);
+  background: var(--header);
+  box-shadow: 0 4px 20px rgba(71,70,70,0.08);
   transform: translateY(-2px);
 }
 .event-img {
@@ -442,13 +442,11 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   text-align: center;
   padding: 40px 24px 36px;
   border-radius: 4px;
-  background: var(--bg);
-  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+  background: transparent;
+  transition: none;
 }
-.consul-card:hover {
-  box-shadow: 0 4px 20px rgba(71,70,70,0.1);
-  transform: translateY(-2px);
-}
+/* 面を動かさず、タイトルだけ朱色に（ニュース一覧と同じ作法） */
+.consul-card:hover .consul-title { color: var(--accent); }
 
 /* ご相談ブロブ：グレー */
 .consul-blob {
@@ -471,11 +469,12 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   transform: rotate(10deg);
 }
 .consul-title {
-  font-family: '游ゴシック体', 'Yu Gothic', '游ゴシック', YuGothic, sans-serif;
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.15em;
   margin-bottom: 12px;
+  transition: color 0.15s;
 }
 .consul-desc {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
@@ -496,7 +495,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 }
 .consul-other:hover { opacity: 0.7; }
 .consul-other-title {
-  font-family: '游ゴシック体', 'Yu Gothic', '游ゴシック', YuGothic, sans-serif;
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.15em;
