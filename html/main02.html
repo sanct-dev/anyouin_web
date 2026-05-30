@@ -372,23 +372,22 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 }
 .event-card {
   background: transparent;
-  border-radius: 4px;
-  overflow: hidden;
-  transition: background 0.2s ease-out, box-shadow 0.2s ease-out, transform 0.2s ease-out;
 }
-/* 通常は白を敷かず地色のまま。ホバーで白カード+淡い影+浮きが実体化（色差より影と動きでフィードバック） */
-.event-card:hover {
-  background: var(--bg2);
-  box-shadow: 0 4px 20px rgba(71,70,70,0.08);
-  transform: translateY(-2px);
+/* ホバー: カードは白くせず、画像だけが少し浮いて・わずかに明るくなる */
+.event-card:hover .event-img {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(51,50,49,0.14);
+  filter: brightness(1.05);
 }
 .event-img {
   aspect-ratio: 16/9;
   overflow: hidden;
+  border-radius: 4px;
   background: var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, filter 0.25s ease-out;
 }
 .event-img img {
   width: 100%; height: 100%;
