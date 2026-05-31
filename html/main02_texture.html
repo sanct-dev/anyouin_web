@@ -576,7 +576,7 @@ footer {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 22px;
   width: 190px;
 }
@@ -584,10 +584,13 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
-.footer-logo-symbol { width: 78px; height: auto; }
-.footer-logo-type   { width: 80px;  height: auto; }
+.footer-logo-symbol  { width: 72px; height: auto; }
+.footer-logo-text    { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.footer-logo-sub     { display: flex; align-items: center; gap: 6px; }
+.footer-logo-sub-img { height: 10px; width: auto; opacity: 0.75; }
+.footer-logo-type    { height: 22px; width: auto; }
 .footer-address {
   font-style: normal;
   font-size: 14px;
@@ -1062,16 +1065,14 @@ footer {
     <!-- ロゴ・住所 -->
     <div class="footer-logo">
       <div class="footer-logo-imgs">
-        <!-- ロゴ画像が揃ったら img タグに差し替え -->
-        <svg class="footer-logo-symbol" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="39" cy="39" r="37" stroke="#6D0F0F" stroke-width="1.5" fill="none" opacity="0.2"/>
-          <circle cx="39" cy="27" r="10" fill="#6D0F0F" opacity="0.7"/>
-          <path d="M22 58 Q39 44 56 58" stroke="#6D0F0F" stroke-width="1.5" fill="none" opacity="0.7" stroke-linecap="round"/>
-          <path d="M17 58 Q39 46 61 58" stroke="#6D0F0F" stroke-width="1" fill="none" opacity="0.3" stroke-linecap="round"/>
-        </svg>
-        <svg class="footer-logo-type" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" font-family="'游明朝体','Yu Mincho',serif" font-size="18" letter-spacing="6" fill="#474646">安養院</text>
-        </svg>
+        <img src="../images/logo/本堂イラスト.svg" class="footer-logo-symbol" alt="">
+        <div class="footer-logo-text">
+          <div class="footer-logo-sub">
+            <img src="../images/logo/天台宗オブジェクト（変更禁止）.svg" class="footer-logo-sub-img" alt="天台宗">
+            <img src="../images/logo/医王山オブジェクト（変更禁止）.svg" class="footer-logo-sub-img" alt="医王山">
+          </div>
+          <img src="../images/logo/安養院オブジェクト（変更禁止）.svg" class="footer-logo-type" alt="安養院">
+        </div>
       </div>
       <address class="footer-address">
         〒379-2115<br>群馬県前橋市笂井町1164番地
