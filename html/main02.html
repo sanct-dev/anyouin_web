@@ -44,8 +44,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+  opacity: 1;
 }
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
@@ -296,7 +296,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .btn-text:hover { opacity: 0.75; }
 
 /* ── NEWS ── */
-#news { background: var(--bg); }
+#news { background: transparent; }
 .news-latest {
   max-width: var(--w);
   margin: 0 auto 80px;
@@ -347,7 +347,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .news-title { font-size: 15px; letter-spacing: 0.05em; }
 
 /* ── ABOUT ── */
-#about { background: var(--bg2); padding-top: 64px; }
+#about { background: transparent; padding-top: 64px; }
 .about-layout { display: flex; gap: 64px; align-items: center; }
 .about-text { flex: 1; }
 .about-text p { margin-bottom: 2em; }
@@ -361,10 +361,12 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .about-img img {
   width: 100%; height: 100%;
   object-fit: cover;
+  opacity: 0.88;
+  mix-blend-mode: multiply;
 }
 
 /* ── EVENT ── */
-#event { background: var(--bg); padding-top: 64px; }
+#event { background: transparent; padding-top: 64px; }
 .event-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -392,6 +394,8 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .event-img img {
   width: 100%; height: 100%;
   object-fit: cover;
+  opacity: 0.88;
+  mix-blend-mode: multiply;
 }
 .event-img-ph {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
@@ -431,7 +435,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 }
 
 /* ── ご相談 ── */
-#consul { background: var(--bg2); padding-top: 64px; }
+#consul { background: transparent; padding-top: 64px; }
 .consul-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -511,7 +515,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 }
 
 /* ── ACCESS ── */
-#access { background: var(--bg); padding-top: 64px; }
+#access { background: transparent; padding-top: 64px; }
 .access-layout { display: flex; gap: 64px; align-items: flex-start; }
 .access-info { flex: 1; }
 .access-dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 20px; }
