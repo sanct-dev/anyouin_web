@@ -90,7 +90,10 @@ a { text-decoration: none; color: inherit; }
 }
 .sitenav.is-sticky .logo { opacity: 1; pointer-events: auto; }
 .logo-symbol { height: 36px; width: auto; }
-.logo-type   { height: 28px; width: auto; }
+.logo-text   { display: flex; flex-direction: column; gap: 2px; }
+.logo-text-sub { display: flex; align-items: center; gap: 6px; }
+.logo-sub-img { height: 10px; width: auto; opacity: 0.75; }
+.logo-type    { height: 22px; width: auto; }
 nav { display: flex; gap: 28px; align-items: center; margin-left: auto; }
 nav a {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
@@ -767,7 +770,13 @@ footer {
     <div class="sitenav-inner">
       <a href="#" class="logo">
         <img src="../images/logo/本堂イラスト.svg" class="logo-symbol" alt="">
-        <img src="../images/logo/安養院オブジェクト（変更禁止）.svg" class="logo-type" alt="安養院">
+        <div class="logo-text">
+          <div class="logo-text-sub">
+            <img src="../images/logo/天台宗オブジェクト（変更禁止）.svg" class="logo-sub-img" alt="天台宗">
+            <img src="../images/logo/医王山オブジェクト（変更禁止）.svg" class="logo-sub-img" alt="医王山">
+          </div>
+          <img src="../images/logo/安養院オブジェクト（変更禁止）.svg" class="logo-type" alt="安養院">
+        </div>
       </a>
       <nav id="sitemenu" aria-label="メインメニュー">
         <a href="#about">安養院について</a>
