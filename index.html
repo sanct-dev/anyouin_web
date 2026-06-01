@@ -45,7 +45,7 @@
 
   .section {
     width: 100%;
-    max-width: 600px;
+    max-width: 960px;
     margin-bottom: 48px;
   }
   .section-header {
@@ -69,41 +69,72 @@
   }
 
   .cards {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
   }
   .card {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     background: #fff;
     border: 1px solid #dedad4;
     border-radius: 4px;
-    padding: 18px 28px;
+    overflow: hidden;
     text-decoration: none;
     color: inherit;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   }
   .card:hover {
     border-color: #8e1a1a;
-    box-shadow: 0 2px 12px rgba(142,26,26,0.08);
+    box-shadow: 0 4px 18px rgba(142,26,26,0.12);
+    transform: translateY(-2px);
   }
-  .card-left {
+
+  /* サムネイル（各ページをiframeで縮小表示） */
+  .thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #fff;
+    border-bottom: 1px solid #ece8e2;
+  }
+  .thumb iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1280px;
+    height: 800px;
+    border: 0;
+    transform-origin: top left;
+    pointer-events: none;
+  }
+  /* iframeが読めない時のフォールバックの薄い下地 */
+  .thumb::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, #faf9f7, #faf9f7 8px, #f3f0eb 8px, #f3f0eb 16px);
+    z-index: -1;
+  }
+
+  .card-meta {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 16px;
   }
   .card-label {
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     letter-spacing: 0.2em;
     color: #8e1a1a;
-    min-width: 20px;
+    min-width: 18px;
   }
   .card-title {
-    font-size: 14px;
-    letter-spacing: 0.15em;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    line-height: 1.5;
   }
   .card-tag {
     display: inline-block;
@@ -118,27 +149,14 @@
     vertical-align: middle;
     opacity: 0.7;
   }
-  .card-arrow {
-    font-size: 18px;
-    color: #8e1a1a;
-    opacity: 0.5;
-  }
 
-  .card.omake {
-    background: #faf9f7;
-    border-style: dashed;
-  }
-  .card.omake .card-label {
-    color: #aaa;
-  }
-  .card.omake .card-tag {
-    color: #aaa;
-    border-color: #ccc;
-  }
+  .card.omake .thumb { filter: grayscale(0.15); }
+  .card.omake .card-label { color: #aaa; }
+  .card.omake .card-tag { color: #aaa; border-color: #ccc; }
 
   .wireframe-section {
     width: 100%;
-    max-width: 600px;
+    max-width: 960px;
     margin-bottom: 48px;
   }
   .wireframe-header {
@@ -175,39 +193,39 @@
   </div>
   <div class="cards">
     <a class="card" href="html/mockup_01_太宰府天満宮方向_photo.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_01_太宰府天満宮方向_photo.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">A</span>
         <span class="card-title">写真入り</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/main01.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/main01.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">B</span>
         <span class="card-title">お知らせメイン</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/main01_red.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/main01_red.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">C</span>
         <span class="card-title">お知らせメイン_画像大</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card omake" href="html/mockup_01_太宰府天満宮方向_photo_anime.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_01_太宰府天満宮方向_photo_anime.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">—</span>
         <span class="card-title">おまけ<span class="card-tag">ANIME</span></span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card omake" href="html/mockup_01_太宰府天満宮方向_photo_anime_shadow.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_01_太宰府天満宮方向_photo_anime_shadow.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">—</span>
         <span class="card-title">おまけ<span class="card-tag">ANIME + SHADOW</span></span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
   </div>
 </div>
@@ -220,32 +238,32 @@
   </div>
   <div class="cards">
     <a class="card" href="html/main02.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/main02.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">A</span>
         <span class="card-title">main<span class="card-tag">制作中</span></span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/main02_texture.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/main02_texture.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">B</span>
         <span class="card-title">main_背景紙<span class="card-tag">制作中</span></span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/mockup_02_善称寺方向_photo.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_02_善称寺方向_photo.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">C</span>
         <span class="card-title">写真入り</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/mockup_02_善称寺方向_illust.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_02_善称寺方向_illust.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">D</span>
         <span class="card-title">イラスト入り</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
   </div>
 </div>
@@ -258,32 +276,32 @@
   </div>
   <div class="cards">
     <a class="card" href="html/wf_A_map.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/wf_A_map.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">A</span>
         <span class="card-title">境内マップ型</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/wf_B_question.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/wf_B_question.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">B</span>
         <span class="card-title">問いかけ型</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/wf_C_emaki.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/wf_C_emaki.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">C</span>
         <span class="card-title">絵巻横スクロール型</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/wf_D_season.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/wf_D_season.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">D</span>
         <span class="card-title">季節切り替え型</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
   </div>
 </div>
@@ -296,32 +314,32 @@
   </div>
   <div class="cards">
     <a class="card" href="html/wf_1_B_header.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/wf_1_B_header.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">①</span>
         <span class="card-title">B案｜ヘッダーあり・パンフレット型</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/wf_2_A_no_header.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/wf_2_A_no_header.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">②</span>
         <span class="card-title">A案｜ヘッダーなし・イラスト絵本型</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/wf_3_B_no_header.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/wf_3_B_no_header.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">③</span>
         <span class="card-title">B案｜ヘッダーなし・写真左寄せ型</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/wf_4_C_no_header.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/wf_4_C_no_header.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">④</span>
         <span class="card-title">C案｜ヘッダーなし・タイル雑誌型</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
   </div>
 </div>
@@ -331,37 +349,54 @@
   <p class="wireframe-header">WIREFRAMES</p>
   <div class="cards">
     <a class="card" href="html/mockup_01_太宰府天満宮方向.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_01_太宰府天満宮方向.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">01</span>
         <span class="card-title">端正でアクセスしやすい</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/mockup_02_善称寺方向.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_02_善称寺方向.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">02</span>
         <span class="card-title">親しみやすい</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/mockup_03_安養寺方向.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_03_安養寺方向.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">03</span>
         <span class="card-title">縦書きリズム</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
     <a class="card" href="html/mockup_04_大興善寺方向.html">
-      <div class="card-left">
+      <div class="thumb"><iframe src="html/mockup_04_大興善寺方向.html" scrolling="no" loading="lazy"></iframe></div>
+      <div class="card-meta">
         <span class="card-label">04</span>
         <span class="card-title">縦書き格調</span>
       </div>
-      <span class="card-arrow">›</span>
     </a>
   </div>
 </div>
 
 <footer>© 安養院 真福寺　制作用内部資料</footer>
+
+<script>
+  // 各サムネのiframe（論理幅1280px）を、カード幅に合わせて縮小表示する
+  const IFRAME_W = 1280;
+  function fitThumbs() {
+    document.querySelectorAll('.thumb').forEach(function (t) {
+      const f = t.querySelector('iframe');
+      if (!f) return;
+      const scale = t.clientWidth / IFRAME_W;
+      f.style.transform = 'scale(' + scale + ')';
+    });
+  }
+  window.addEventListener('load', fitThumbs);
+  window.addEventListener('resize', fitThumbs);
+  // フォント・レイアウト確定後のズレ対策で一度遅延再計算
+  setTimeout(fitThumbs, 300);
+</script>
 
 </body>
 </html>
