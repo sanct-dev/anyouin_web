@@ -390,7 +390,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   color: var(--sub);
   letter-spacing: 0.1em;
 }
-.event-body { padding: 16px 4px 0; text-align: center; }
+.event-body { padding: 16px 4px 0; text-align: left; }
 .event-month {
   font-family: 'Montserrat', sans-serif;
   font-size: 9px;
@@ -399,20 +399,31 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   margin-bottom: 5px;
   text-transform: uppercase;
 }
+/* 行事名(左)＋日付(右)を1行に、下に細い罫線 */
+.event-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border);
+}
+.event-title {
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
 .event-date {
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
   color: #C07870;
-  margin-bottom: 8px;
-}
-.event-title {
-  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  line-height: 1.4;
-  margin-bottom: 8px;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 .event-desc {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
@@ -702,12 +713,14 @@ footer {
   .event-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .event-card { aspect-ratio: 1/1; display: flex; flex-direction: column; overflow: hidden; }
   .event-img { flex: 2; aspect-ratio: unset; }
-  .event-body { flex: 1; padding: 6px 10px 8px; display: flex; flex-direction: column; justify-content: center; }
+  .event-body { flex: 1; padding: 6px 10px 8px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
   .event-card:nth-child(3),
   .event-card:nth-child(4) { display: none; }
   .event-desc { display: none; }
-  .event-date  { font-size: 10px; margin-bottom: 1px; }
-  .event-title { font-size: 16px; line-height: 1.3; margin-bottom: 0; }
+  /* SP：横並びだと窮屈なので行事名→日付を中央に縦積み・罫線なし */
+  .event-head { flex-direction: column; align-items: center; gap: 1px; margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .event-date  { font-size: 10px; }
+  .event-title { font-size: 16px; line-height: 1.3; white-space: normal; }
   .event-more { margin-top: 20px; }
 
   /* Consul: 3列 */
@@ -878,8 +891,10 @@ footer {
       <div class="event-card">
         <div class="event-img"><img src="../images/eventcard/お正月.jpg" alt="初詣"></div>
         <div class="event-body">
-          <div class="event-date">1月1日</div>
-          <h3 class="event-title">初詣</h3>
+          <div class="event-head">
+            <h3 class="event-title">初詣</h3>
+            <div class="event-date">1月1日</div>
+          </div>
           <div class="event-desc">新年の始まりに、ご参拝ください。</div>
         </div>
       </div>
@@ -887,8 +902,10 @@ footer {
       <div class="event-card">
         <div class="event-img"><img src="../images/eventcard/ヤクドシマン_ぼかし.jpg" alt="節分会"></div>
         <div class="event-body">
-          <div class="event-date">2月 第一日曜日</div>
-          <h3 class="event-title">節分会</h3>
+          <div class="event-head">
+            <h3 class="event-title">節分会</h3>
+            <div class="event-date">2月 第一日曜日</div>
+          </div>
           <div class="event-desc">豆まき・厄除け祈願を行います。</div>
         </div>
       </div>
@@ -896,8 +913,10 @@ footer {
       <div class="event-card">
         <div class="event-img"><img src="../images/eventcard/天道念仏.JPG" alt="天道念仏"></div>
         <div class="event-body">
-          <div class="event-date">2月10日</div>
-          <h3 class="event-title">天道念仏</h3>
+          <div class="event-head">
+            <h3 class="event-title">天道念仏</h3>
+            <div class="event-date">2月10日</div>
+          </div>
           <div class="event-desc">太陽を拝んで五穀の豊作を祈願します。</div>
         </div>
       </div>
@@ -905,8 +924,10 @@ footer {
       <div class="event-card">
         <div class="event-img"><img src="../images/eventcard/お盆.jpeg" alt="盂蘭盆会"></div>
         <div class="event-body">
-          <div class="event-date">8月13日〜15日</div>
-          <h3 class="event-title">盂蘭盆会</h3>
+          <div class="event-head">
+            <h3 class="event-title">盂蘭盆会</h3>
+            <div class="event-date">8月13日〜15日</div>
+          </div>
           <div class="event-desc">ご先祖様をお迎えするお盆の法要。</div>
         </div>
       </div>
@@ -914,8 +935,10 @@ footer {
       <div class="event-card">
         <div class="event-img"><img src="../images/eventcard/灯籠流し 2.jpg" alt="灯籠流し"></div>
         <div class="event-body">
-          <div class="event-date">8月16日</div>
-          <h3 class="event-title">灯籠流し</h3>
+          <div class="event-head">
+            <h3 class="event-title">灯籠流し</h3>
+            <div class="event-date">8月16日</div>
+          </div>
           <div class="event-desc">桃の木川でご先祖様を供養します。</div>
         </div>
       </div>
@@ -923,8 +946,10 @@ footer {
       <div class="event-card">
         <div class="event-img"><img src="../images/eventcard/大般若 2.JPG" alt="大般若転読会"></div>
         <div class="event-body">
-          <div class="event-date">3年に1度</div>
-          <h3 class="event-title">大般若転読会</h3>
+          <div class="event-head">
+            <h3 class="event-title">大般若転読会</h3>
+            <div class="event-date">3年に1度</div>
+          </div>
           <div class="event-desc">大般若経六百巻を転読し、国家安泰を祈ります。</div>
         </div>
       </div>
