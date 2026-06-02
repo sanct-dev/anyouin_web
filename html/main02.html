@@ -431,10 +431,20 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   line-height: 1.7;
   color: var(--sub);
 }
-/* グリッド下・右端にまとめた「一覧へ」リンク */
+/* グリッド下・中央にご案内文＋一覧リンクをまとめる */
 .event-more {
-  margin-top: 40px;
-  text-align: right;
+  margin-top: 48px;
+  text-align: center;
+}
+.event-invite {
+  font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.event-more .btn-text {
+  margin-top: 0;
 }
 
 /* ── ご相談 ── */
@@ -956,6 +966,7 @@ footer {
 
     </div>
     <div class="event-more">
+      <p class="event-invite">行事は一般の方もご参加いただけます。ぜひいらしてください。</p>
       <a href="#" class="btn-text">行事一覧をみる ›</a>
     </div>
   </div>
