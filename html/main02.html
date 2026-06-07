@@ -421,17 +421,16 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   margin-bottom: 5px;
   text-transform: uppercase;
 }
-/* 行事名(左)＋日付(右)を1行に、下に細い罫線 */
+/* 行事名(中央)＋日付(右端固定)を1行に、下に細い罫線 */
 .event-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
+  position: relative;
   margin-bottom: 8px;
   padding-bottom: 9px;
   border-bottom: 1px solid var(--border);
 }
 .event-title {
+  display: block;
+  text-align: center;
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
   font-size: 19px;
   font-weight: 400;
@@ -440,18 +439,22 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   white-space: nowrap;
 }
 .event-date {
+  position: absolute;
+  right: 0; top: 0; bottom: 9px;
+  display: flex;
+  align-items: center;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   letter-spacing: 0.08em;
   color: #C07870;
   white-space: nowrap;
-  flex: 0 0 auto;
 }
 .event-desc {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
   font-size: 14px;
   line-height: 1.7;
   color: var(--text);
+  text-align: center;
 }
 /* グリッド下・中央にご案内文＋一覧リンクをまとめる */
 .event-more {
@@ -757,8 +760,8 @@ footer {
   .event-card:nth-child(4) { display: none; }
   .event-desc { display: none; }
   /* SP：横並びだと窮屈なので行事名→日付を中央に縦積み・罫線なし */
-  .event-head { flex-direction: column; align-items: center; gap: 1px; margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .event-date  { font-size: 10px; }
+  .event-head { position: static; display: flex; flex-direction: column; align-items: center; gap: 1px; margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .event-date  { position: static; display: block; font-size: 10px; }
   .event-title { font-size: 16px; line-height: 1.3; white-space: normal; }
   .event-more { margin-top: 20px; }
 
