@@ -386,11 +386,11 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .event-card {
   background: transparent;
 }
-/* ホバー: カードは白くせず、画像だけが少し浮いて・わずかに明るくなる */
+/* ホバー: 画像が少し浮き、opacityを下げて背景(クリーム白)を透けさせ白っぽくする */
 .event-card:hover .event-img {
   transform: translateY(-2px);
   box-shadow: 0 5px 14px rgba(51,50,49,0.10);
-  filter: brightness(1.035);
+  opacity: 0.7;
 }
 .event-img {
   aspect-ratio: 16/9;
@@ -400,7 +400,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, filter 0.25s ease-out;
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, opacity 0.25s ease-out;
 }
 .event-img img {
   width: 100%; height: 100%;
