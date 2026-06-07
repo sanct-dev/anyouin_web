@@ -316,6 +316,8 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   font-size: 15px;
   line-height: 2;
 }
+/* 「詳しくみる」はPCでは隠す（全文表示）。モバイルでのみ出す */
+.news-latest-more { display: none; }
 .news-list { list-style: none; }
 .news-item {
   display: flex;
@@ -736,13 +738,18 @@ footer {
   .hero-leaf-01   { left: 42% !important; height: 28px !important; }
   .hero-leaf-yoko { left: 30% !important; height: 13px !important; }
 
-  /* Section common */
-  section { padding: 64px 20px; }
-  .sec-hd { margin-bottom: 48px; }
+  /* Section common：セクション間の余白を圧縮 */
+  section { padding: 40px 20px; }
+  #news, #about, #event, #consul, #access { padding-top: 40px; }
+  .sec-hd { margin-bottom: 24px; }
   .sec-h2 { font-size: 20px; }
 
-  /* News */
-  .news-item { padding: 14px 0; }
+  /* News：行間を狭く・最新は1文＋詳しくみるに省略 */
+  .news-item { padding: 8px 0; }
+  .news-latest { margin-bottom: 40px; padding: 12px 0; }
+  .news-latest-body { line-height: 1.6; }
+  .news-latest-rest { display: none; }
+  .news-latest-more { display: inline-block; margin-top: 6px; }
 
   /* Blob */
   .sec-h2-blob { width: 40px; height: 50px; top: -20px; left: -12px; }
@@ -760,7 +767,7 @@ footer {
   .about-title { margin-bottom: 16px; }
   .about-title ruby { font-size: 16px; }
   .about-title rt { font-size: 9px; }
-  .about-lead { font-size: 14px; }
+  .about-lead { font-size: 14px; line-height: 1.7; }
 
   /* Event: 4枚・2列・日時あり・説明なし */
   .event-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -770,10 +777,10 @@ footer {
   .event-card:nth-child(3),
   .event-card:nth-child(4) { display: none; }
   .event-desc { display: none; }
-  /* SP：横並びだと窮屈なので行事名→日付を中央に縦積み・罫線なし */
-  .event-head { position: static; display: flex; flex-direction: column; align-items: center; gap: 1px; margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .event-date  { position: static; display: block; font-size: 10px; }
-  .event-title { font-size: 16px; line-height: 1.3; white-space: normal; }
+  /* SP：行事名＋日付を横並び・中央寄せ・罫線なし */
+  .event-head { position: static; display: flex; flex-direction: row; align-items: baseline; justify-content: center; gap: 6px; margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .event-date  { position: static; display: inline; font-size: 10px; }
+  .event-title { font-size: 14px; line-height: 1.3; white-space: nowrap; }
   .event-more { margin-top: 20px; }
 
   /* Consul: 3列 */
@@ -861,10 +868,11 @@ footer {
         <span class="news-latest-label">最新のお知らせ</span>
         <span class="news-latest-date">2026.08.16　10:30 更新</span>
       </div>
-      <p class="news-latest-body">【ダミーです】本日の灯籠流しは中止となりました<br>
+      <p class="news-latest-body"><span class="news-latest-lead">【ダミーです】本日の灯籠流しは中止となりました</span><span class="news-latest-rest"><br>
 台風18号の接近で安全の確保が難しいため、本日の灯籠流しおよび公民館への集合を中止いたします。<br>
 手作り灯籠は、今後活かせる方法を検討しておりますので、大事に保管なさってください。<br>
-本日はご自宅で安全にお過ごしくださいますようお願い申し上げます。</p>
+本日はご自宅で安全にお過ごしくださいますようお願い申し上げます。</span></p>
+      <a href="#" class="btn-text news-latest-more">詳しくみる ›</a>
     </div>
     <div class="sec-hd">
       <div class="sec-en">News</div>
