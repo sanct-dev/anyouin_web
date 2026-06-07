@@ -791,7 +791,10 @@ footer {
   .consul-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .consul-card { padding: 20px 10px 18px; }
   .consul-blob { width: 52px; height: 64px; margin-bottom: 12px; }
-  .consul-title { font-size: 14px; letter-spacing: 0.08em; }
+  .consul-title { font-size: 14px; letter-spacing: 0.08em; line-height: 1.4; }
+  /* 長いタイトルは折り返さず、・を外して縦積みに */
+  .consul-title span { display: block; }
+  .consul-title .ct-sep { display: none; }
   .consul-desc { display: none; }
 
   /* Access */
@@ -1048,7 +1051,7 @@ footer {
         <div class="consul-blob">
           <span class="consul-blob-ph">イラスト</span>
         </div>
-        <h3 class="consul-title">御祈願・厄除け</h3>
+        <h3 class="consul-title"><span>御祈願</span><span class="ct-sep">・</span><span>厄除け</span></h3>
         <div class="consul-desc">各種御祈願・厄除けについてお気軽にご相談ください。</div>
       </div>
 
@@ -1056,7 +1059,7 @@ footer {
         <div class="consul-blob">
           <span class="consul-blob-ph">イラスト</span>
         </div>
-        <h3 class="consul-title">お葬式・法要</h3>
+        <h3 class="consul-title"><span>お葬式</span><span class="ct-sep">・</span><span>法要</span></h3>
         <div class="consul-desc">葬儀・法事・年忌法要など、ご先祖様の供養についてご相談ください。</div>
       </div>
 
