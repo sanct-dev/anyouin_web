@@ -640,6 +640,11 @@ footer {
   transition: color 0.2s;
 }
 .footer-nav-col a:hover { color: var(--accent); text-decoration: underline; }
+/* 右端の単独リンク列（大項目を持たない utility リンク） */
+.footer-nav-util { gap: 10px; }
+.footer-nav-util li:first-child { margin-bottom: 0; }
+.footer-nav-util li:first-child a { font-size: 12px; font-weight: 400; }
+.footer-nav-util a { font-size: 12px; }
 .footer-copy {
   margin: 40px 0 0;
   padding: 24px 0;
@@ -774,6 +779,7 @@ footer {
         <span class="logo-ja">安養院</span>
       </a>
       <nav id="sitemenu" aria-label="メインメニュー">
+        <a href="#news">お知らせ</a>
         <a href="#about">安養院について</a>
         <a href="#event">年間行事</a>
         <a href="#consul">葬儀・法要</a>
@@ -1107,9 +1113,10 @@ footer {
         <li><a href="#">取り組み</a></li>
       </ul>
       <ul class="footer-nav-col">
-        <li><a href="#consul">葬儀・法要</a></li>
-        <li><a href="#">葬儀について</a></li>
-        <li><a href="#">法要について</a></li>
+        <li><a href="#event">年間行事</a></li>
+        <li><a href="#">節分会</a></li>
+        <li><a href="#">灯籠流し</a></li>
+        <li><a href="#">大般若転読会</a></li>
       </ul>
       <ul class="footer-nav-col">
         <li><a href="#consul">御祈願・厄除け</a></li>
@@ -1118,13 +1125,20 @@ footer {
         <li><a href="#">お守り・お札</a></li>
       </ul>
       <ul class="footer-nav-col">
-        <li><a href="#event">年間行事</a></li>
-        <li><a href="#">節分会</a></li>
-        <li><a href="#">灯籠流し</a></li>
-        <li><a href="#">大般若転読会</a></li>
+        <li><a href="#consul">葬儀・法要</a></li>
+        <li><a href="#">葬儀について</a></li>
+        <li><a href="#">法要について</a></li>
       </ul>
       <ul class="footer-nav-col">
+        <li><a href="#consul">お墓</a></li>
+        <li><a href="#">小さなお墓</a></li>
+        <li><a href="#">永代供養墓</a></li>
+        <li><a href="#">代々墓</a></li>
+        <li><a href="#">動物のお墓</a></li>
+      </ul>
+      <ul class="footer-nav-col footer-nav-util">
         <li><a href="#access">アクセス</a></li>
+        <li><a href="#news">お知らせ</a></li>
         <li><a href="#">お問い合わせ</a></li>
         <li><a href="#">よくあるご質問</a></li>
         <li><a href="#">プライバシーポリシー</a></li>
