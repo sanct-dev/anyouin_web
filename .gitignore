@@ -1,0 +1,27 @@
+# Mac
+.DS_Store
+
+# 制作素材（GitHubには上げない・手元には残す）
+*.ai
+テキスト/
+仕様書/
+参考サイト/
+途中制作物pdf/
+
+# 採用しなかったHTML（indexから外した・手元には残す）
+html/mockup_01_太宰府天満宮方向_photo_anime.html
+html/mockup_01_太宰府天満宮方向_photo_anime_shadow.html
+html/mockup_02_善称寺方向_photo.html
+html/mockup_02_善称寺方向_illust.html
+html/wf_A_map.html
+html/wf_B_question.html
+html/wf_C_emaki.html
+html/wf_D_season.html
+html/wf_1_B_header.html
+html/wf_2_A_no_header.html
+html/wf_3_B_no_header.html
+html/wf_4_C_no_header.html
+html/mockup_01_太宰府天満宮方向.html
+html/mockup_02_善称寺方向.html
+html/mockup_03_安養寺方向.html
+html/mockup_04_大興善寺方向.html
