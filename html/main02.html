@@ -136,11 +136,11 @@ nav a:hover { opacity: 1; color: var(--accent); text-decoration: underline; text
   background-position: center;
 }
 .hero-img {
-  background-image: url('../images/fv/niwa.jpg');
+  background-image: url('../02images/02fv/niwa_op.jpg');
   animation: fade-niwa 12s ease-in-out infinite;
 }
 .hero-img-alt {
-  background-image: url('../images/fv/sakura.jpg');
+  background-image: url('../02images/02fv/sakura_op.jpg');
   background-position: center top;
   z-index: 1;
   animation: fade-sakura 12s ease-in-out infinite;
@@ -907,7 +907,7 @@ footer {
     </div>
   </div>
   <div class="about-photo">
-    <img src="../images/fv/sakura.jpg" alt="安養院 境内の枝垂れ桜">
+    <img src="../02images/02fv/sakura_op.jpg" alt="安養院 境内の枝垂れ桜">
   </div>
   <div class="inner-mid">
     <div class="about-title">
@@ -1183,7 +1183,7 @@ footer {
   // ── FV：画像が読めたらカバーをふわっとフェードアウト ──
   const fv = document.querySelector('.fv');
   if (fv) {
-    const sources = ['../images/fv/niwa.jpg', '../images/fv/sakura.jpg'];
+    const sources = ['../02images/02fv/niwa_op.jpg', '../02images/02fv/sakura_op.jpg'];
     let settled = 0, done = false;
     function reveal() { if (!done) { done = true; fv.classList.add('is-ready'); } }
     sources.forEach(function (src) {
