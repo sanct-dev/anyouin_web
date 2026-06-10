@@ -23,9 +23,8 @@
   --w-wide: 1120px;
   --w-mid:  1000px;
   /* 和紙 veil（画像を穏やかに沈める半透明フィルム。ここ一箇所で全画像の効き具合を調整） */
-  --washi:        url('../images/和紙テクスチャ.jpg');
-  --veil-op:       0.22; /* FV・about の効き */
-  --veil-op-event: 0.42; /* event画像は明るめfilterが乗るので強めに */
+  --washi:    url('../images/和紙テクスチャ.jpg');
+  --veil-op:  0.22; /* 全画像共通の効き */
 }
 
 /* ── Reset ── */
@@ -425,7 +424,7 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   background-image: var(--washi);
   background-size: cover;
   background-position: center;
-  opacity: var(--veil-op-event);
+  opacity: var(--veil-op);
 }
 /* ホバー時にふわっと重なる純白のレイヤー（背景色に左右されず白っぽくする） */
 .event-img::after {
@@ -441,7 +440,6 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 .event-img img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: saturate(0.78) brightness(1.08) sepia(0.18);
 }
 .event-img-ph {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
