@@ -23,8 +23,9 @@
   --w-wide: 1120px;
   --w-mid:  1000px;
   /* 和紙 veil（画像を穏やかに沈める半透明フィルム。ここ一箇所で全画像の効き具合を調整） */
-  --washi:    url('../images/和紙テクスチャ.jpg');
-  --veil-op:  0.22; /* 全画像共通の効き */
+  --washi:      url('../images/画用紙.jpg');
+  --washi-size: 340px; /* タイルの実寸＝粒の細かさ（小さいほど目が細かい） */
+  --veil-op:    0.22; /* 全画像共通の効き */
 }
 
 /* ── Reset ── */
@@ -48,8 +49,8 @@ body::after {
   pointer-events: none;
   z-index: 0;
   background-image: var(--washi);
-  background-size: cover;
-  background-position: center;
+  background-size: var(--washi-size);
+  background-repeat: repeat;
   mix-blend-mode: multiply;
   opacity: 0.1;
 }
@@ -139,8 +140,8 @@ nav a:hover { opacity: 1; color: var(--accent); text-decoration: underline; text
   z-index: 11;
   pointer-events: none;
   background-image: var(--washi);
-  background-size: cover;
-  background-position: center;
+  background-size: var(--washi-size);
+  background-repeat: repeat;
   opacity: var(--veil-op);
 }
 /* 初回ロード時のフェードイン用カバー（画像が読めたらJSでフェードアウト） */
@@ -356,8 +357,8 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   inset: 0;
   pointer-events: none;
   background-image: var(--washi);
-  background-size: cover;
-  background-position: center;
+  background-size: var(--washi-size);
+  background-repeat: repeat;
   opacity: var(--veil-op);
 }
 .about-photo img {
@@ -422,8 +423,8 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   inset: 0;
   pointer-events: none;
   background-image: var(--washi);
-  background-size: cover;
-  background-position: center;
+  background-size: var(--washi-size);
+  background-repeat: repeat;
   opacity: var(--veil-op);
 }
 /* ホバー時にふわっと重なる純白のレイヤー（背景色に左右されず白っぽくする） */
