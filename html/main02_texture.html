@@ -372,18 +372,16 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
 
 /* ── ABOUT ── */
 #about { background: transparent; padding-top: 64px; }
-.about-layout { display: flex; gap: 64px; align-items: center; }
-.about-text { flex: 1; }
-.about-text p { margin-bottom: 2em; }
-.about-img {
-  flex: 1;
-  aspect-ratio: 4/3;
+/* 画像：幅1180・高さ510、横は全部入れて上下トリミング */
+.about-photo {
+  max-width: 1180px;
+  height: 510px;
+  margin: 0 auto 48px;
   overflow: hidden;
   border-radius: 2px;
-  flex-shrink: 0;
   position: relative;
 }
-.about-img::after {
+.about-photo::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -393,12 +391,29 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   background-position: center;
   opacity: var(--veil-op);
 }
-.about-img img {
+.about-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
+  object-position: center;
   opacity: 0.88;
   mix-blend-mode: multiply;
 }
+/* 寺名（ふりがな付き・ruby） */
+.about-title { text-align: center; margin-bottom: 16px; }
+.about-title ruby {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  ruby-position: over;
+}
+.about-title rt {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--sub);
+}
+.about-lead { text-align: center; font-size: 15px; line-height: 2; }
+.about-cta { text-align: center; margin-top: 16px; }
 
 /* ── EVENT ── */
 #event { background: transparent; padding-top: 64px; }
@@ -746,17 +761,18 @@ footer {
   #event  .sec-h2-blob { left: 10px; }
   #access .sec-h2-blob { left: auto; right: -12px; }
 
-  /* About / Access の詳しくみる右揃え */
-  #about .btn-text, #access .btn-text { display: block; text-align: right; }
+  /* Access の詳しくみる右揃え */
+  #access .btn-text { display: block; text-align: right; }
 
   /* About */
-  #about { padding-bottom: 80px; }
+  #about { padding-bottom: 28px; }
   #about .sec-hd { margin-bottom: 20px; }
-  .about-layout { flex-direction: column; gap: 12px; }
-  .about-img { width: 100%; flex: none; }
-  .about-text p:not(:first-child) { display: none; }
-  .about-text p { font-size: 14px; margin-bottom: 0; }
-  #about .btn-text { margin-top: 6px; }
+  .about-photo { height: 150px; margin-bottom: 28px; }
+  .about-title { margin-bottom: 8px; }
+  .about-title ruby { font-size: 16px; }
+  .about-title rt { font-size: 9px; }
+  .about-lead { font-size: 14px; line-height: 1.7; }
+  .about-cta { margin-top: 8px; }
 
   /* Event: 4枚・2列・日時あり・説明なし */
   .event-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -913,16 +929,16 @@ footer {
         <h2 class="sec-h2">安養院について</h2>
       </div>
     </div>
-    <div class="about-layout">
-      <div class="about-text">
-        <p>天台宗　医王山　安養院は、前橋市笂井町（うつぼいまち）にあるお寺です。</p>
-        <p>地域の皆さまにとって「いつでも立ち寄れる場所」であることを大切にしています。法要・供養のご相談から、地域行事まで。敷居の高さを感じることなく、お気軽にお越しください。</p>
-        <a href="#" class="btn-text">詳しくみる ›</a>
-      </div>
-      <div class="about-img">
-        <img src="../images/fv/sakura.jpg" alt="安養院 境内の枝垂れ桜">
-      </div>
+  </div>
+  <div class="about-photo">
+    <img src="../02images/02fv/sakura_giga_hosei.jpg" alt="安養院 境内の枝垂れ桜">
+  </div>
+  <div class="inner-mid">
+    <div class="about-title">
+      <ruby>医王山<rt>いおうざん</rt></ruby>　<ruby>安養院<rt>あんよういん</rt></ruby>　<ruby>真福寺<rt>しんぽうじ</rt></ruby>
     </div>
+    <p class="about-lead">安養院は、笂井町（うつぼいまち）にある天台宗のお寺です。<br>古くからこの地でたいせつに守られてきました。</p>
+    <div class="about-cta"><a href="#" class="btn-text">詳しくみる ›</a></div>
   </div>
 </section>
 
