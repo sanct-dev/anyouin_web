@@ -25,3 +25,7 @@ html/mockup_01_太宰府天満宮方向.html
 html/mockup_02_善称寺方向.html
 html/mockup_03_安養寺方向.html
 html/mockup_04_大興善寺方向.html
+
+# 内部ツール（事務所のワークフロー資産・公開リポジトリには上げない）
+画像マップ.command
+画像マップ.html
