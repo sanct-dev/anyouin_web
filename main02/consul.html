@@ -3,71 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>アクセス — 天台宗 医王山 安養院</title>
+<title>葬儀・法要・お墓 — 天台宗 医王山 安養院</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* ── Variables（main02と共有） ── */
-:root {
-  --bg:#FFF5EE; --bg2:#FFFFFF; --header:#FFE0CC; --accent:#6D0F0F;
-  --mint:#AAE0DB; --text:#333231; --sub:#8A8178; --border:#E5DDD0;
-  --w:780px; --w-mid:1000px;
-}
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; }
-body {
-  font-family:'游明朝体','Yu Mincho','游明朝',serif;
-  background:var(--bg); color:var(--text);
-  font-size:16px; line-height:2.2; letter-spacing:0.05em;
-  -webkit-font-smoothing:antialiased;
-}
-img { max-width:100%; height:auto; display:block; }
-a { text-decoration:none; color:inherit; }
+:root{--bg:#FFF5EE;--bg2:#FFFFFF;--header:#FFE0CC;--accent:#6D0F0F;--mint:#AAE0DB;--text:#333231;--sub:#8A8178;--border:#E5DDD0;--w:780px;--w-mid:1000px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'游明朝体','Yu Mincho','游明朝',serif;background:var(--bg);color:var(--text);font-size:16px;line-height:2.2;letter-spacing:0.05em;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;height:auto;display:block;}
+a{text-decoration:none;color:inherit;}
 
 /* ── ヘッダー ── */
-.site-header {
-  position:sticky; top:0; z-index:50; height:60px;
-  background:var(--header); box-shadow:0 2px 16px rgba(0,0,0,0.07);
-  display:flex; align-items:center; gap:32px; padding:0 48px;
-}
-.logo { display:flex; flex-direction:column; }
-.logo-sub { font-size:8px; letter-spacing:0.12em; color:var(--sub); line-height:1; margin-bottom:3px; }
-.logo-ja { font-size:16px; letter-spacing:0.28em; color:var(--accent); }
-.gnav { display:flex; gap:26px; align-items:center; margin-left:auto; overflow-x:auto; }
-.gnav a { font-size:15px; letter-spacing:0.1em; color:#1F1E1E; opacity:0.85; white-space:nowrap; transition:opacity .2s,color .2s; }
-.gnav a:hover { opacity:1; color:var(--accent); }
-.gnav a.is-current { color:var(--accent); opacity:1; }
+.site-header{position:sticky;top:0;z-index:50;height:60px;background:var(--header);box-shadow:0 2px 16px rgba(0,0,0,.07);display:flex;align-items:center;gap:32px;padding:0 48px;}
+.logo{display:flex;flex-direction:column;}
+.logo-sub{font-size:8px;letter-spacing:.12em;color:var(--sub);line-height:1;margin-bottom:3px;}
+.logo-ja{font-size:16px;letter-spacing:.28em;color:var(--accent);}
+.gnav{display:flex;gap:26px;align-items:center;margin-left:auto;overflow-x:auto;}
+.gnav a{font-size:15px;letter-spacing:.1em;color:#1F1E1E;opacity:.85;white-space:nowrap;transition:opacity .2s,color .2s;}
+.gnav a:hover{opacity:1;color:var(--accent);}
+.gnav a.is-current{color:var(--accent);opacity:1;}
 
-/* ── セクション見出し（ブロブ付き） ── */
-section { padding:88px 24px; }
-.inner { max-width:var(--w-mid); margin:0 auto; }
-.sec-hd { margin-bottom:48px; text-align:center; }
-.sec-en { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:0.22em; color:var(--sub); text-transform:uppercase; margin-bottom:16px; }
-.sec-h2-wrap { position:relative; display:inline-block; }
-.sec-h2-blob {
-  position:absolute; width:80px; height:100px; background:var(--mint);
-  border-radius:28% 72% 58% 42% / 22% 64% 36% 78%;
-  transform:rotate(30deg); top:-38px; left:auto; right:-22px; z-index:0;
-}
-.sec-h2 { font-size:32px; font-weight:400; letter-spacing:0.25em; position:relative; z-index:1; }
+/* ── トップ画像 ── */
+.page-hero{height:360px;overflow:hidden;}
+.page-hero .ph{width:100%;height:100%;}
 
-/* ── 地図 ── */
-.map-wrap { max-width:var(--w-mid); margin:0 auto 48px; height:420px; overflow:hidden; border-radius:4px; }
-.map-wrap .ph { width:100%; height:100%; }
+/* ── セクション＋ブロブ見出し ── */
+section{padding:84px 24px;}
+.inner{max-width:var(--w-mid);margin:0 auto;}
+.sec-hd{margin-bottom:36px;text-align:center;}
+.sec-h2-wrap{position:relative;display:inline-block;}
+.sec-h2-blob{position:absolute;width:78px;height:96px;background:var(--mint);border-radius:28% 72% 58% 42%/22% 64% 36% 78%;transform:rotate(-12deg);top:-36px;left:-22px;z-index:0;}
+.sec-hd.r .sec-h2-blob{left:auto;right:-22px;transform:rotate(24deg);}
+.sec-h2{font-size:30px;font-weight:400;letter-spacing:.22em;position:relative;z-index:1;}
 
-/* ── アクセス情報 ── */
-.access-info { max-width:var(--w); margin:0 auto; }
-.access-row { display:flex; gap:24px; padding:20px 0; border-bottom:1px solid var(--border); }
-.access-label {
-  flex:0 0 150px; font-size:13px; letter-spacing:0.12em; color:var(--accent);
-}
-.access-value { flex:1; font-size:15px; line-height:2; }
-.access-value .tel { font-family:'Montserrat',sans-serif; letter-spacing:0.06em; }
-.access-note { font-size:13px; color:var(--sub); }
+/* ── 空エリア ── */
+.area-blank{min-height:200px;border:1px dashed var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.blank-note{font-size:13px;color:var(--sub);letter-spacing:.1em;}
 
-/* 画像プレースホルダー */
-.ph { background:var(--border); border-radius:4px; display:flex; align-items:center; justify-content:center;
-  color:var(--sub); font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:0.15em; }
+/* ── プレースホルダー ── */
+.ph{background:var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--sub);font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.15em;}
 
 /* ── フッター（main02と同じ） ── */
 footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 80px 0;position:relative;z-index:1;}
@@ -90,16 +65,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 80px
 .footer-nav-util li:first-child{margin-bottom:0;}
 .footer-nav-util li:first-child a{font-size:13px;font-weight:400;letter-spacing:.1em;}
 .footer-copy{margin:40px 0 0;padding:24px 0;border-top:1px solid var(--border);font-size:12px;color:var(--sub);text-align:center;letter-spacing:.05em;}
-@media (max-width:768px){footer{padding:48px 20px 0;}.footer-inner{flex-direction:column;gap:32px;align-items:center;}.footer-logo{align-items:center;}.footer-address{text-align:center;}.footer-nav-group{display:none;}}
 
-@media (max-width:760px) {
-  .site-header { padding:0 20px; gap:16px; }
-  .logo-ja { font-size:14px; }
-  .gnav { gap:16px; }
-  .gnav a { font-size:14px; }
-  .map-wrap { height:280px; }
-  .access-row { flex-direction:column; gap:4px; }
-  .access-label { flex-basis:auto; }
+@media (max-width:768px){
+  .site-header{padding:0 20px;gap:16px;}
+  .logo-ja{font-size:14px;}
+  .gnav{gap:16px;} .gnav a{font-size:14px;}
+  .page-hero{height:240px;}
+  footer{padding:48px 20px 0;}
+  .footer-inner{flex-direction:column;gap:32px;align-items:center;}
+  .footer-logo{align-items:center;} .footer-address{text-align:center;}
+  .footer-nav-group{display:none;}
 }
 </style>
 </head>
@@ -114,50 +89,40 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 80px
     <a href="news.html">お知らせ</a>
     <a href="about.html">安養院について</a>
     <a href="event.html">年中行事</a>
-    <a href="consul.html">葬儀・法要</a>
+    <a href="consul.html" class="is-current">葬儀・法要</a>
     <a href="kigan.html">御祈願・厄除け</a>
     <a href="consul.html#ohaka">お墓</a>
-    <a href="access.html" class="is-current">アクセス</a>
+    <a href="access.html">アクセス</a>
   </nav>
 </header>
 
 <main>
-  <section>
+  <div class="page-hero"><div class="ph">IMAGE</div></div>
+
+  <section id="sougi">
     <div class="inner">
       <div class="sec-hd">
-        <div class="sec-en">Access</div>
-        <div class="sec-h2-wrap">
-          <span class="sec-h2-blob"></span>
-          <h1 class="sec-h2">アクセス</h1>
-        </div>
+        <div class="sec-h2-wrap"><span class="sec-h2-blob"></span><h1 class="sec-h2">葬儀</h1></div>
       </div>
+      <div class="area-blank"><span class="blank-note">内容が入ります</span></div>
+    </div>
+  </section>
 
-      <!-- 地図 -->
-      <div class="map-wrap"><div class="ph">MAP</div></div>
-
-      <!-- アクセス情報 -->
-      <div class="access-info">
-        <div class="access-row">
-          <div class="access-label">所在地</div>
-          <div class="access-value">〒379-2115　群馬県前橋市笂井町1164番地</div>
-        </div>
-        <div class="access-row">
-          <div class="access-label">電話</div>
-          <div class="access-value"><span class="tel">027-000-0000</span></div>
-        </div>
-        <div class="access-row">
-          <div class="access-label">電車でお越しの方</div>
-          <div class="access-value">最寄り駅・バス停からの経路がここに入ります。</div>
-        </div>
-        <div class="access-row">
-          <div class="access-label">お車でお越しの方</div>
-          <div class="access-value">主要道路からの経路・目印がここに入ります。</div>
-        </div>
-        <div class="access-row">
-          <div class="access-label">駐車場</div>
-          <div class="access-value">台数・場所の案内がここに入ります。<br><span class="access-note">補足があればここに。</span></div>
-        </div>
+  <section id="houyou">
+    <div class="inner">
+      <div class="sec-hd r">
+        <div class="sec-h2-wrap"><span class="sec-h2-blob"></span><h2 class="sec-h2">法要</h2></div>
       </div>
+      <div class="area-blank"><span class="blank-note">内容が入ります</span></div>
+    </div>
+  </section>
+
+  <section id="ohaka">
+    <div class="inner">
+      <div class="sec-hd">
+        <div class="sec-h2-wrap"><span class="sec-h2-blob"></span><h2 class="sec-h2">お墓</h2></div>
+      </div>
+      <div class="area-blank"><span class="blank-note">内容が入ります</span></div>
     </div>
   </section>
 </main>
