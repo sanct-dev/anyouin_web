@@ -478,6 +478,53 @@ nav a:hover { color: var(--red); opacity: 1; }
 }
 .event-more .btn-text:hover { opacity: 0.7; }
 
+/* ========== SERVICE ========== */
+.service {
+  padding: 0 60px 120px;
+}
+.service-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.service-h2 {
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.service-card { background: transparent; }
+.service-card:hover .service-img {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(51,50,49,0.10);
+}
+.service-img {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--border);
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+.service-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.78) brightness(1.08) sepia(0.18);
+}
+.service-body { padding: 16px 4px 0; text-align: center; }
+.service-title {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  color: var(--text);
+}
+
 /* ========== ABOUT ========== */
 .about {
   padding: 0 0 120px;
@@ -1025,6 +1072,38 @@ footer {
     <div class="event-more">
       <p class="event-invite">一般の方も参加いただけます</p>
       <a href="#" class="btn-text">行事一覧をみる ›</a>
+    </div>
+  </div>
+</section>
+
+<!-- ご相談・ご依頼 -->
+<section class="service">
+  <div class="service-inner">
+    <p class="sec-en">Consultation</p>
+    <h2 class="service-h2">ご相談・ご依頼</h2>
+    <div class="service-grid">
+
+      <div class="service-card">
+        <div class="service-img"><img src="../images/con_card/card01_houyou.jpeg" alt="お葬式・法要"></div>
+        <div class="service-body">
+          <h3 class="service-title">お葬式・法要</h3>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img"><img src="../images/con_card/card03_gokigan.jpeg" alt="御祈願・厄除け"></div>
+        <div class="service-body">
+          <h3 class="service-title">御祈願・厄除け</h3>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img"><img src="../images/con_card/card02_ohaka.jpg" alt="お墓"></div>
+        <div class="service-body">
+          <h3 class="service-title">お墓</h3>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
