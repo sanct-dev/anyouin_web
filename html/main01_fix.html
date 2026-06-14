@@ -360,63 +360,111 @@ nav a:hover { color: var(--red); opacity: 1; }
 }
 
 /* ========== CARDS ========== */
-.cards {
+/* ========== ANNUAL EVENTS ========== */
+.event {
   padding: 0 60px 120px;
 }
-.cards-inner {
+.event-inner {
   max-width: 1060px;
   margin: 0 auto;
 }
-.cards-grid {
+.event-h2 {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+.event-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
 }
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 27px;
+.event-card { background: transparent; }
+.event-card:hover .event-img {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(51,50,49,0.10);
 }
-.card-img-wrap {
-  width: 100%;
-  height: 376px;
+.event-img {
+  position: relative;
+  aspect-ratio: 16/9;
   overflow: hidden;
-  flex-shrink: 0;
+  border-radius: 4px;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
 }
-.card-img {
-  width: 100%;
-  height: 100%;
+.event-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+  pointer-events: none;
+}
+.event-card:hover .event-img::after { opacity: 0.2; }
+.event-img img {
+  width: 100%; height: 100%;
   object-fit: cover;
-  transition: filter 0.4s ease;
+  filter: saturate(0.78) brightness(1.08) sepia(0.18);
 }
-.card:hover .card-img { filter: brightness(0.85); }
-.card-title {
+.event-body { padding: 16px 4px 0; text-align: left; }
+.event-head {
+  position: relative;
+  margin-bottom: 8px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border);
+}
+.event-title {
+  display: block;
+  text-align: center;
   font-size: 19px;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.event-date {
+  position: absolute;
+  right: 0; top: 0; bottom: 9px;
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.event-desc {
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--text);
   text-align: center;
 }
-.card-body {
-  font-size: 15px;
-  letter-spacing: 0.01em;
-  line-height: 1.87;
-  color: var(--text);
-  width: 100%;
+.event-more {
+  margin-top: 48px;
+  text-align: center;
 }
-.card-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+.event-invite {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.event-more .btn-text {
+  display: inline-block;
   font-size: 13px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
   color: var(--red);
   text-decoration: none;
-  margin-top: auto;
   transition: opacity 0.2s;
 }
-.card-btn::after { content: '›'; font-size: 14px; }
-.card-btn:hover { opacity: 0.7; }
+.event-more .btn-text:hover { opacity: 0.7; }
 
 /* ========== ABOUT ========== */
 .about {
@@ -712,26 +760,22 @@ footer {
   /* Lead 非表示 */
   .lead { display: none; }
 
-  /* Cards：年中行事→厄除け（全幅）、法要・お墓（2列） */
-  .cards { padding: 32px 16px 72px; }
-  .cards-grid { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
-  /* 年中行事（4番目）：全幅・最上部 */
-  .cards-grid .card:nth-child(4) { order: 1; grid-column: 1 / -1; margin-bottom: 12px; }
-  .cards-grid .card:nth-child(4) .card-img-wrap { height: 52vw; }
-  /* 厄除け（3番目）：全幅・2番目 */
-  .cards-grid .card:nth-child(3) { order: 2; grid-column: 1 / -1; }
-  .cards-grid .card:nth-child(3) .card-img-wrap { height: 52vw; }
-  /* 法要（1番目）・お墓（2番目）：2列・説明文非表示 */
-  .cards-grid .card:nth-child(1) { order: 3; }
-  .cards-grid .card:nth-child(2) { order: 4; }
-  .cards-grid .card:nth-child(1) .card-body,
-  .cards-grid .card:nth-child(2) .card-body { display: none; }
-  .card-img-wrap { height: 38vw; }
-  .card { gap: 14px; }
-  .card-title { font-size: 15px; }
-  .card-body { font-size: 13px; line-height: 1.7; }
-  .card-btn { font-size: 13px; }
-  .card-about-sp { display: none !important; }
+  /* Annual Events */
+  .event { padding: 28px 16px 72px; }
+  .event-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .event-card { display: flex; flex-direction: column; overflow: hidden; }
+  .event-img { aspect-ratio: 4/3; }
+  .event-body { padding: 8px 8px 4px; text-align: center; }
+  .event-card:nth-child(3),
+  .event-card:nth-child(4),
+  .event-card:nth-child(5),
+  .event-card:nth-child(6) { display: none; }
+  .event-desc { display: none; }
+  .event-head { position: static; display: flex; flex-direction: row; align-items: baseline; justify-content: center; gap: 6px; margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .event-date { position: static; display: inline; font-size: 10px; }
+  .event-title { font-size: 14px; line-height: 1.3; white-space: nowrap; }
+  .event-more { margin-top: 12px; }
+  .event-invite { font-size: 12px; margin-bottom: 8px; }
 
   /* About：表示維持（横幅いっぱい） */
   .about { display: block; padding: 0 0 80px; }
@@ -894,47 +938,83 @@ footer {
   </p>
 </section>
 
-<!-- 4カード -->
-<section class="cards">
-  <div class="cards-inner">
-    <p class="sec-en" style="margin-bottom: 32px;">Services</p>
-    <div class="cards-grid">
+<!-- 年中行事 -->
+<section class="event">
+  <div class="event-inner">
+    <p class="sec-en">Annual Events</p>
+    <h2 class="event-h2">年中行事</h2>
+    <div class="event-grid">
 
-      <div class="card">
-        <div class="card-img-wrap"><img class="card-img" src="../images/con_card/card01_houyou.jpeg" alt="法要・お葬式"></div>
-        <h3 class="card-title">法要・お葬式</h3>
-        <p class="card-body">枕経・通夜・葬儀から年忌法要まで、天台宗の伝統的な作法に則って執り行っています。故人様が安らかに浄土へ向かえるよう、心を込めてご供養いたします。</p>
-        <a href="#" class="card-btn">詳しく見る</a>
+      <div class="event-card">
+        <div class="event-img"><img src="../images/eventcard/お正月.jpg" alt="初詣"></div>
+        <div class="event-body">
+          <div class="event-head">
+            <h3 class="event-title">初詣</h3>
+            <div class="event-date">1月1日</div>
+          </div>
+          <div class="event-desc">新年の始まりに、ご参拝ください。</div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-img-wrap"><img class="card-img" src="../images/con_card/card02_ohaka.jpg" alt="お墓" style="object-position: center bottom;"></div>
-        <h3 class="card-title">お墓</h3>
-        <p class="card-body">それぞれのご事情やご家族の形に合わせた多様なお墓をご用意しています。どうぞご相談ください。</p>
-        <a href="#" class="card-btn">詳しく見る</a>
+      <div class="event-card">
+        <div class="event-img"><img src="../images/eventcard/ヤクドシマン_ぼかし.jpg" alt="節分会"></div>
+        <div class="event-body">
+          <div class="event-head">
+            <h3 class="event-title">節分</h3>
+            <div class="event-date">2月 第一日曜日</div>
+          </div>
+          <div class="event-desc">豆まき・厄除け祈願を行います。</div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-img-wrap"><img class="card-img" src="../images/con_card/card03_gokigan.jpeg" alt="厄除け・御祈願" style="object-position: center top;"></div>
-        <h3 class="card-title">厄除け・御祈願</h3>
-        <p class="card-body">厄除け・家内安全・病気平癒など様々な御祈願を随時承っています。節分会では護摩祈祷にて厄を焼き払い、安泰をお祈りいたします。お札やお守りのご依頼も受け付けております。</p>
-        <a href="#" class="card-btn">詳しく見る</a>
+      <div class="event-card">
+        <div class="event-img"><img src="../images/eventcard/天道念仏.JPG" alt="天道念仏"></div>
+        <div class="event-body">
+          <div class="event-head">
+            <h3 class="event-title">天道念仏</h3>
+            <div class="event-date">2月10日</div>
+          </div>
+          <div class="event-desc">太陽を拝んで五穀の豊作を祈願します。</div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-img-wrap"><img class="card-img" src="../images/con_card/card04_gyouji.jpg" alt="年中行事"></div>
-        <h3 class="card-title">年中行事</h3>
-        <p class="card-body">初詣、節分会の厄除け護摩祈祷、盂蘭盆会、灯籠流し、大般若転読会。笂井の地で長く受け継がれてきた、安養院の一年をご紹介します。</p>
-        <a href="#" class="card-btn">詳しく見る</a>
+      <div class="event-card">
+        <div class="event-img"><img src="../images/eventcard/お盆.jpeg" alt="盂蘭盆会"></div>
+        <div class="event-body">
+          <div class="event-head">
+            <h3 class="event-title">お盆</h3>
+            <div class="event-date">8月13日〜15日</div>
+          </div>
+          <div class="event-desc">ご先祖様をお迎えするお盆の法要。</div>
+        </div>
       </div>
 
-      <div class="card card-about-sp" style="display:none;">
-        <div class="card-img-wrap"><img class="card-img" src="../images/main/main_anyoinshoukai.jpg" alt="安養院について"></div>
-        <h3 class="card-title">安養院について</h3>
-        <p class="card-body">安養院の起源や歴史、ご本尊などのご仏像、最近の取り組みを紹介します。</p>
-        <a href="#" class="card-btn">詳しく見る</a>
+      <div class="event-card">
+        <div class="event-img"><img src="../images/eventcard/灯籠流し 2.jpg" alt="灯籠流し"></div>
+        <div class="event-body">
+          <div class="event-head">
+            <h3 class="event-title">灯籠流し</h3>
+            <div class="event-date">8月16日</div>
+          </div>
+          <div class="event-desc">桃の木川でご先祖様を供養します。</div>
+        </div>
       </div>
 
+      <div class="event-card">
+        <div class="event-img"><img src="../images/eventcard/大般若 2.JPG" alt="大般若転読会"></div>
+        <div class="event-body">
+          <div class="event-head">
+            <h3 class="event-title">大般若転読会</h3>
+            <div class="event-date">3年に1度</div>
+          </div>
+          <div class="event-desc">大般若経六百巻を転読し、国家安泰を祈ります。</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="event-more">
+      <p class="event-invite">一般の方も参加いただけます</p>
+      <a href="#" class="btn-text">行事一覧をみる ›</a>
     </div>
   </div>
 </section>
