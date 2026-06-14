@@ -75,12 +75,12 @@ section { padding:88px 24px; }
 
 /* ── 行事ごとの「画像＋説明の並び」 ── */
 .event-detail { display:flex; gap:48px; align-items:center; padding:64px 0; border-bottom:1px solid var(--border); scroll-margin-top:80px; }
-.event-detail:nth-child(even) { flex-direction:row-reverse; }
 .event-detail .ev-img { flex:0 0 46%; }
 .event-detail .ev-img .ph { aspect-ratio:4/3; }
 .event-detail .ev-body { flex:1; }
 .ev-month { font-family:'Montserrat',sans-serif; font-size:12px; letter-spacing:0.08em; color:var(--accent); }
 .ev-title { font-size:24px; letter-spacing:0.1em; margin:6px 0 14px; }
+.ev-yomi { font-size:12px; color:var(--sub); letter-spacing:0.08em; margin-left:10px; }
 .ev-text { font-size:15px; line-height:2.1; color:var(--text); }
 
 /* 画像プレースホルダー */
@@ -153,7 +153,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 80px
           <h1 class="sec-h2">年中行事</h1>
         </div>
       </div>
-      <p class="sec-lead">安養院では一年を通じて、季節ごとの法要・行事を勤めています。導入文がここに入ります。</p>
+      <p class="sec-lead">安養院では、一年を通じて季節ごとの法要・行事を勤めています。</p>
 
       <!-- 年間表（固定表示） -->
       <table class="event-table">
@@ -161,50 +161,84 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 80px
           <tr><th class="col-month">時期</th><th class="col-name">行事</th><th class="col-desc">概要</th></tr>
         </thead>
         <tbody>
-          <tr><td class="col-month">1月</td><td class="col-name">修正会</td><td class="col-desc">概要が入ります</td></tr>
-          <tr><td class="col-month">2月</td><td class="col-name"><a href="#setsubun">節分会</a></td><td class="col-desc">概要が入ります</td></tr>
-          <tr><td class="col-month">3月</td><td class="col-name">春彼岸会</td><td class="col-desc">概要が入ります</td></tr>
-          <tr><td class="col-month">7月</td><td class="col-name"><a href="#tourou">灯籠流し</a></td><td class="col-desc">概要が入ります</td></tr>
-          <tr><td class="col-month">8月</td><td class="col-name">盂蘭盆会</td><td class="col-desc">概要が入ります</td></tr>
-          <tr><td class="col-month">9月</td><td class="col-name">秋彼岸会</td><td class="col-desc">概要が入ります</td></tr>
-          <tr><td class="col-month">12月</td><td class="col-name"><a href="#daihannya">大般若転読会</a></td><td class="col-desc">概要が入ります</td></tr>
+          <tr><td class="col-month">1月1日</td><td class="col-name"><a href="#gonenshi">御年始</a></td><td class="col-desc">新年の除災招福・豊穣安穏を祈願</td></tr>
+          <tr><td class="col-month">2月3日</td><td class="col-name"><a href="#setsubun">節分会</a></td><td class="col-desc">除災招福の護摩祈祷・豆まき</td></tr>
+          <tr><td class="col-month">2月15日</td><td class="col-name"><a href="#tendou">天道念仏（涅槃会）</a></td><td class="col-desc">五穀豊作を祈願・釈迦涅槃図</td></tr>
+          <tr><td class="col-month">4月8日</td><td class="col-name"><a href="#hanamatsuri">お花祭り</a></td><td class="col-desc">お釈迦さまの誕生を祝う</td></tr>
+          <tr><td class="col-month">8月13日</td><td class="col-name"><a href="#urabon">盂蘭盆会</a></td><td class="col-desc">先祖の霊を迎える（お盆）</td></tr>
+          <tr><td class="col-month">8月16日</td><td class="col-name"><a href="#tourou">桃の木川灯籠流し</a></td><td class="col-desc">水害除けと先祖の供養</td></tr>
+          <tr><td class="col-month">春分・秋分</td><td class="col-name"><a href="#higan">彼岸会</a></td><td class="col-desc">阿弥陀仏を礼拝し先祖を供養</td></tr>
+          <tr><td class="col-month">3年に1度</td><td class="col-name"><a href="#daihannya">大般若転読会</a></td><td class="col-desc">600巻を転読し厄難消除</td></tr>
         </tbody>
       </table>
-
-      <!-- アンカーリンク -->
-      <div class="event-anchors">
-        <a href="#setsubun">節分会</a>
-        <a href="#tourou">灯籠流し</a>
-        <a href="#daihannya">大般若転読会</a>
-      </div>
     </div>
   </section>
 
-  <!-- 行事ごと：画像＋説明の並び -->
+  <!-- 行事ごと：画像＋説明の並び（画像左・テキスト右・固定） -->
   <section style="padding-top:0;">
     <div class="inner">
+      <div class="event-detail" id="gonenshi">
+        <div class="ev-img"><div class="ph">IMAGE</div></div>
+        <div class="ev-body">
+          <div class="ev-month">1月1日</div>
+          <h2 class="ev-title">御年始<span class="ev-yomi">ごねんし</span></h2>
+          <p class="ev-text">年の初めに、新年の除災招福・豊穣安穏を祈願します。お札と暦をお配りします。悪魔降伏のお札は玄関の前に、大黒天のお札はお仏壇にお貼りください。</p>
+        </div>
+      </div>
       <div class="event-detail" id="setsubun">
         <div class="ev-img"><div class="ph">IMAGE</div></div>
         <div class="ev-body">
-          <div class="ev-month">February</div>
-          <h2 class="ev-title">節分会</h2>
-          <p class="ev-text">行事の説明がここに入ります。由来・当日の流れ・参加の案内などを、画像と並べて掲載します。</p>
+          <div class="ev-month">2月3日（立春の前日）</div>
+          <h2 class="ev-title">節分会<span class="ev-yomi">せつぶんえ</span></h2>
+          <p class="ev-text">季節の分かれ目である立春の前日に、除災招福を願う法会です。火に供物を投じて本尊を供養し、厄除け祈願・家内安全・交通安全などのご加護を願う護摩祈祷を行います。豆まきと、鬼退治の劇も上演しています。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="tendou">
+        <div class="ev-img"><div class="ph">IMAGE</div></div>
+        <div class="ev-body">
+          <div class="ev-month">2月15日</div>
+          <h2 class="ev-title">天道念仏（涅槃会）<span class="ev-yomi">てんとうねんぶつ・ねはんえ</span></h2>
+          <p class="ev-text">大地に恵みを与える太陽を拝んで、五穀の豊作を祈願する儀礼が天道念仏です。2月15日はお釈迦さまの命日にあたり、安養院では釈迦涅槃図をお祀りします。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="hanamatsuri">
+        <div class="ev-img"><div class="ph">IMAGE</div></div>
+        <div class="ev-body">
+          <div class="ev-month">4月8日</div>
+          <h2 class="ev-title">お花祭り<span class="ev-yomi">おはなまつり</span></h2>
+          <p class="ev-text">お釈迦さまの誕生を祝う法会です。花で飾ったお堂（花御堂）に甘茶の入った水盤を置き、お釈迦さまの誕生仏をまつり、誕生仏の頭に甘茶をそそいでお参りします。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="urabon">
+        <div class="ev-img"><div class="ph">IMAGE</div></div>
+        <div class="ev-body">
+          <div class="ev-month">8月13日</div>
+          <h2 class="ev-title">盂蘭盆会<span class="ev-yomi">うらぼんえ</span></h2>
+          <p class="ev-text">一般にはお盆といわれています。『盂蘭盆経』には、お釈迦さまの弟子の目連尊者が、餓鬼道に落ちて苦しんでいる母を、お釈迦さまの教えに従って僧侶に供養することで救ったと記されています。精霊棚を設け、供物を供えて先祖様の霊を迎えます。</p>
         </div>
       </div>
       <div class="event-detail" id="tourou">
         <div class="ev-img"><div class="ph">IMAGE</div></div>
         <div class="ev-body">
-          <div class="ev-month">July</div>
-          <h2 class="ev-title">灯籠流し</h2>
-          <p class="ev-text">行事の説明がここに入ります。</p>
+          <div class="ev-month">8月16日</div>
+          <h2 class="ev-title">桃の木川灯籠流し<span class="ev-yomi">もものきがわとうろうながし</span></h2>
+          <p class="ev-text">笂井町の各団体とともに、水害除けとご先祖様の供養を願う灯籠流しを行っています。願いを込めた手作りの灯籠を持ち寄り、毎回賑わっています。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="higan">
+        <div class="ev-img"><div class="ph">IMAGE</div></div>
+        <div class="ev-body">
+          <div class="ev-month">春分・秋分の日の前後3日間</div>
+          <h2 class="ev-title">彼岸会<span class="ev-yomi">ひがんえ</span></h2>
+          <p class="ev-text">太陽が真西に沈む春分・秋分の日に、西方極楽浄土におられる阿弥陀仏を礼拝し、先祖の霊を供養します。「彼岸」とは、私たちの住む欲望にまみれた迷いの世界「此岸（しがん）」に対しての悟りの境地のこと。煩悩まみれの自分自身を、悟りの境地に近づけるよう努める期間でもあります。</p>
         </div>
       </div>
       <div class="event-detail" id="daihannya">
         <div class="ev-img"><div class="ph">IMAGE</div></div>
         <div class="ev-body">
-          <div class="ev-month">December</div>
-          <h2 class="ev-title">大般若転読会</h2>
-          <p class="ev-text">行事の説明がここに入ります。</p>
+          <div class="ev-month">3年に1度</div>
+          <h2 class="ev-title">大般若転読会<span class="ev-yomi">だいはんにゃてんどくえ</span></h2>
+          <p class="ev-text">『大般若波羅蜜多経』600巻を転読（経題と文句を唱えながら経を繰り広げる）して、平和・家内安全・厄難消除などを祈願する法会です。『大般若経』は「空」を説く大乗経典で、この経を供養するものは般若守護の十六善神によって常に護持されるといわれています。安養院では三年に一度行っています。</p>
         </div>
       </div>
     </div>
