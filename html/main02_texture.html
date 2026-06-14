@@ -173,7 +173,7 @@ nav a:hover { opacity: 1; color: var(--accent); text-decoration: underline; text
   animation: fade-niwa 12s ease-in-out infinite;
 }
 .hero-img-alt {
-  background-image: url('../02images/02fv/sakura_giga_hosei.jpg');
+  background-image: url('../main02/02images/02fv/sakura_giga_hosei.jpg');
   background-position: center top;
   z-index: 1;
   animation: fade-sakura 12s ease-in-out infinite;
@@ -824,7 +824,7 @@ footer {
   <div class="sitenav" id="sitenav">
     <div class="sitenav-inner">
       <a href="#" class="logo">
-        <img src="../02images/02logo/01logo/安養院シンボルマーク.svg" class="logo-symbol" alt="">
+        <img src="../main02/02images/02logo/01logo/安養院シンボルマーク.svg" class="logo-symbol" alt="">
         <div class="logo-text">
           <div class="logo-text-sub">
             <img src="../images/logo/天台宗オブジェクト（変更禁止）.svg" class="logo-sub-img" alt="天台宗">
@@ -931,7 +931,7 @@ footer {
     </div>
   </div>
   <div class="about-photo">
-    <img src="../02images/02fv/sakura_giga_hosei.jpg" alt="安養院 境内の枝垂れ桜">
+    <img src="../main02/02images/02fv/sakura_giga_hosei.jpg" alt="安養院 境内の枝垂れ桜">
   </div>
   <div class="inner-mid">
     <div class="about-title">
@@ -1117,7 +1117,7 @@ footer {
     <!-- ロゴ・住所 -->
     <div class="footer-logo">
       <div class="footer-logo-imgs">
-        <img src="../02images/02logo/01logo/安養院シンボルマーク.svg" class="footer-logo-symbol" alt="">
+        <img src="../main02/02images/02logo/01logo/安養院シンボルマーク.svg" class="footer-logo-symbol" alt="">
         <div class="footer-logo-text">
           <div class="footer-logo-sub">
             <img src="../images/logo/天台宗オブジェクト（変更禁止）.svg" class="footer-logo-sub-img" alt="天台宗">
@@ -1189,7 +1189,7 @@ footer {
   // ── FV：画像が読めたらカバーをふわっとフェードアウト ──
   const fv = document.querySelector('.fv');
   if (fv) {
-    const sources = ['../images/fv/niwa.jpg', '../02images/02fv/sakura_giga_hosei.jpg'];
+    const sources = ['../images/fv/niwa.jpg', '../main02/02images/02fv/sakura_giga_hosei.jpg'];
     let settled = 0, done = false;
     function reveal() { if (!done) { done = true; fv.classList.add('is-ready'); } }
     sources.forEach(function (src) {
