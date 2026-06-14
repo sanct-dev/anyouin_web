@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>安養院 — 天台宗 医王山 安養院</title>
+<link rel="icon" type="image/svg+xml" href="02images/02logo/01logo/symbol_mint.svg">
+<link rel="apple-touch-icon" href="02images/02logo/01logo/symbol_mint.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -68,11 +70,14 @@ a { text-decoration: none; color: inherit; }
 /* ロゴ：スクロール後だけ表示 */
 .logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
 }
+.logo-symbol { width: 30px; height: auto; display: block; }
+.logo-text { display: flex; flex-direction: column; }
 .sitenav.is-sticky .logo { opacity: 1; pointer-events: auto; }
 .logo-sub {
   font-family: '游明朝体', 'Yu Mincho', '游明朝', serif;
@@ -805,8 +810,11 @@ footer {
   <div class="sitenav" id="sitenav">
     <div class="sitenav-inner">
       <a href="#" class="logo">
-        <span class="logo-sub">天台宗　医王山</span>
-        <span class="logo-ja">安養院</span>
+        <img class="logo-symbol" src="02images/02logo/01logo/symbol_mint.svg" alt="">
+        <span class="logo-text">
+          <span class="logo-sub">天台宗　医王山</span>
+          <span class="logo-ja">安養院</span>
+        </span>
       </a>
       <nav id="sitemenu" aria-label="メインメニュー">
         <a href="news.html">お知らせ</a>
@@ -1103,12 +1111,7 @@ footer {
     <div class="footer-logo">
       <div class="footer-logo-imgs">
         <!-- ロゴ画像が揃ったら img タグに差し替え -->
-        <svg class="footer-logo-symbol" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="39" cy="39" r="37" stroke="#6D0F0F" stroke-width="1.5" fill="none" opacity="0.2"/>
-          <circle cx="39" cy="27" r="10" fill="#6D0F0F" opacity="0.7"/>
-          <path d="M22 58 Q39 44 56 58" stroke="#6D0F0F" stroke-width="1.5" fill="none" opacity="0.7" stroke-linecap="round"/>
-          <path d="M17 58 Q39 46 61 58" stroke="#6D0F0F" stroke-width="1" fill="none" opacity="0.3" stroke-linecap="round"/>
-        </svg>
+        <img class="footer-logo-symbol" src="02images/02logo/01logo/symbol_mint.svg" alt="安養院">
         <svg class="footer-logo-type" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <text x="0" y="22" font-family="'游明朝体','Yu Mincho',serif" font-size="18" letter-spacing="6" fill="#474646">安養院</text>
         </svg>
