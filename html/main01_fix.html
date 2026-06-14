@@ -335,7 +335,7 @@ nav a:hover { color: var(--red); opacity: 1; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 43px;
+  gap: 20px;
   padding: 120px 60px;
 }
 .lead-img {
@@ -343,13 +343,21 @@ nav a:hover { color: var(--red); opacity: 1; }
   max-width: 1280px;
   height: 560px;
   object-fit: cover;
+  margin-bottom: 8px;
 }
 .lead-title {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 500;
   letter-spacing: 0.26em;
   color: var(--text);
   text-align: center;
+}
+.lead-sub {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--text);
+  margin-top: 6px;
 }
 .lead-body {
   font-size: 15px;
@@ -378,7 +386,7 @@ nav a:hover { color: var(--red); opacity: 1; }
 }
 .event-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
 }
 .event-card { background: transparent; }
@@ -421,7 +429,7 @@ nav a:hover { color: var(--red); opacity: 1; }
 .event-title {
   display: block;
   text-align: center;
-  font-size: 19px;
+  font-size: 26px;
   font-weight: 400;
   letter-spacing: 0.12em;
   line-height: 1.4;
@@ -766,9 +774,7 @@ footer {
   .event-img { aspect-ratio: 4/3; }
   .event-body { padding: 8px 8px 4px; text-align: center; }
   .event-card:nth-child(3),
-  .event-card:nth-child(4),
-  .event-card:nth-child(5),
-  .event-card:nth-child(6) { display: none; }
+  .event-card:nth-child(4) { display: none; }
   .event-desc { display: none; }
   .event-head { position: static; display: flex; flex-direction: row; align-items: baseline; justify-content: center; gap: 6px; margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
   .event-date { position: static; display: inline; font-size: 10px; }
@@ -929,8 +935,7 @@ footer {
 <!-- Lead：枝垂れ桜 -->
 <section class="lead">
   <img class="lead-img" src="../images/main/main_goaisatu.jpg" alt="枝垂れ桜とおしろい薬師">
-  <p class="sec-en">Our Temple</p>
-  <h2 class="lead-title"><ruby>医王山<rt>いおうざん</rt></ruby>　<ruby>安養院<rt>あんよういん</rt></ruby>　<ruby>真福寺<rt>しんぽうじ</rt></ruby></h2>
+  <h2 class="lead-title"><ruby>医王山<rt>いおうざん</rt></ruby>　<ruby>安養院<rt>あんよういん</rt></ruby>　<ruby>真福寺<rt>しんぽうじ</rt></ruby><span class="lead-sub">と申します</span></h2>
   <p class="lead-body">
     安養院は、<ruby>笂井町<rt>うつぼいまち</rt></ruby>にある天台宗のお寺です。<br>
     古くからこの地でたいせつに守られてきました。
@@ -945,57 +950,35 @@ footer {
     <div class="event-grid">
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/お正月.jpg" alt="初詣"></div>
+        <div class="event-img"><img src="../images/setsubun.png" alt="節分会"></div>
         <div class="event-body">
           <div class="event-head">
-            <h3 class="event-title">初詣</h3>
-            <div class="event-date">1月1日</div>
+            <h3 class="event-title">節分会</h3>
+            <div class="event-date">2月3日</div>
           </div>
-          <div class="event-desc">新年の始まりに、ご参拝ください。</div>
+          <div class="event-desc">護摩祈祷・豆まき・鬼退治の劇を行います。厄除け祈願、家内安全をお祈りします。</div>
         </div>
       </div>
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/ヤクドシマン_ぼかし.jpg" alt="節分会"></div>
-        <div class="event-body">
-          <div class="event-head">
-            <h3 class="event-title">節分</h3>
-            <div class="event-date">2月 第一日曜日</div>
-          </div>
-          <div class="event-desc">豆まき・厄除け祈願を行います。</div>
-        </div>
-      </div>
-
-      <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/天道念仏.JPG" alt="天道念仏"></div>
+        <div class="event-img"><img src="../images/tendo.png" alt="天道念仏"></div>
         <div class="event-body">
           <div class="event-head">
             <h3 class="event-title">天道念仏</h3>
-            <div class="event-date">2月10日</div>
+            <div class="event-date">2月15日</div>
           </div>
-          <div class="event-desc">太陽を拝んで五穀の豊作を祈願します。</div>
+          <div class="event-desc">太陽を拝んで五穀の豊作を祈願する儀礼。お釈迦さまの命日にあたります。</div>
         </div>
       </div>
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/お盆.jpeg" alt="盂蘭盆会"></div>
+        <div class="event-img"><img src="../images/toro.png" alt="灯籠流し"></div>
         <div class="event-body">
           <div class="event-head">
-            <h3 class="event-title">お盆</h3>
-            <div class="event-date">8月13日〜15日</div>
-          </div>
-          <div class="event-desc">ご先祖様をお迎えするお盆の法要。</div>
-        </div>
-      </div>
-
-      <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/灯籠流し 2.jpg" alt="灯籠流し"></div>
-        <div class="event-body">
-          <div class="event-head">
-            <h3 class="event-title">灯籠流し</h3>
+            <h3 class="event-title">桃の木川 灯籠流し</h3>
             <div class="event-date">8月16日</div>
           </div>
-          <div class="event-desc">桃の木川でご先祖様を供養します。</div>
+          <div class="event-desc">笂井町の各団体とともに、水害除けとご先祖様を供養する灯籠流しを行います。願いを込めた手作りの灯籠を持ち寄り、毎回賑わっています。</div>
         </div>
       </div>
 
@@ -1004,9 +987,9 @@ footer {
         <div class="event-body">
           <div class="event-head">
             <h3 class="event-title">大般若転読会</h3>
-            <div class="event-date">3年に1度</div>
+            <div class="event-date">3年に一度</div>
           </div>
-          <div class="event-desc">大般若経六百巻を転読し、国家安泰を祈ります。</div>
+          <div class="event-desc">３年に一度、六百巻の大般若経を転読し、地域の除災招福を祈る法会です。</div>
         </div>
       </div>
 
