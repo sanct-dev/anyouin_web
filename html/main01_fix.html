@@ -372,7 +372,7 @@ nav a:hover { color: var(--red); opacity: 1; }
   padding: 0 60px 120px;
 }
 .event-inner {
-  max-width: 1060px;
+  max-width: 860px;
   margin: 0 auto;
 }
 .event-h2 {
@@ -392,7 +392,8 @@ nav a:hover { color: var(--red); opacity: 1; }
 .event-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  column-gap: 40px;
+  row-gap: 72px;
 }
 .event-card { background: transparent; }
 .event-card:hover .event-img {
@@ -401,7 +402,7 @@ nav a:hover { color: var(--red); opacity: 1; }
 }
 .event-img {
   position: relative;
-  aspect-ratio: 16/9;
+  aspect-ratio: 4/3;
   overflow: hidden;
   background: var(--border);
   display: flex;
@@ -453,7 +454,7 @@ nav a:hover { color: var(--red); opacity: 1; }
   white-space: nowrap;
 }
 .event-desc {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.7;
   color: var(--text);
   text-align: center;
