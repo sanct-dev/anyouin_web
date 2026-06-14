@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>安養院 — 天台宗 医王山 安養院</title>
-<link rel="icon" type="image/svg+xml" href="02images/02logo/01logo/symbol_mint.svg">
-<link rel="apple-touch-icon" href="02images/02logo/01logo/symbol_mint.svg">
+<link rel="icon" type="image/svg+xml" href="02images/02logo/01logo/symbol_orange.svg">
+<link rel="apple-touch-icon" href="02images/02logo/01logo/symbol_orange.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -15,10 +15,10 @@
   --bg:     #FFF5EE;
   --bg2:    #FFFFFF;
   --header: #FFE0CC;
-  --accent: #6D0F0F;
-  --mint:   #AAE0DB;
+  --accent: #5C3B2E;
+  --pop:    #FF9D45;
   --text:   #333231;
-  --sub:    #8A8178;
+  --sub:    #6F655B;
   --border: #E5DDD0;
   --gray-l: #DEDAD4;
   --w:      780px;
@@ -227,7 +227,8 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   position: absolute;
   width: 80px;
   height: 100px;
-  background: var(--mint);
+  background: var(--pop);
+  opacity: 0.4;
   border-radius: 28% 72% 58% 42% / 22% 64% 36% 78%;
   transform: rotate(-18deg);
   top: -38px;
@@ -257,7 +258,9 @@ section { padding: 120px 24px; position: relative; z-index: 1; }
   font-size: 13px;
   letter-spacing: 0.12em;
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
   margin-top: 16px;
   transition: opacity 0.15s;
 }
@@ -810,7 +813,7 @@ footer {
   <div class="sitenav" id="sitenav">
     <div class="sitenav-inner">
       <a href="#" class="logo">
-        <img class="logo-symbol" src="02images/02logo/01logo/symbol_mint.svg" alt="">
+        <img class="logo-symbol" src="02images/02logo/01logo/symbol_orange.svg" alt="">
         <span class="logo-text">
           <span class="logo-sub">天台宗　医王山</span>
           <span class="logo-ja">安養院</span>
@@ -818,10 +821,10 @@ footer {
       </a>
       <nav id="sitemenu" aria-label="メインメニュー">
         <a href="news.html">お知らせ</a>
-        <a href="#about">安養院について</a>
+        <a href="about.html">安養院について</a>
         <a href="event.html">年間行事</a>
-        <a href="#consul">葬儀・法要</a>
-        <a href="#consul">御祈願・厄除け</a>
+        <a href="consul.html">葬儀・法要</a>
+        <a href="kigan.html">御祈願・厄除け</a>
         <a href="consul.html#ohaka">お墓</a>
         <a href="access.html">アクセス</a>
       </nav>
@@ -1111,9 +1114,9 @@ footer {
     <div class="footer-logo">
       <div class="footer-logo-imgs">
         <!-- ロゴ画像が揃ったら img タグに差し替え -->
-        <img class="footer-logo-symbol" src="02images/02logo/01logo/symbol_mint.svg" alt="安養院">
+        <img class="footer-logo-symbol" src="02images/02logo/01logo/symbol_orange.svg" alt="安養院">
         <svg class="footer-logo-type" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" font-family="'游明朝体','Yu Mincho',serif" font-size="18" letter-spacing="6" fill="#474646">安養院</text>
+          <text x="0" y="22" font-family="'游明朝体','Yu Mincho',serif" font-size="18" letter-spacing="6" style="fill:var(--accent)">安養院</text>
         </svg>
       </div>
       <address class="footer-address">
