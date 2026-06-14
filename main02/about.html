@@ -46,7 +46,8 @@ section{padding:84px 24px;}
 .blank-note{font-size:13px;color:var(--sub);letter-spacing:.1em;}
 
 /* ── 仏さま一覧 ── */
-.butsu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:44px 48px;}
+/* 縦一列。右側はイラスト用に余白として空けておく */
+.butsu-grid{display:flex;flex-direction:column;gap:40px;max-width:600px;}
 .butsu-item{display:flex;gap:20px;align-items:flex-start;}
 .butsu-img{flex:0 0 92px;}
 .butsu-img .ph{aspect-ratio:3/4;}
@@ -55,7 +56,7 @@ section{padding:84px 24px;}
 .butsu-yomi{font-size:11px;color:var(--sub);letter-spacing:.06em;margin-left:8px;}
 .butsu-honzon{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.12em;color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:1px 6px;margin-left:8px;vertical-align:2px;}
 .butsu-desc{font-size:13px;line-height:1.95;color:var(--sub);}
-@media (max-width:760px){.butsu-grid{grid-template-columns:1fr;}}
+@media (max-width:760px){.butsu-grid{max-width:none;}}
 
 /* ── プレースホルダー ── */
 .ph{background:var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--sub);font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.15em;}
