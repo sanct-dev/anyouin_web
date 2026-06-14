@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../images/logo/symbol.svg">
+<title>年間行事 — 天台宗 医王山 安養院 真福寺</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --text: #2e2e2e;
+  --sub: #a0a0a0;
+  --border: rgba(0,0,0,0.15);
+  --bg: #ffffff;
+  --red: #8e1a1a;
+  --width: 1280px;
+  --font: 'Shippori Mincho', '游明朝体', 'Yu Mincho', serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 2;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ========== HEADER ========== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.97);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px 0 46px;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-symbol { width: 56px; height: auto; }
+.logo-type { width: 120px; height: auto; }
+nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+nav a {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s, color 0.2s;
+}
+nav a:hover { color: var(--red); opacity: 1; }
+nav a.is-current { color: var(--red); }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
+
+/* ========== PAGE HERO ========== */
+.page-hero { height: 360px; overflow: hidden; }
+.page-hero img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ========== SECTION ========== */
+.page-sec { padding: 96px 24px; }
+.inner { max-width: 1000px; margin: 0 auto; }
+.sec-hd { text-align: center; margin-bottom: 40px; }
+.sec-en {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--red);
+  opacity: 0.55;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sec-h2 {
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--text);
+}
+.sec-lead { text-align: center; font-size: 14px; color: #585858; margin-bottom: 48px; }
+
+/* ========== 年間表 ========== */
+.event-table { width: 100%; border-collapse: collapse; margin: 0 auto; font-size: 15px; }
+.event-table th, .event-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.event-table thead th { font-size: 11px; letter-spacing: 0.12em; color: var(--sub); font-weight: 400; border-bottom: 1.5px solid var(--red); }
+.event-table .col-month { width: 120px; font-family: 'Montserrat', sans-serif; letter-spacing: 0.04em; color: var(--red); opacity: 0.8; white-space: nowrap; }
+.event-table .col-name a { border-bottom: 1px solid transparent; }
+.event-table .col-name a:hover { color: var(--red); border-bottom-color: var(--red); }
+.event-table .col-desc { color: var(--sub); font-size: 13px; line-height: 1.9; }
+
+/* ========== 行事詳細 ========== */
+.event-detail { display: flex; gap: 48px; align-items: center; padding: 64px 0; border-bottom: 1px solid var(--border); scroll-margin-top: 120px; }
+.event-detail .ev-img { flex: 0 0 46%; }
+.event-detail .ev-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; display: block; }
+.event-detail .ev-img .ph {
+  aspect-ratio: 4/3;
+  background: var(--border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sub);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+.event-detail .ev-body { flex: 1; }
+.ev-month { font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 0.08em; color: var(--red); opacity: 0.8; }
+.ev-title { font-size: 22px; font-weight: 400; letter-spacing: 0.1em; margin: 6px 0 14px; color: var(--text); }
+.ev-yomi { font-size: 12px; color: var(--sub); letter-spacing: 0.08em; margin-left: 10px; }
+.ev-text { font-size: 14px; line-height: 2.1; color: #585858; }
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 60px 60px 60px;
+}
+.footer-inner {
+  max-width: var(--width);
+  margin: 0 auto;
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+.footer-logo {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  width: 190px;
+}
+.footer-logo-imgs { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.footer-logo-symbol { width: 78px; height: auto; }
+.footer-logo-type { width: 80px; height: auto; }
+.footer-address { font-style: normal; font-size: 12px; color: var(--sub); line-height: 1.9; letter-spacing: 0.03em; }
+.footer-tel { display: block; font-size: 15px; color: var(--text); margin-top: 4px; letter-spacing: 0.05em; }
+.footer-sns { display: flex; gap: 16px; }
+.footer-sns-link { color: var(--sub); opacity: 0.6; transition: opacity 0.2s; display: flex; align-items: center; }
+.footer-sns-link:hover { opacity: 1; }
+.footer-nav-group { display: flex; gap: 48px; flex: 1; align-items: flex-start; }
+.footer-nav-col { display: flex; flex-direction: column; gap: 6px; list-style: none; }
+.footer-nav-col li:first-child { margin-bottom: 4px; }
+.footer-nav-col li:first-child a { font-size: 14px; font-weight: 500; color: var(--text); }
+.footer-nav-col a { font-size: 12px; color: var(--sub); text-decoration: none; letter-spacing: 0.03em; white-space: nowrap; line-height: 1.5; }
+.footer-nav-col a:hover { opacity: 0.6; }
+.footer-sub { display: flex; flex-direction: column; gap: 8px; list-style: none; flex-shrink: 0; padding-top: 2px; }
+.footer-sub a { font-size: 12px; color: var(--sub); text-decoration: none; white-space: nowrap; }
+.footer-sub a:hover { opacity: 0.6; }
+.copy {
+  max-width: var(--width);
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--sub);
+  text-align: center;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  header { padding: 0 20px; height: 72px; justify-content: center; position: relative; }
+  .logo { gap: 12px; }
+  .logo-symbol { width: 36px; }
+  .logo-type { width: 90px; }
+  nav { display: none; }
+  .hamburger { display: flex; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+
+  .page-hero { height: 220px; }
+  .page-sec { padding: 60px 20px; }
+  .event-detail { flex-direction: column; gap: 20px; padding: 48px 0; }
+  .event-detail .ev-img { width: 100%; flex-basis: auto; }
+  .event-table .col-desc { display: none; }
+
+  .footer-inner { flex-direction: column; padding: 0 20px; gap: 32px; }
+  .footer-logo { align-items: center; width: 100%; }
+  .footer-address { text-align: center; }
+  .footer-nav-group { display: none; }
+  .footer-sub { display: none; }
+  .footer-nav-sp { display: flex !important; flex-wrap: wrap; gap: 12px 20px; list-style: none; justify-content: center; }
+  .footer-nav-sp a { font-size: 13px; color: var(--text); text-decoration: none; white-space: nowrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <a href="main01.html" class="logo">
+    <img class="logo-symbol" src="../images/logo/symbol.svg" alt="安養院 シンボルマーク">
+    <img class="logo-type" src="../images/logo/header_logotype.svg" alt="安養院真福寺">
+  </a>
+  <nav>
+    <a href="about.html">安養院について</a>
+    <a href="news.html">おしらせ</a>
+    <a href="sougi.html">法要・お葬式</a>
+    <a href="kigan.html">御祈願・厄除け</a>
+    <a href="sougi.html#ohaka">お墓</a>
+    <a href="event.html" class="is-current">年間行事</a>
+    <a href="access.html">アクセス</a>
+    <a href="faq.html">よくある質問</a>
+  </nav>
+  <button class="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+  <div class="page-hero"><img src="../images/fv/fv01_sakura.jpg" alt="安養院 枝垂れ桜"></div>
+
+  <section class="page-sec">
+    <div class="inner">
+      <div class="sec-hd">
+        <span class="sec-en">Annual Events</span>
+        <h1 class="sec-h2">年間行事</h1>
+      </div>
+      <p class="sec-lead">安養院では、一年を通じて季節ごとの法要・行事を勤めています。</p>
+
+      <!-- 年間表 -->
+      <table class="event-table">
+        <thead>
+          <tr><th class="col-month">時期</th><th class="col-name">行事</th><th class="col-desc">概要</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="col-month">1月1日</td><td class="col-name"><a href="#gonenshi">御年始</a></td><td class="col-desc">新年の除災招福・豊穣安穏を祈願</td></tr>
+          <tr><td class="col-month">2月3日</td><td class="col-name"><a href="#setsubun">節分会</a></td><td class="col-desc">除災招福の護摩祈祷・豆まき</td></tr>
+          <tr><td class="col-month">2月15日</td><td class="col-name"><a href="#tendou">天道念仏（涅槃会）</a></td><td class="col-desc">五穀豊作を祈願・釈迦涅槃図</td></tr>
+          <tr><td class="col-month">4月8日</td><td class="col-name"><a href="#hanamatsuri">お花祭り</a></td><td class="col-desc">お釈迦さまの誕生を祝う</td></tr>
+          <tr><td class="col-month">8月13日</td><td class="col-name"><a href="#urabon">盂蘭盆会</a></td><td class="col-desc">先祖の霊を迎える（お盆）</td></tr>
+          <tr><td class="col-month">8月16日</td><td class="col-name"><a href="#tourou">桃の木川灯籠流し</a></td><td class="col-desc">水害除けと先祖の供養</td></tr>
+          <tr><td class="col-month">春分・秋分</td><td class="col-name"><a href="#higan">彼岸会</a></td><td class="col-desc">阿弥陀仏を礼拝し先祖を供養</td></tr>
+          <tr><td class="col-month">3年に1度</td><td class="col-name"><a href="#daihannya">大般若転読会</a></td><td class="col-desc">600巻を転読し厄難消除</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 行事ごと：画像＋説明 -->
+  <section class="page-sec" style="padding-top:0;">
+    <div class="inner">
+      <div class="event-detail" id="gonenshi">
+        <div class="ev-img"><img src="../images/eventcard/お正月.jpg" alt="御年始"></div>
+        <div class="ev-body">
+          <div class="ev-month">1月1日</div>
+          <h2 class="ev-title">御年始<span class="ev-yomi">ごねんし</span></h2>
+          <p class="ev-text">年の初めに、新年の除災招福・豊穣安穏を祈願します。お札と暦をお配りします。悪魔降伏のお札は玄関の前に、大黒天のお札はお仏壇にお貼りください。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="setsubun">
+        <div class="ev-img"><img src="../images/eventcard/節分会 2.jpg" alt="節分会"></div>
+        <div class="ev-body">
+          <div class="ev-month">2月3日（立春の前日）</div>
+          <h2 class="ev-title">節分会<span class="ev-yomi">せつぶんえ</span></h2>
+          <p class="ev-text">季節の分かれ目である立春の前日に、除災招福を願う法会です。火に供物を投じて本尊を供養し、厄除け祈願・家内安全・交通安全などのご加護を願う護摩祈祷を行います。豆まきと、鬼退治の劇も上演しています。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="tendou">
+        <div class="ev-img"><img src="../images/eventcard/天道念仏.JPG" alt="天道念仏（涅槃会）"></div>
+        <div class="ev-body">
+          <div class="ev-month">2月15日</div>
+          <h2 class="ev-title">天道念仏（涅槃会）<span class="ev-yomi">てんとうねんぶつ・ねはんえ</span></h2>
+          <p class="ev-text">大地に恵みを与える太陽を拝んで、五穀の豊作を祈願する儀礼が天道念仏です。2月15日はお釈迦さまの命日にあたり、安養院では釈迦涅槃図をお祀りします。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="hanamatsuri">
+        <div class="ev-img"><div class="ph">IMAGE</div></div>
+        <div class="ev-body">
+          <div class="ev-month">4月8日</div>
+          <h2 class="ev-title">お花祭り<span class="ev-yomi">おはなまつり</span></h2>
+          <p class="ev-text">お釈迦さまの誕生を祝う法会です。花で飾ったお堂（花御堂）に甘茶の入った水盤を置き、お釈迦さまの誕生仏をまつり、誕生仏の頭に甘茶をそそいでお参りします。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="urabon">
+        <div class="ev-img"><img src="../images/eventcard/お盆.jpeg" alt="盂蘭盆会"></div>
+        <div class="ev-body">
+          <div class="ev-month">8月13日</div>
+          <h2 class="ev-title">盂蘭盆会<span class="ev-yomi">うらぼんえ</span></h2>
+          <p class="ev-text">一般にはお盆といわれています。『盂蘭盆経』には、お釈迦さまの弟子の目連尊者が、餓鬼道に落ちて苦しんでいる母を、お釈迦さまの教えに従って僧侶に供養することで救ったと記されています。精霊棚を設け、供物を供えて先祖様の霊を迎えます。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="tourou">
+        <div class="ev-img"><img src="../images/eventcard/灯籠流し 2.jpg" alt="桃の木川灯籠流し"></div>
+        <div class="ev-body">
+          <div class="ev-month">8月16日</div>
+          <h2 class="ev-title">桃の木川灯籠流し<span class="ev-yomi">もものきがわとうろうながし</span></h2>
+          <p class="ev-text">笂井町の各団体とともに、水害除けとご先祖様の供養を願う灯籠流しを行っています。願いを込めた手作りの灯籠を持ち寄り、毎回賑わっています。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="higan">
+        <div class="ev-img"><div class="ph">IMAGE</div></div>
+        <div class="ev-body">
+          <div class="ev-month">春分・秋分の日の前後3日間</div>
+          <h2 class="ev-title">彼岸会<span class="ev-yomi">ひがんえ</span></h2>
+          <p class="ev-text">太陽が真西に沈む春分・秋分の日に、西方極楽浄土におられる阿弥陀仏を礼拝し、先祖の霊を供養します。「彼岸」とは、私たちの住む欲望にまみれた迷いの世界「此岸（しがん）」に対しての悟りの境地のこと。煩悩まみれの自分自身を、悟りの境地に近づけるよう努める期間でもあります。</p>
+        </div>
+      </div>
+      <div class="event-detail" id="daihannya">
+        <div class="ev-img"><img src="../images/eventcard/大般若 2.JPG" alt="大般若転読会"></div>
+        <div class="ev-body">
+          <div class="ev-month">3年に1度</div>
+          <h2 class="ev-title">大般若転読会<span class="ev-yomi">だいはんにゃてんどくえ</span></h2>
+          <p class="ev-text">『大般若波羅蜜多経』600巻を転読（経題と文句を唱えながら経を繰り広げる）して、平和・家内安全・厄難消除などを祈願する法会です。『大般若経』は「空」を説く大乗経典で、この経を供養するものは般若守護の十六善神によって常に護持されるといわれています。安養院では三年に一度行っています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-logo-imgs">
+        <img class="footer-logo-symbol" src="../images/logo/symbol.svg" alt="安養院 シンボルマーク">
+        <img class="footer-logo-type" src="../images/logo/footer_logotype.svg" alt="安養院真福寺">
+      </div>
+      <address class="footer-address">
+        〒379-2115<br>群馬県前橋市笂井町1164番地
+        <span class="footer-tel">027-266-1378</span>
+      </address>
+      <div class="footer-sns">
+        <a href="#" class="footer-sns-link" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" class="footer-sns-link" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <!-- SP用シンプルナビ（PC非表示） -->
+    <ul class="footer-nav-sp" style="display:none;">
+      <li><a href="about.html">安養院について</a></li>
+      <li><a href="news.html">おしらせ</a></li>
+      <li><a href="sougi.html">法要・お葬式</a></li>
+      <li><a href="kigan.html">御祈願・厄除け</a></li>
+      <li><a href="sougi.html#ohaka">お墓</a></li>
+      <li><a href="event.html">年間行事</a></li>
+      <li><a href="access.html">アクセス</a></li>
+      <li><a href="faq.html">よくある質問</a></li>
+    </ul>
+    <nav class="footer-nav-group">
+      <ul class="footer-nav-col">
+        <li><a href="about.html">安養院について</a></li>
+        <li><a href="about.html#history">歴史</a></li>
+        <li><a href="about.html#butsu">仏さま</a></li>
+        <li><a href="#">笂井町のほこら</a></li>
+        <li><a href="#">仏教お話会</a></li>
+      </ul>
+      <ul class="footer-nav-col">
+        <li><a href="sougi.html">お葬式・法要</a></li>
+        <li><a href="sougi.html#sougi">お葬式について</a></li>
+        <li><a href="sougi.html#houyou">法要について</a></li>
+      </ul>
+      <ul class="footer-nav-col">
+        <li><a href="kigan.html">ご祈願・厄除</a></li>
+        <li><a href="kigan.html#yakuyoke">厄年祈祷について</a></li>
+        <li><a href="kigan.html#kigan">各種御祈願</a></li>
+        <li><a href="#">お守り・お札</a></li>
+        <li><a href="#">御朱印</a></li>
+      </ul>
+      <ul class="footer-nav-col">
+        <li><a href="event.html">年中行事</a></li>
+        <li><a href="event.html#setsubun">節分会</a></li>
+        <li><a href="event.html#tourou">灯籠流し</a></li>
+        <li><a href="event.html#daihannya">大般若転読会</a></li>
+      </ul>
+    </nav>
+    <ul class="footer-sub">
+      <li><a href="access.html">アクセス</a></li>
+      <li><a href="#">お問い合わせ</a></li>
+      <li><a href="faq.html">よくあるご質問</a></li>
+      <li><a href="#">ご利用規約</a></li>
+      <li><a href="#">プライバシーポリシー</a></li>
+    </ul>
+  </div>
+  <p class="copy">© 安養院 真福寺　群馬県前橋市笂井町1164番地</p>
+</footer>
+
+</body>
+</html>
