@@ -265,19 +265,6 @@
   window.addEventListener('resize', fitThumbs);
   // フォント・レイアウト確定後のズレ対策で一度遅延再計算
   setTimeout(fitThumbs, 300);
-
-  // 版（見本）は、ダッシュボード（左1/3）を避けて右側に「広く」開く（細くしない）。
-  // 同じ窓を使い回すので、押すたびに増えない。同一画面内なので位置・サイズ指定が効く。
-  document.querySelectorAll('a.card').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      const sw = screen.availWidth, sh = screen.availHeight;
-      const left = Math.round(sw / 3) + 5;
-      const w = sw - left - 5, h = sh - 60;
-      window.open(a.href, 'anyoin-prev',
-        'popup,left=' + left + ',top=30,width=' + w + ',height=' + h);
-    });
-  });
 </script>
 
 </body>
