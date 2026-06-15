@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安養院 ── 明朝フォント見比べ</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&family=Zen+Old+Mincho:wght@400;500;600;700;900&family=Kaisei+Tokumin:wght@400;500;700&family=Hina+Mincho&family=Shippori+Mincho:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FDF8F2;
+    --card: #ffffff;
+    --text: #2a2724;
+    --sub: #8a8178;
+    --border: #e6ddd1;
+    --accent: #6D0F0F;
+    --pop: #FF9D45;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: '游明朝体', 'Yu Mincho', serif;
+    padding: 48px 24px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 920px; margin: 0 auto; }
+
+  header { margin-bottom: 8px; }
+  .kicker {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--sub); margin-bottom: 12px;
+  }
+  h1.page { font-size: 26px; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 14px; }
+  .lead { font-size: 15px; line-height: 2.0; color: #5a544d; max-width: 680px; }
+  .lead b { color: var(--accent); font-weight: 500; }
+
+  .legend {
+    display: flex; gap: 18px; flex-wrap: wrap;
+    margin: 24px 0 40px; padding: 14px 18px;
+    background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 0.04em; color: #5a544d;
+  }
+  .legend .web::before, .legend .sys::before {
+    content: ''; display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+    margin-right: 7px; vertical-align: middle;
+  }
+  .legend .web::before { background: #3a9d6e; }
+  .legend .sys::before { background: #c98a2b; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 28px 30px 30px; margin-bottom: 22px;
+  }
+  .card.pick { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+  .card.reject { opacity: 0.92; }
+
+  .card-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .fname { font-size: 18px; font-weight: 500; letter-spacing: 0.04em; }
+  .badge {
+    font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 4px; font-weight: 600;
+  }
+  .badge.web { background: #e7f4ee; color: #2f7c56; }
+  .badge.sys { background: #f6ecdb; color: #a06b1f; }
+  .badge.pick { background: var(--accent); color: #fff; }
+  .badge.reject { background: #efe9e2; color: #8a8178; }
+  .note { font-size: 13px; color: var(--sub); margin-bottom: 20px; line-height: 1.7; }
+
+  .sample-h { font-size: 40px; font-weight: 500; letter-spacing: 0.06em; line-height: 1.4; margin-bottom: 6px; }
+  .sample-sub { font-size: 19px; font-weight: 400; letter-spacing: 0.08em; color: #4a443e; margin-bottom: 18px; }
+  .sample-body { font-size: 16px; line-height: 2.2; letter-spacing: 0.05em; color: #3a352f; max-width: 720px; }
+
+  /* 各フォント指定 */
+  .f-yu     { font-family: '游明朝体', 'Yu Mincho', '游明朝', serif; }
+  .f-bizp   { font-family: 'BIZ UDPMincho', serif; }
+  .f-zen    { font-family: 'Zen Old Mincho', serif; }
+  .f-kaisei { font-family: 'Kaisei Tokumin', serif; }
+  .f-hina   { font-family: 'Hina Mincho', serif; }
+  .f-ship   { font-family: 'Shippori Mincho', serif; }
+  .f-noto   { font-family: 'Noto Serif JP', serif; }
+
+  footer { margin-top: 36px; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.08em; color: var(--sub); text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="kicker">ANYOIN — MINCHO TYPE SPECIMEN</p>
+    <h1 class="page">明朝フォント 見比べ</h1>
+    <p class="lead">
+      同じ見出し・同じ本文を、各明朝で並べました。<b>游明朝はWebフォントではない</b>ので、
+      游明朝が入った端末（このMacなど）でしか正しく出ません。スマホ等では游明朝の枠が別の明朝に置き換わります。
+      候補のWebフォントは、その<b>游明朝が出ない場面で端正さを肩代わりできるか</b>という目で見てください。
+    </p>
+  </header>
+
+  <div class="legend">
+    <span class="web">Webフォント＝どの端末でも同じ字面で出る</span>
+    <span class="sys">システムフォント＝その端末に入っていないと出ない</span>
+  </div>
+
+  <!-- 游明朝（本命・基準） -->
+  <div class="card pick">
+    <div class="card-head">
+      <span class="fname">游明朝体</span>
+      <span class="badge sys">System</span>
+      <span class="badge pick">本命・基準</span>
+    </div>
+    <p class="note">締まった線、静かな余白。端正の基準。ただしWebフォント不可＝Mac/Winでしか出ない。</p>
+    <div class="sample-h f-yu">医王山 安養院</div>
+    <div class="sample-sub f-yu">天台宗 ── 千年の祈りを、いまの暮らしへ</div>
+    <p class="sample-body f-yu">安養院は、地域とともに歩んできたお寺です。葬儀や法要はもちろん、御祈願や厄除け、お墓のことまで、はじめての方にも分かりやすくご案内いたします。どうぞお気軽にお問い合わせください。</p>
+  </div>
+
+  <!-- BIZ UDP明朝 -->
+  <div class="card">
+    <div class="card-head">
+      <span class="fname">BIZ UDP明朝</span>
+      <span class="badge web">Webフォント</span>
+    </div>
+    <p class="note">クセを抜いて均一に整えた端正寄り。游明朝の清潔さに最も近い代役候補。整いすぎてやや無機質に寄る面も。</p>
+    <div class="sample-h f-bizp">医王山 安養院</div>
+    <div class="sample-sub f-bizp">天台宗 ── 千年の祈りを、いまの暮らしへ</div>
+    <p class="sample-body f-bizp">安養院は、地域とともに歩んできたお寺です。葬儀や法要はもちろん、御祈願や厄除け、お墓のことまで、はじめての方にも分かりやすくご案内いたします。どうぞお気軽にお問い合わせください。</p>
+  </div>
+
+  <!-- Zen Old Mincho -->
+  <div class="card">
+    <div class="card-head">
+      <span class="fname">Zen Old Mincho</span>
+      <span class="badge web">Webフォント</span>
+    </div>
+    <p class="note">古典・文学寄りの落ち着き。游明朝より少し肉と品があるが、ねっとりはしない。端正＋静かな気品。</p>
+    <div class="sample-h f-zen">医王山 安養院</div>
+    <div class="sample-sub f-zen">天台宗 ── 千年の祈りを、いまの暮らしへ</div>
+    <p class="sample-body f-zen">安養院は、地域とともに歩んできたお寺です。葬儀や法要はもちろん、御祈願や厄除け、お墓のことまで、はじめての方にも分かりやすくご案内いたします。どうぞお気軽にお問い合わせください。</p>
+  </div>
+
+  <!-- Kaisei Tokumin -->
+  <div class="card">
+    <div class="card-head">
+      <span class="fname">Kaisei Tokumin（解星 特ミン）</span>
+      <span class="badge web">Webフォント</span>
+    </div>
+    <p class="note">伝統的な明朝の骨格、やや太め。見出しで効くタイプ。本文に敷くと少し重い。</p>
+    <div class="sample-h f-kaisei">医王山 安養院</div>
+    <div class="sample-sub f-kaisei">天台宗 ── 千年の祈りを、いまの暮らしへ</div>
+    <p class="sample-body f-kaisei">安養院は、地域とともに歩んできたお寺です。葬儀や法要はもちろん、御祈願や厄除け、お墓のことまで、はじめての方にも分かりやすくご案内いたします。どうぞお気軽にお問い合わせください。</p>
+  </div>
+
+  <!-- Hina Mincho -->
+  <div class="card">
+    <div class="card-head">
+      <span class="fname">Hina Mincho</span>
+      <span class="badge web">Webフォント</span>
+    </div>
+    <p class="note">細く繊細で上品。ただ単ウェイトで線が細く、弱い画面では飛びやすい（届け先のスマホで消える懸念）。</p>
+    <div class="sample-h f-hina">医王山 安養院</div>
+    <div class="sample-sub f-hina">天台宗 ── 千年の祈りを、いまの暮らしへ</div>
+    <p class="sample-body f-hina">安養院は、地域とともに歩んできたお寺です。葬儀や法要はもちろん、御祈願や厄除け、お墓のことまで、はじめての方にも分かりやすくご案内いたします。どうぞお気軽にお問い合わせください。</p>
+  </div>
+
+  <!-- しっぽり明朝（参考・不採用） -->
+  <div class="card reject">
+    <div class="card-head">
+      <span class="fname">しっぽり明朝</span>
+      <span class="badge web">Webフォント</span>
+      <span class="badge reject">参考・違う方向</span>
+    </div>
+    <p class="note">筆の入り抜きが残り、ねっとり・湿度がある。端正とは逆方向。</p>
+    <div class="sample-h f-ship">医王山 安養院</div>
+    <div class="sample-sub f-ship">天台宗 ── 千年の祈りを、いまの暮らしへ</div>
+    <p class="sample-body f-ship">安養院は、地域とともに歩んできたお寺です。葬儀や法要はもちろん、御祈願や厄除け、お墓のことまで、はじめての方にも分かりやすくご案内いたします。どうぞお気軽にお問い合わせください。</p>
+  </div>
+
+  <!-- Noto Serif JP（参考・不採用） -->
+  <div class="card reject">
+    <div class="card-head">
+      <span class="fname">Noto Serif JP</span>
+      <span class="badge web">Webフォント</span>
+      <span class="badge reject">参考・無機質</span>
+    </div>
+    <p class="note">均質で隙がない代わりに温度がない。無機質。</p>
+    <div class="sample-h f-noto">医王山 安養院</div>
+    <div class="sample-sub f-noto">天台宗 ── 千年の祈りを、いまの暮らしへ</div>
+    <p class="sample-body f-noto">安養院は、地域とともに歩んできたお寺です。葬儀や法要はもちろん、御祈願や厄除け、お墓のことまで、はじめての方にも分かりやすくご案内いたします。どうぞお気軽にお問い合わせください。</p>
+  </div>
+
+  <footer>安養院 真福寺　制作用内部資料 ── 明朝見比べ</footer>
+
+</div>
+</body>
+</html>
