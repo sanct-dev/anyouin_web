@@ -230,6 +230,9 @@ nav a:hover { color: var(--red); opacity: 1; }
   display: flex;
   gap: 63px;
   align-items: flex-start;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 .news-main-label {
   display: flex;
@@ -543,7 +546,7 @@ nav a:hover { color: var(--red); opacity: 1; }
   grid-template-columns: repeat(3, 1fr);
   gap: 64px;
 }
-.service-card { background: transparent; }
+.service-card { background: transparent; display: block; color: inherit; text-decoration: none; cursor: pointer; }
 .service-card:hover .service-img {
   transform: translateY(-2px);
   box-shadow: 0 5px 14px rgba(51,50,49,0.10);
@@ -992,7 +995,7 @@ footer {
 
 <!-- お知らせ メイン -->
 <section class="news-main">
-  <div class="news-main-inner">
+  <a class="news-main-inner" href="news.html">
     <div class="news-main-label">
       <div class="deco"></div>
       <span>最</span><span>新</span><span>の</span><span>お</span><span>し</span><span>ら</span><span>せ</span>
@@ -1008,7 +1011,7 @@ footer {
         本日はご自宅で安全にお過ごしくださいますようお願い申し上げます。
       </p>
     </div>
-  </div>
+  </a>
 </section>
 
 <!-- おしらせ一覧 -->
@@ -1021,14 +1024,14 @@ footer {
     </div>
     <div class="news-grid">
       <div class="news-row">
-        <a href="#" class="news-card">
+        <a href="news.html" class="news-card">
           <img class="news-thumb" src="../images/news/news01_tourounagasi.JPEG" alt="灯籠流し">
           <div class="news-card-text">
             <span class="news-category">2026.08.16　更新</span>
             <span class="news-card-title">灯籠流しを行います</span>
           </div>
         </a>
-        <a href="#" class="news-card">
+        <a href="news.html" class="news-card">
           <img class="news-thumb" src="../images/news/news03_bondana.jpeg" alt="新盆供養">
           <div class="news-card-text">
             <span class="news-category">2026.08.10　更新</span>
@@ -1037,14 +1040,14 @@ footer {
         </a>
       </div>
       <div class="news-row">
-        <a href="#" class="news-card">
+        <a href="news.html" class="news-card">
           <img class="news-thumb" src="../images/news/news02_mugicha.JPEG" alt="お盆迎え">
           <div class="news-card-text">
             <span class="news-category">2026.08.05　更新</span>
             <span class="news-card-title">お盆迎えの時間について</span>
           </div>
         </a>
-        <a href="#" class="news-card">
+        <a href="news.html" class="news-card">
           <img class="news-thumb" src="../images/news/news04_takedourou.jpeg" alt="竹燈籠づくり">
           <div class="news-card-text">
             <span class="news-category">2026.07.20　更新</span>
@@ -1054,7 +1057,7 @@ footer {
       </div>
     </div>
   </div>
-  <a href="#" class="news-more">おしらせをもっとみる &rsaquo;</a>
+  <a href="news.html" class="news-more">おしらせをもっとみる &rsaquo;</a>
 </section>
 
 <!-- Lead：枝垂れ桜 -->
@@ -1076,7 +1079,7 @@ footer {
     <div class="event-grid">
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/お正月.jpg" alt="初詣"></div>
+        <a class="event-img" href="event.html"><img src="../images/eventcard/お正月.jpg" alt="初詣"></a>
         <div class="event-body">
           <div class="event-head">
             <h3 class="event-title">初詣</h3>
@@ -1087,7 +1090,7 @@ footer {
       </div>
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/ヤクドシマン_ぼかし.jpg" alt="節分会"></div>
+        <a class="event-img" href="event.html"><img src="../images/eventcard/ヤクドシマン_ぼかし.jpg" alt="節分会"></a>
         <div class="event-body">
           <div class="event-head">
             <h3 class="event-title">節分会</h3>
@@ -1098,7 +1101,7 @@ footer {
       </div>
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/tendo.png" alt="天道念仏"></div>
+        <a class="event-img" href="event.html"><img src="../images/tendo.png" alt="天道念仏"></a>
         <div class="event-body">
           <div class="event-head">
             <h3 class="event-title">天道念仏</h3>
@@ -1109,7 +1112,7 @@ footer {
       </div>
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/お盆.jpeg" alt="お盆"></div>
+        <a class="event-img" href="event.html"><img src="../images/eventcard/お盆.jpeg" alt="お盆"></a>
         <div class="event-body">
           <div class="event-head">
             <h3 class="event-title">お盆</h3>
@@ -1120,7 +1123,7 @@ footer {
       </div>
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/toro.png" alt="灯籠流し"></div>
+        <a class="event-img" href="event.html"><img src="../images/toro.png" alt="灯籠流し"></a>
         <div class="event-body">
           <div class="event-head">
             <h3 class="event-title">灯籠流し</h3>
@@ -1131,7 +1134,7 @@ footer {
       </div>
 
       <div class="event-card">
-        <div class="event-img"><img src="../images/eventcard/大般若 2.JPG" alt="大般若転読会"></div>
+        <a class="event-img" href="event.html"><img src="../images/eventcard/大般若 2.JPG" alt="大般若転読会"></a>
         <div class="event-body">
           <div class="event-head">
             <h3 class="event-title">大般若転読会</h3>
@@ -1144,7 +1147,7 @@ footer {
     </div>
     <div class="event-more">
       <p class="event-invite">一般の方も参加いただけます</p>
-      <a href="#" class="btn-text">行事一覧をみる ›</a>
+      <a href="event.html" class="btn-text">行事一覧をみる ›</a>
     </div>
   </div>
 </section>
@@ -1156,29 +1159,29 @@ footer {
     <h2 class="service-h2">ご相談・ご依頼</h2>
     <div class="service-grid">
 
-      <div class="service-card">
+      <a class="service-card" href="sougi.html#sougi">
         <div class="service-img"><img src="../images/con_card/card01_houyou.jpeg" alt="お葬式・法要"></div>
         <div class="service-body">
           <h3 class="service-title">お葬式・法要</h3>
           <p class="service-desc">天台宗の作法に則り、亡くなった方を極楽浄土へ導くための儀式を執り行います。一周忌・三回忌をはじめとした年忌法要、随時の回向供養も承っております。</p>
         </div>
-      </div>
+      </a>
 
-      <div class="service-card">
+      <a class="service-card" href="kigan.html#kigan">
         <div class="service-img"><img src="../images/con_card/card03_gokigan.jpeg" alt="御祈願・厄除け"></div>
         <div class="service-body">
           <h3 class="service-title">御祈願・厄除け</h3>
           <p class="service-desc">厄除開運、家内安全、無病息災、当病平癒、商売繁盛、交通安全、良縁吉祥、子宝恵受、試験合格など。ご祈願は随時受け付けております。</p>
         </div>
-      </div>
+      </a>
 
-      <div class="service-card">
+      <a class="service-card" href="sougi.html#ohaka">
         <div class="service-img"><img src="../images/con_card/card02_ohaka.jpg" alt="お墓"></div>
         <div class="service-body">
           <h3 class="service-title">お墓</h3>
           <p class="service-desc">先祖代々の墓、永代供養墓、樹木葬、ペットのお墓。さまざまなご要望にお応えします。まずはお電話ください。</p>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -1197,7 +1200,7 @@ footer {
       安養院の起源や歴史、ご本尊などのご仏像、最近の取り組みを紹介します<br>
       地域にまつわるお話もご覧ください
     </p>
-    <a href="#" class="about-btn">詳しく見る</a>
+    <a href="about.html" class="about-btn">詳しく見る</a>
   </div>
 </section>
 
