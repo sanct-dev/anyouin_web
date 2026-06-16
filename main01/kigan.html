@@ -140,7 +140,8 @@ nav a.is-current { color: var(--red); }
 /* ========== 厄年早見表 ========== */
 .yaku-cap { font-size: 14px; letter-spacing: 0.06em; color: var(--text); margin-bottom: 16px; padding-bottom: 11px; border-bottom: 1.5px solid var(--red); }
 .yaku-cap .yr { font-family: 'Montserrat', sans-serif; color: var(--red); letter-spacing: 0.02em; }
-.yaku-box { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.yaku-box { background: #f6f3ee; border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; padding: 20px 22px 16px; }
+.yaku-box .yaku-cap { margin-bottom: 14px; }
 .yakumi { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .yakumi tbody tr:last-child td, .yakumi tbody tr:last-child th { border-bottom: none; }
 .yakumi th, .yakumi td { border-bottom: 1px solid var(--border); text-align: center; vertical-align: middle; }
@@ -295,8 +296,8 @@ footer {
       <div class="split">
         <!-- 左：早見表 -->
         <div class="split-visual">
-          <div class="yaku-cap">令和8年（<span class="yr">2026</span>年）厄年表</div>
           <div class="yaku-box">
+            <div class="yaku-cap">令和8年（<span class="yr">2026</span>年）厄年表</div>
           <table class="yakumi">
             <thead>
               <tr><th></th><th>前厄</th><th>本厄</th><th>後厄</th></tr>
@@ -342,14 +343,7 @@ footer {
               </tr>
             </tbody>
           </table>
-          </div>
-          <p class="tbl-note">各欄は上から、数え年・生まれ年（和暦）・満年齢と干支です。男性四十二歳・女性三十三歳が大厄にあたり、前後の年を前厄・後厄として、あわせて三年お祓いいたします。</p>
-        </div>
-
-        <!-- 右：説明〜申し込み -->
-        <div class="split-body">
-          <div class="prose">
-            <p>節分会は、立春の前日にあたる季節の分かれ目に、一年の無事を願う法会です。護摩壇に火を焚き、供物を炎に投じて不動明王に祈りを届ける、天台宗（台密）の作法でお勤めします。厄年を迎える方は、この護摩祈祷にお名前を連ね、ご祈願いたします。</p>
+            <p class="tbl-note">各欄は上から、数え年・生まれ年（和暦）・満年齢と干支です。男性四十二歳・女性三十三歳が大厄にあたり、前後の年を前厄・後厄として、あわせて三年お祓いいたします。</p>
           </div>
 
           <h2 class="subhead-l">ご祈願料</h2>
@@ -371,6 +365,13 @@ footer {
               節分会では、厄除けのほかに各種の御祈願も承っています。くわしくは <a href="#kigan">御祈願</a> をご覧ください。<br>
               前もって書いてお持ちになりたい方は、申込用紙をこちらからご利用いただけます。<a href="#">申込用紙をダウンロード（PDF）</a>
             </p>
+          </div>
+        </div>
+
+        <!-- 右：説明（下は後で埋める） -->
+        <div class="split-body">
+          <div class="prose">
+            <p>節分会は、立春の前日にあたる季節の分かれ目に、一年の無事を願う法会です。護摩壇に火を焚き、供物を炎に投じて不動明王に祈りを届ける、天台宗（台密）の作法でお勤めします。厄年を迎える方は、この護摩祈祷にお名前を連ね、ご祈願いたします。</p>
           </div>
         </div>
       </div>
