@@ -121,6 +121,7 @@ nav a.is-current { color: var(--red); }
 .split-visual { flex: 0 0 55%; }
 .split-visual img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; display: block; }
 .split-body { flex: 1; min-width: 0; padding-top: 30px; }
+.split-body > *:first-child { margin-top: 0; }
 
 /* ========== 本文 ========== */
 .prose { font-size: 14px; line-height: 2.1; color: #585858; }
@@ -131,9 +132,9 @@ nav a.is-current { color: var(--red); }
 .subhead-l { font-size: 16px; font-weight: 400; letter-spacing: 0.1em; color: var(--text); margin: 44px 0 18px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
 
 /* ========== 表（ご祈願料） ========== */
-.tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
-.tbl th, .tbl td { padding: 12px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
-.tbl .col-key { color: var(--text); }
+.tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tbl th, .tbl td { padding: 7px 0; border: none; text-align: left; vertical-align: middle; }
+.tbl .col-key { color: #585858; }
 .tbl .col-fee { text-align: right; font-family: 'Montserrat', sans-serif; letter-spacing: 0.02em; white-space: nowrap; color: var(--text); }
 
 /* ========== 厄年早見表 ========== */
@@ -383,7 +384,7 @@ footer {
         <span class="sec-en">Prayer</span>
         <h2 class="sec-h2">御祈願</h2>
       </div>
-      <p class="sec-lead">節分会では厄除けのほかに各種の御祈願を承ります。また、節分に限らず、さまざまな御祈願を随時お受けしています。</p>
+      <p class="sec-lead">安養院では、節分会でのご祈願のほか、随時のご祈願もお受けしています。</p>
 
       <div class="split">
         <!-- 左：画像 -->
@@ -393,18 +394,21 @@ footer {
 
         <!-- 右：説明 -->
         <div class="split-body">
+          <h2 class="subhead-l">節分会のご祈願</h2>
           <div class="prose">
-            <p>家内安全・身体健全・商売繁盛・学業成就など、願いの内容は問いません。お札にお名前と願い事をしるして、ご祈願いたします。お受けになりたい御祈願がございましたら、お気軽にお寺までお申し付けください。</p>
-            <p>外出やお出かけの安全を願う、交通安全のお守りもご用意しています。</p>
+            <p>節分会では、厄除けのほかに各種の御祈願を承ります。家内安全・身体健全・商売繁盛・学業成就など、願いの内容は問いません。お札にお名前と願い事をしるして、ご祈願いたします。交通安全のお守りもご用意しています。</p>
           </div>
-
-          <h2 class="subhead-l">ご祈願料</h2>
           <table class="tbl">
             <tbody>
               <tr><td class="col-key">各種御祈願（お札）</td><td class="col-fee">2,000円</td></tr>
               <tr><td class="col-key">交通安全のお守り</td><td class="col-fee">500円</td></tr>
             </tbody>
           </table>
+
+          <h2 class="subhead-l">随時のご祈願</h2>
+          <div class="prose">
+            <p>節分会の時期に限らず、さまざまな御祈願を随時お受けしています。お札はお出しせず、ご祈願のお勤めをいたします。お受けになりたい御祈願がございましたら、お気軽にお寺までお申し付けください。</p>
+          </div>
         </div>
       </div>
     </div>
