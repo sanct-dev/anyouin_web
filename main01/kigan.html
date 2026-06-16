@@ -114,56 +114,53 @@ nav a.is-current { color: var(--red); }
   letter-spacing: 0.18em;
   color: var(--text);
 }
-.sec-lead { text-align: center; font-size: 14px; color: #585858; margin-bottom: 48px; letter-spacing: 0.02em; }
+.sec-lead { text-align: center; font-size: 14px; color: #585858; margin-bottom: 56px; letter-spacing: 0.02em; }
+
+/* ========== 左右2カラム（左ビジュアル・右テキスト） ========== */
+.split { display: flex; gap: 52px; align-items: flex-start; max-width: 1000px; margin: 0 auto; }
+.split-visual { flex: 0 0 46%; }
+.split-visual img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; display: block; }
+.split-body { flex: 1; min-width: 0; }
 
 /* ========== 本文 ========== */
-.prose { max-width: 720px; margin: 0 auto; font-size: 15px; line-height: 2.1; color: #585858; }
+.prose { font-size: 15px; line-height: 2.1; color: #585858; }
 .prose p + p { margin-top: 1.4em; }
 .prose strong { color: var(--text); font-weight: 500; }
 
-/* ========== 小見出し ========== */
-.subhead {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  color: var(--text);
-  margin: 72px 0 8px;
-}
-.subhead::after {
-  content: "";
-  display: block;
-  width: 28px;
-  height: 1px;
-  background: var(--red);
-  opacity: 0.5;
-  margin: 14px auto 0;
-}
-.subnote { text-align: center; font-size: 13px; color: var(--sub); margin: 0 0 28px; letter-spacing: 0.04em; }
+/* ========== 小見出し（本文中・左寄せ） ========== */
+.subhead-l { font-size: 16px; font-weight: 400; letter-spacing: 0.1em; color: var(--text); margin: 44px 0 18px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
 
-/* ========== 表（早見表・初穂料） ========== */
-.tbl-wrap { max-width: 720px; margin: 0 auto; }
-.tbl { width: 100%; border-collapse: collapse; font-size: 15px; }
-.tbl th, .tbl td { padding: 14px 16px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
-.tbl thead th { font-size: 11px; letter-spacing: 0.12em; color: var(--sub); font-weight: 400; border-bottom: 1.5px solid var(--red); }
+/* ========== 表（初穂料） ========== */
+.tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tbl th, .tbl td { padding: 12px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
 .tbl .col-key { color: var(--text); }
-.tbl .num { font-family: 'Montserrat', sans-serif; letter-spacing: 0.04em; }
-.tbl .yaku-honyaku { color: var(--red); }
-.tbl .col-fee { text-align: right; font-family: 'Montserrat', sans-serif; letter-spacing: 0.02em; white-space: nowrap; }
-.tbl-note { max-width: 720px; margin: 14px auto 0; font-size: 12px; color: var(--sub); letter-spacing: 0.03em; }
+.tbl .col-fee { text-align: right; font-family: 'Montserrat', sans-serif; letter-spacing: 0.02em; white-space: nowrap; color: var(--text); }
+
+/* ========== 厄年早見表 ========== */
+.yaku-cap { font-size: 13px; letter-spacing: 0.06em; color: var(--text); margin-bottom: 16px; padding-bottom: 11px; border-bottom: 1.5px solid var(--red); }
+.yaku-cap .yr { font-family: 'Montserrat', sans-serif; color: var(--red); }
+.yakumi { width: 100%; border-collapse: collapse; }
+.yakumi th, .yakumi td { text-align: center; font-size: 13px; padding: 11px 4px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.yakumi thead th { font-size: 11px; letter-spacing: 0.08em; color: var(--sub); font-weight: 400; }
+.yakumi .g { width: 38px; color: var(--sub); font-weight: 400; font-size: 12px; border-right: 1px solid var(--border); }
+.yakumi .yr { font-family: 'Montserrat', sans-serif; font-size: 14px; letter-spacing: 0.01em; color: var(--text); }
+.yakumi .hon .yr { color: var(--red); }
+.yakumi small { display: block; font-size: 10px; color: var(--sub); font-family: 'Montserrat', sans-serif; margin-top: 3px; }
+.tbl-note { font-size: 12px; color: var(--sub); line-height: 1.85; margin-top: 16px; letter-spacing: 0.02em; }
 
 /* ========== お申し込み ========== */
-.apply { max-width: 720px; margin: 0 auto; }
-.apply dl { display: grid; grid-template-columns: 120px 1fr; gap: 0; }
-.apply dt { padding: 14px 0; font-size: 13px; color: var(--red); opacity: 0.85; letter-spacing: 0.06em; border-bottom: 1px solid var(--border); }
-.apply dd { padding: 14px 0; font-size: 14px; color: #585858; line-height: 1.9; border-bottom: 1px solid var(--border); }
+.apply dl { display: grid; grid-template-columns: 84px 1fr; gap: 0; }
+.apply dt { padding: 13px 0; font-size: 13px; color: var(--red); opacity: 0.85; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+.apply dd { padding: 13px 0 13px 16px; font-size: 14px; color: #585858; line-height: 1.9; border-bottom: 1px solid var(--border); }
 .apply .applynote { margin-top: 22px; font-size: 13px; color: var(--sub); line-height: 1.9; }
 .apply .applynote a { color: var(--red); border-bottom: 1px solid rgba(142,26,26,0.4); }
 .apply .applynote a:hover { opacity: 0.7; }
 
 @media (max-width: 900px) {
-  .apply dl { grid-template-columns: 88px 1fr; }
-  .subhead { margin-top: 52px; }
+  .split { flex-direction: column; gap: 30px; }
+  .split-visual { flex-basis: auto; width: 100%; }
+  .split-visual img { aspect-ratio: 3/2; }
+  .apply dl { grid-template-columns: 76px 1fr; }
 }
 
 /* ========== FOOTER ========== */
@@ -287,51 +284,54 @@ footer {
       </div>
       <p class="sec-lead">安養院では、厄年を迎える方の厄除けを、毎年の節分会に合わせてお勤めしています。</p>
 
-      <div class="prose">
-        <p>節分会は、立春の前日にあたる季節の分かれ目に、一年の無事を願う法会です。護摩壇に火を焚き、供物を炎に投じて不動明王に祈りを届ける、天台宗（台密）の作法でお勤めします。厄年を迎える方は、この護摩祈祷にお名前を連ね、ご祈願いたします。</p>
-        <p>安養院の節分会は、<strong>毎年二月の第一日曜日</strong>に行っています。豆まきと、鬼退治の劇も行います。どなたでもお参りいただけます。</p>
-      </div>
+      <div class="split">
+        <!-- 左：早見表 -->
+        <div class="split-visual">
+          <div class="yaku-cap">令和8年（<span class="yr">2026</span>年）の厄年</div>
+          <table class="yakumi">
+            <thead>
+              <tr><th></th><th>前厄</th><th>本厄</th><th>後厄</th></tr>
+            </thead>
+            <tbody>
+              <tr><th rowspan="3" class="g">男性</th><td><span class="yr">2003</span><small>24</small></td><td class="hon"><span class="yr">2002</span><small>25</small></td><td><span class="yr">2001</span><small>26</small></td></tr>
+              <tr><td><span class="yr">1986</span><small>41</small></td><td class="hon"><span class="yr">1985</span><small>42</small></td><td><span class="yr">1984</span><small>43</small></td></tr>
+              <tr><td><span class="yr">1967</span><small>60</small></td><td class="hon"><span class="yr">1966</span><small>61</small></td><td><span class="yr">1965</span><small>62</small></td></tr>
+              <tr><th rowspan="3" class="g">女性</th><td><span class="yr">2009</span><small>18</small></td><td class="hon"><span class="yr">2008</span><small>19</small></td><td><span class="yr">2007</span><small>20</small></td></tr>
+              <tr><td><span class="yr">1995</span><small>32</small></td><td class="hon"><span class="yr">1994</span><small>33</small></td><td><span class="yr">1993</span><small>34</small></td></tr>
+              <tr><td><span class="yr">1991</span><small>36</small></td><td class="hon"><span class="yr">1990</span><small>37</small></td><td><span class="yr">1989</span><small>38</small></td></tr>
+            </tbody>
+          </table>
+          <p class="tbl-note">大きい数字は生まれ年（西暦）、小さい数字は数え年です。男性四十二歳・女性三十三歳が大厄にあたり、前後の年を前厄・後厄として、あわせて三年お祓いいたします。</p>
+        </div>
 
-      <h2 class="subhead">厄年早見表</h2>
-      <p class="subnote">数え年でかぞえます。その年に下の年齢にあたる方が、厄年です。</p>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <thead>
-            <tr><th></th><th>前厄</th><th>本厄</th><th>後厄</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="col-key">男性</td><td class="num">24</td><td class="num yaku-honyaku">25</td><td class="num">26</td></tr>
-            <tr><td class="col-key">男性</td><td class="num">41</td><td class="num yaku-honyaku">42</td><td class="num">43</td></tr>
-            <tr><td class="col-key">男性</td><td class="num">60</td><td class="num yaku-honyaku">61</td><td class="num">62</td></tr>
-            <tr><td class="col-key">女性</td><td class="num">18</td><td class="num yaku-honyaku">19</td><td class="num">20</td></tr>
-            <tr><td class="col-key">女性</td><td class="num">32</td><td class="num yaku-honyaku">33</td><td class="num">34</td></tr>
-            <tr><td class="col-key">女性</td><td class="num">36</td><td class="num yaku-honyaku">37</td><td class="num">38</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="tbl-note">男性四十二歳・女性三十三歳は大厄とされ、前後の年を前厄・後厄として、あわせて三年お祓いいたします。</p>
+        <!-- 右：説明〜申し込み -->
+        <div class="split-body">
+          <div class="prose">
+            <p>節分会は、立春の前日にあたる季節の分かれ目に、一年の無事を願う法会です。護摩壇に火を焚き、供物を炎に投じて不動明王に祈りを届ける、天台宗（台密）の作法でお勤めします。厄年を迎える方は、この護摩祈祷にお名前を連ね、ご祈願いたします。</p>
+            <p>安養院の節分会は、<strong>毎年二月の第一日曜日</strong>に行っています。豆まきと、鬼退治の劇も行います。どなたでもお参りいただけます。</p>
+          </div>
 
-      <h2 class="subhead">初穂料</h2>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <tbody>
-            <tr><td class="col-key">本厄</td><td class="col-fee">10,000円</td></tr>
-            <tr><td class="col-key">前厄・後厄</td><td class="col-fee">2,000円</td></tr>
-          </tbody>
-        </table>
-      </div>
+          <h2 class="subhead-l">初穂料</h2>
+          <table class="tbl">
+            <tbody>
+              <tr><td class="col-key">本厄</td><td class="col-fee">10,000円</td></tr>
+              <tr><td class="col-key">前厄・後厄</td><td class="col-fee">2,000円</td></tr>
+            </tbody>
+          </table>
 
-      <h2 class="subhead">お申し込み</h2>
-      <div class="apply">
-        <dl>
-          <dt>受付</dt><dd>お正月にお参りの方へ、申込用紙をお配りしています。お寺へお越しいただくほか、お電話・ファックスでもお受けします。</dd>
-          <dt>初穂料</dt><dd>お申し込みの際にお納めください。</dd>
-          <dt>締切</dt><dd>節分会の一週間前まで。</dd>
-        </dl>
-        <p class="applynote">
-          節分会では、厄除けのほかに各種の御祈願も承っています。くわしくは <a href="#kigan">御祈願</a> をご覧ください。<br>
-          前もって書いてお持ちになりたい方は、申込用紙をこちらからご利用いただけます。<a href="#">申込用紙をダウンロード（PDF）</a>
-        </p>
+          <h2 class="subhead-l">お申し込み</h2>
+          <div class="apply">
+            <dl>
+              <dt>受付</dt><dd>お正月にお参りの方へ、申込用紙をお配りしています。お寺へお越しいただくほか、お電話・ファックスでもお受けします。</dd>
+              <dt>初穂料</dt><dd>お申し込みの際にお納めください。</dd>
+              <dt>締切</dt><dd>節分会の一週間前まで。</dd>
+            </dl>
+            <p class="applynote">
+              節分会では、厄除けのほかに各種の御祈願も承っています。くわしくは <a href="#kigan">御祈願</a> をご覧ください。<br>
+              前もって書いてお持ちになりたい方は、申込用紙をこちらからご利用いただけます。<a href="#">申込用紙をダウンロード（PDF）</a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -345,19 +345,27 @@ footer {
       </div>
       <p class="sec-lead">節分会では厄除けのほかに各種の御祈願を承ります。また、節分に限らず、さまざまな御祈願を随時お受けしています。</p>
 
-      <div class="prose">
-        <p>家内安全・身体健全・商売繁盛・学業成就など、願いの内容は問いません。お札にお名前と願い事をしるして、ご祈願いたします。お受けになりたい御祈願がございましたら、お気軽にお寺までお申し付けください。</p>
-        <p>外出やお出かけの安全を願う、交通安全のお守りもご用意しています。</p>
-      </div>
+      <div class="split">
+        <!-- 左：画像 -->
+        <div class="split-visual">
+          <img src="../images/con_card/card03_gokigan.jpeg" alt="御祈願">
+        </div>
 
-      <h2 class="subhead">初穂料</h2>
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <tbody>
-            <tr><td class="col-key">各種御祈願（お札）</td><td class="col-fee">2,000円</td></tr>
-            <tr><td class="col-key">交通安全のお守り</td><td class="col-fee">500円</td></tr>
-          </tbody>
-        </table>
+        <!-- 右：説明 -->
+        <div class="split-body">
+          <div class="prose">
+            <p>家内安全・身体健全・商売繁盛・学業成就など、願いの内容は問いません。お札にお名前と願い事をしるして、ご祈願いたします。お受けになりたい御祈願がございましたら、お気軽にお寺までお申し付けください。</p>
+            <p>外出やお出かけの安全を願う、交通安全のお守りもご用意しています。</p>
+          </div>
+
+          <h2 class="subhead-l">初穂料</h2>
+          <table class="tbl">
+            <tbody>
+              <tr><td class="col-key">各種御祈願（お札）</td><td class="col-fee">2,000円</td></tr>
+              <tr><td class="col-key">交通安全のお守り</td><td class="col-fee">500円</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
