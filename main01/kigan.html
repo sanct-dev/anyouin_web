@@ -123,6 +123,15 @@ nav a.is-current { color: var(--red); }
 .split-body { flex: 1; min-width: 0; padding-top: 30px; }
 .split-body > *:first-child { margin-top: 0; }
 
+/* 厄除け：左の早見表を右の説明（※まで）と同じ高さに揃える */
+#yakuyoke .split { align-items: stretch; }
+#yakuyoke .split-visual { display: flex; }
+#yakuyoke .yaku-box { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+/* お申し込みは2カラムの下に独立して置く */
+.apply-block { max-width: 600px; margin: 64px auto 0; }
+.apply-block > *:first-child { margin-top: 0; }
+
 /* ========== 本文 ========== */
 .prose { font-size: 14px; line-height: 2.1; color: #585858; }
 .prose p + p { margin-top: 1.4em; }
@@ -366,34 +375,36 @@ footer {
               <dt>日時</dt><dd>二月第一日曜日<br>午後二時から　護摩法要（本堂内）<br>午後三時から　宝散の儀（ほうさんのぎ・本堂前 屋外）</dd>
               <dt>場所</dt><dd>安養院 本堂</dd>
             </dl>
-            <p class="applynote">どなたでも自由にお参りいただけます。参加は無料で、お申し込みは要りません。<br>本堂前では鬼退治の寸劇も行われます。お子さんお孫さんと一緒にお出かけください。</p>
+            <p class="applynote">節分会は、どなたでも自由にお参りいただけます。参加は無料で、お申し込みは要りません。<br>本堂前では鬼退治の寸劇も行われます。お子さんお孫さんと一緒にお出かけください。</p>
             <p class="kigan-note"><span class="mk">※</span>節分は本来、立春の前日にあたりますが、安養院では日曜日に行っています。</p>
           </div>
+        </div>
+      </div>
 
-          <h2 class="subhead-l">お札・お守り・のぼり旗のお申し込み</h2>
-          <div class="prose">
-            <p>厄除け・御祈願のお札は、護摩でお祓いするため、事前のお申し込みが必要です。厄除けのほか、諸難消除・合格祈願・病気平癒などの特別祈願のお札、交通安全のお守り、祈願のぼり旗をお受けしています。</p>
-          </div>
-          <div class="apply">
-            <dl>
-              <dt>受付</dt><dd>お正月にお参りの方へ、申込用紙をお配りしています。直接お寺へお申し込みください。お電話でも結構です。</dd>
-              <dt>締切</dt><dd>一月二十五日まで</dd>
-              <dt>御祈願料</dt><dd>
-                <table class="tbl">
-                  <tbody>
-                    <tr><td class="col-key">本厄</td><td class="col-fee">10,000円</td></tr>
-                    <tr><td class="col-key">前厄・後厄</td><td class="col-fee">2,000円</td></tr>
-                    <tr><td class="col-key">その他御祈願札</td><td class="col-fee">2,000円</td></tr>
-                    <tr><td class="col-key">祈願のぼり旗</td><td class="col-fee">2,000円</td></tr>
-                    <tr><td class="col-key">交通安全のお守り</td><td class="col-fee">500円</td></tr>
-                  </tbody>
-                </table>
-              </dd>
-            </dl>
-            <p class="applynote">
-              前もって申込用紙を書いてお持ちになりたい方は、こちらからご利用いただけます。<a href="#">申込用紙をダウンロード（PDF）</a>
-            </p>
-          </div>
+      <div class="apply-block">
+        <h2 class="subhead-l">お札・お守り・のぼり旗のお申し込み</h2>
+        <div class="prose">
+          <p>厄除け・御祈願のお札は、護摩でお祓いするため、事前のお申し込みが必要です。厄除けのほか、諸難消除・合格祈願・病気平癒などの特別祈願のお札、交通安全のお守り、祈願のぼり旗をお受けしています。</p>
+        </div>
+        <div class="apply">
+          <dl>
+            <dt>受付</dt><dd>お正月にお参りの方へ、申込用紙をお配りしています。直接お寺へお申し込みください。お電話でも結構です。</dd>
+            <dt>締切</dt><dd>一月二十五日まで</dd>
+            <dt>御祈願料</dt><dd>
+              <table class="tbl">
+                <tbody>
+                  <tr><td class="col-key">本厄</td><td class="col-fee">10,000円</td></tr>
+                  <tr><td class="col-key">前厄・後厄</td><td class="col-fee">2,000円</td></tr>
+                  <tr><td class="col-key">その他御祈願札</td><td class="col-fee">2,000円</td></tr>
+                  <tr><td class="col-key">祈願のぼり旗</td><td class="col-fee">2,000円</td></tr>
+                  <tr><td class="col-key">交通安全のお守り</td><td class="col-fee">500円</td></tr>
+                </tbody>
+              </table>
+            </dd>
+          </dl>
+          <p class="applynote">
+            前もって申込用紙を書いてお持ちになりたい方は、こちらからご利用いただけます。<a href="#">申込用紙をダウンロード（PDF）</a>
+          </p>
         </div>
       </div>
     </div>
