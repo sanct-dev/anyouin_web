@@ -114,23 +114,23 @@ nav a.is-current { color: var(--red); }
   letter-spacing: 0.18em;
   color: var(--text);
 }
-.sec-lead { text-align: center; font-size: 14px; color: #585858; margin-bottom: 56px; letter-spacing: 0.02em; }
+.sec-lead { text-align: center; font-size: 15px; color: #585858; margin-bottom: 56px; letter-spacing: 0.02em; }
 
 /* ========== 左右2カラム（左ビジュアル・右テキスト） ========== */
-.split { display: flex; gap: 52px; align-items: flex-start; max-width: 1000px; margin: 0 auto; }
-.split-visual { flex: 0 0 46%; }
+.split { display: flex; gap: 56px; align-items: flex-start; max-width: 1000px; margin: 0 auto; }
+.split-visual { flex: 0 0 55%; }
 .split-visual img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; display: block; }
-.split-body { flex: 1; min-width: 0; }
+.split-body { flex: 1; min-width: 0; padding-top: 30px; }
 
 /* ========== 本文 ========== */
-.prose { font-size: 15px; line-height: 2.1; color: #585858; }
+.prose { font-size: 14px; line-height: 2.1; color: #585858; }
 .prose p + p { margin-top: 1.4em; }
 .prose strong { color: var(--text); font-weight: 500; }
 
 /* ========== 小見出し（本文中・左寄せ） ========== */
 .subhead-l { font-size: 16px; font-weight: 400; letter-spacing: 0.1em; color: var(--text); margin: 44px 0 18px; padding-bottom: 9px; border-bottom: 1px solid var(--border); }
 
-/* ========== 表（初穂料） ========== */
+/* ========== 表（ご祈願料） ========== */
 .tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
 .tbl th, .tbl td { padding: 12px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
 .tbl .col-key { color: var(--text); }
@@ -139,7 +139,9 @@ nav a.is-current { color: var(--red); }
 /* ========== 厄年早見表 ========== */
 .yaku-cap { font-size: 14px; letter-spacing: 0.06em; color: var(--text); margin-bottom: 16px; padding-bottom: 11px; border-bottom: 1.5px solid var(--red); }
 .yaku-cap .yr { font-family: 'Montserrat', sans-serif; color: var(--red); letter-spacing: 0.02em; }
+.yaku-box { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
 .yakumi { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.yakumi tbody tr:last-child td, .yakumi tbody tr:last-child th { border-bottom: none; }
 .yakumi th, .yakumi td { border-bottom: 1px solid var(--border); text-align: center; vertical-align: middle; }
 .yakumi thead th, .yakumi .midhead th { font-size: 11px; letter-spacing: 0.04em; color: var(--sub); font-weight: 400; padding: 8px 2px; }
 .yakumi .midhead th { border-top: 1px solid var(--border); }
@@ -293,6 +295,7 @@ footer {
         <!-- 左：早見表 -->
         <div class="split-visual">
           <div class="yaku-cap">令和8年（<span class="yr">2026</span>年）厄年表</div>
+          <div class="yaku-box">
           <table class="yakumi">
             <thead>
               <tr><th></th><th>前厄</th><th>本厄</th><th>後厄</th></tr>
@@ -338,6 +341,7 @@ footer {
               </tr>
             </tbody>
           </table>
+          </div>
           <p class="tbl-note">各欄は上から、数え年・生まれ年（和暦）・満年齢と干支です。男性四十二歳・女性三十三歳が大厄にあたり、前後の年を前厄・後厄として、あわせて三年お祓いいたします。</p>
         </div>
 
@@ -345,10 +349,9 @@ footer {
         <div class="split-body">
           <div class="prose">
             <p>節分会は、立春の前日にあたる季節の分かれ目に、一年の無事を願う法会です。護摩壇に火を焚き、供物を炎に投じて不動明王に祈りを届ける、天台宗（台密）の作法でお勤めします。厄年を迎える方は、この護摩祈祷にお名前を連ね、ご祈願いたします。</p>
-            <p>安養院の節分会は、<strong>毎年二月の第一日曜日</strong>に行っています。豆まきと、鬼退治の劇も行います。どなたでもお参りいただけます。</p>
           </div>
 
-          <h2 class="subhead-l">初穂料</h2>
+          <h2 class="subhead-l">ご祈願料</h2>
           <table class="tbl">
             <tbody>
               <tr><td class="col-key">本厄</td><td class="col-fee">10,000円</td></tr>
@@ -360,7 +363,7 @@ footer {
           <div class="apply">
             <dl>
               <dt>受付</dt><dd>お正月にお参りの方へ、申込用紙をお配りしています。お寺へお越しいただくほか、お電話・ファックスでもお受けします。</dd>
-              <dt>初穂料</dt><dd>お申し込みの際にお納めください。</dd>
+              <dt>ご祈願料</dt><dd>お申し込みの際にお納めください。</dd>
               <dt>締切</dt><dd>節分会の一週間前まで。</dd>
             </dl>
             <p class="applynote">
@@ -395,7 +398,7 @@ footer {
             <p>外出やお出かけの安全を願う、交通安全のお守りもご用意しています。</p>
           </div>
 
-          <h2 class="subhead-l">初穂料</h2>
+          <h2 class="subhead-l">ご祈願料</h2>
           <table class="tbl">
             <tbody>
               <tr><td class="col-key">各種御祈願（お札）</td><td class="col-fee">2,000円</td></tr>
