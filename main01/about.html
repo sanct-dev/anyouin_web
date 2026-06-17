@@ -152,6 +152,10 @@ nav a.is-current { color: var(--red); }
 .butsu-desc { font-size: 13px; line-height: 1.95; color: #585858; }
 .butsu-note { font-size: 12px; line-height: 1.9; color: #8c8c8c; margin-top: 8px; }
 .butsu-img .ph { aspect-ratio: 3/4; background: #ece8e2; border-radius: 2px; display: flex; align-items: center; justify-content: center; color: var(--sub); font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.15em; }
+.butsu-place { font-size: 16px; font-weight: 400; letter-spacing: 0.14em; color: var(--text); margin: 0 0 32px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.butsu-place .place-en { font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 0.2em; color: var(--red); opacity: 0.6; margin-left: 12px; text-transform: uppercase; }
+.butsu-place.is-keidai { margin-top: 72px; }
+.butsu-era { margin-top: 12px; font-size: 11.5px; letter-spacing: 0.06em; color: var(--red); opacity: 0.85; }
 
 /* ========== FOOTER ========== */
 footer {
@@ -284,6 +288,7 @@ footer {
         <span class="sec-en">Buddhist Statues</span>
         <h2 class="sec-h2">安養院の仏さま</h2>
       </div>
+      <h3 class="butsu-place">本堂<span class="place-en">Hondo</span></h3>
       <div class="butsu-grid">
         <div class="butsu-item">
           <div class="butsu-img"><img src="../images/Buddhist statue（後で取り直すこと！）/ご本尊十一面観音像.jpg" alt="十一面観音"></div>
@@ -294,11 +299,12 @@ footer {
           </div>
         </div>
         <div class="butsu-item">
-          <div class="butsu-img"><img src="../images/Buddhist statue（後で取り直すこと！）/白粉薬師.jpg" alt="白粉薬師"></div>
+          <div class="butsu-img"><div class="ph">IMAGE</div></div>
           <div>
-            <div class="butsu-name">白粉薬師<span class="butsu-yomi">おしろいやくし</span></div>
-            <p class="butsu-desc">病を癒す「医王（いおう）」としてあがめられる薬師如来のお像です。薬師如来は、この世での病の平癒をもたらすとされ、とりわけ目の病に霊験あらたか。治ったお礼に、お顔へ白粉を塗って感謝を表す習わしから「白粉薬師」と呼ばれています。</p>
-            <p class="butsu-note">安養院の山号「医王山」は、この薬師如来に由来します。開山当初のご本尊も薬師如来でした。お像は南北朝時代（十四世紀頃）の造立と伝えられ、安養院に現存する最も古い仏さまの一つと考えられています。</p>
+            <div class="butsu-name">薬師如来<span class="butsu-yomi">やくしにょらい</span></div>
+            <p class="butsu-desc">病を癒す「医王（いおう）」としてあがめられる仏さまです。薬師如来は、東方浄瑠璃世界の教主として、この世での病の平癒や災いの除去をもたらすとされています。</p>
+            <p class="butsu-note">本堂におまつりしています。安養院は山号を「医王山」といい、薬師如来との縁は開山の昔から続いてきました。</p>
+            <p class="butsu-era">平成9年（1997年）</p>
           </div>
         </div>
         <div class="butsu-item">
@@ -307,6 +313,7 @@ footer {
             <div class="butsu-name">釈迦如来<span class="butsu-yomi">しゃかにょらい</span></div>
             <p class="butsu-desc">仏教の開祖であるお釈迦さまが、悟りをお開きになった姿をあらわした仏さまです。あらゆる宗派の出発点にあり、特定の宗派に属さない、仏教共通の仏さまといえます。</p>
             <p class="butsu-note">四月八日のお花祭りはお釈迦さまの誕生を、二月十五日の涅槃会はその命日をしのぶ行事です。釈迦如来は、安養院の年中行事と直接につながる仏さまです。</p>
+            <p class="butsu-era">平成23年（2011年）</p>
           </div>
         </div>
         <div class="butsu-item">
@@ -315,14 +322,6 @@ footer {
             <div class="butsu-name">阿弥陀如来<span class="butsu-yomi">あみだにょらい</span></div>
             <p class="butsu-desc">西方極楽浄土におられる仏さまです。「阿弥陀」とは無量の光・無量の寿命を意味し、念じる者を、どんなに罪深い身であっても必ず救ってくださるとされています。</p>
             <p class="butsu-note">天台宗でも念仏は大切にされており、阿弥陀如来がお祀りされるのは自然なことです。太陽が真西に沈む春分・秋分の日に阿弥陀さまを礼拝する「彼岸会」とは、思想のうえで一体の仏さまといえます。</p>
-          </div>
-        </div>
-        <div class="butsu-item">
-          <div class="butsu-img"><div class="ph">IMAGE</div></div>
-          <div>
-            <div class="butsu-name">六地蔵<span class="butsu-yomi">ろくじぞう</span></div>
-            <p class="butsu-desc">六体一組でおまつりするお地蔵さまです。地蔵菩薩は、お釈迦さまが入滅されてから次の仏（弥勒菩薩）が現れるまでの、仏のおられない長い世を、人々のかたわらで救い続けてくださる菩薩さまです。</p>
-            <p class="butsu-note">「六」は、生きとし生けるものが生まれ変わるとされる六つの世界（六道）を表します。六地蔵は、そのいずれの世界にも分け入って人々を救おうとする誓いのあらわれで、古くから親しまれてきました。</p>
           </div>
         </div>
         <div class="butsu-item">
@@ -347,6 +346,46 @@ footer {
             <div class="butsu-name">元三慈恵大師<span class="butsu-yomi">がんざんじけいだいし</span></div>
             <p class="butsu-desc">平安時代の天台宗の僧・良源さまのお像です。比叡山延暦寺の第十八代座主をつとめ、天台宗の興隆に大きく尽くされたことから、「天台中興の祖」と称えられています。</p>
             <p class="butsu-note">良源さまがお亡くなりになった日が正月三日であったことから、「元三大師（がんざんだいし）」とも呼ばれています。御年頭廻りでお配りする角大師お札は、大師が鬼の姿に変じて疫病神を払われたという言い伝えに由来します。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="butsu-place is-keidai">境内<span class="place-en">Keidai</span></h3>
+      <div class="butsu-grid">
+        <div class="butsu-item">
+          <div class="butsu-img"><img src="../images/Buddhist statue（後で取り直すこと！）/白粉薬師.jpg" alt="白粉薬師"></div>
+          <div>
+            <div class="butsu-name">白粉薬師<span class="butsu-yomi">おしろいやくし</span></div>
+            <p class="butsu-desc">病を癒す「医王（いおう）」としてあがめられる薬師如来のお像です。薬師如来は、この世での病の平癒をもたらすとされ、とりわけ目の病に霊験あらたか。治ったお礼に、お顔へ白粉を塗って感謝を表す習わしから「白粉薬師」と呼ばれています。</p>
+            <p class="butsu-note">安養院の山号「医王山」は、この薬師如来に由来します。開山当初のご本尊も薬師如来でした。安養院に現存する、最も古い仏さまの一つと考えられています。</p>
+            <p class="butsu-era">南北朝時代（14世紀頃）</p>
+          </div>
+        </div>
+        <div class="butsu-item">
+          <div class="butsu-img"><div class="ph">IMAGE</div></div>
+          <div>
+            <div class="butsu-name">地蔵菩薩<span class="butsu-yomi">じぞうぼさつ</span></div>
+            <p class="butsu-desc">境内におまつりするお地蔵さまです。地蔵菩薩は、仏のおられない世にあって、子どもをはじめ、あらゆる人々を分け隔てなく救ってくださる、親しみ深い菩薩さまです。</p>
+            <p class="butsu-note">古くから境内にあって、道ゆく人々や子どもたちを、そばで見守ってきました。</p>
+            <p class="butsu-era">享保17年（1732年）</p>
+          </div>
+        </div>
+        <div class="butsu-item">
+          <div class="butsu-img"><div class="ph">IMAGE</div></div>
+          <div>
+            <div class="butsu-name">六地蔵<span class="butsu-yomi">ろくじぞう</span></div>
+            <p class="butsu-desc">六体一組でおまつりするお地蔵さまです。地蔵菩薩は、お釈迦さまが入滅されてから次の仏（弥勒菩薩）が現れるまでの、仏のおられない長い世を、人々のかたわらで救い続けてくださる菩薩さまです。</p>
+            <p class="butsu-note">「六」は、生きとし生けるものが生まれ変わるとされる六つの世界（六道）を表します。六地蔵は、そのいずれの世界にも分け入って人々を救おうとする誓いのあらわれで、古くから親しまれてきました。</p>
+            <p class="butsu-era">平成27年（2015年）</p>
+          </div>
+        </div>
+        <div class="butsu-item">
+          <div class="butsu-img"><div class="ph">IMAGE</div></div>
+          <div>
+            <div class="butsu-name">観音菩薩<span class="butsu-yomi">かんのんぼさつ</span><span class="butsu-honzon">永代供養塔</span></div>
+            <p class="butsu-desc">永代供養塔におまつりする観音さまです。観音菩薩は、苦しむ者の声を観じて現れ、救いの手を差し伸べてくださる菩薩さま。永代供養塔は、安養院が末永くご供養をお引き受けするお墓です。</p>
+            <p class="butsu-note">安養院の永代供養を見守る観音さまとして、平成にお迎えしました。</p>
+            <p class="butsu-era">平成14年（2002年）</p>
           </div>
         </div>
       </div>
