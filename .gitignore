@@ -11,23 +11,7 @@
 # 歴史調査の出典PDF（市史・遺跡報告書など・再配布は避けたい／手元保管）
 歴史資料集/
 
-# 採用しなかったHTML（indexから外した・手元には残す）
-html/mockup_01_太宰府天満宮方向_photo_anime.html
-html/mockup_01_太宰府天満宮方向_photo_anime_shadow.html
-html/mockup_02_善称寺方向_photo.html
-html/mockup_02_善称寺方向_illust.html
-html/wf_A_map.html
-html/wf_B_question.html
-html/wf_C_emaki.html
-html/wf_D_season.html
-html/wf_1_B_header.html
-html/wf_2_A_no_header.html
-html/wf_3_B_no_header.html
-html/wf_4_C_no_header.html
-html/mockup_01_太宰府天満宮方向.html
-html/mockup_02_善称寺方向.html
-html/mockup_03_安養寺方向.html
-html/mockup_04_大興善寺方向.html
+# （旧）採用しなかったHTML → indexの「ぼつ案・検討の過程」として復活公開（noindex・住所ダミー・制作中バッジ済み）
 
 # 内部ツール（事務所のワークフロー資産・公開リポジトリには上げない）
 組み立て台.command
